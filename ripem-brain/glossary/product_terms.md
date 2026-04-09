@@ -12,6 +12,10 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 **Build Blog** — The user-facing name for the published version of a build. A Build Blog is a curated, shareable representation of a user's build log.
 
+**Build Log** — The complete documented record of all work done on a vehicle project. Comprised of individual log entries over time.
+
+**Build Post** — A published, shareable summary of a build project. Can be AI-generated from build logs or manually written. Appears in the community feed.
+
 **Build Timeline** — The chronological view of all sessions logged for a vehicle. The core view in the app.
 
 ## C
@@ -32,11 +36,17 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 **Learner** — One of the three primary user types. A Learner primarily wants to discover other builds and use the AI to learn about their car.
 
+**Log Entry** — A single record in a build log, typically representing one work session. Contains date, time spent, description of work, parts used, costs incurred, and any attached media.
+
+## M
+
+**MVP** — Minimum Viable Product. The simplest version of RipEm with core features sufficient to validate the product hypothesis with real users. RipEm's MVP is phased across three releases (Phase 1: logging, Phase 2: AI, Phase 3: publishing).
+
 ## P
 
 **Parts extraction** — The AI process of identifying parts, brands, part numbers, and costs from a voice transcript.
 
-**Premium** — RipEm's paid subscription tier. Unlocks: ad-free, direct social posting, advanced analytics, watermark removal, build export.
+**Premium** — RipEm's paid subscription tier ($4.99–9.99/month). Unlocks: ad-free, direct social posting, advanced analytics, watermark removal, build export.
 
 ## S
 
@@ -53,3 +63,5 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 ## W
 
 **Watermark** — The RipEm branding automatically applied to published build photos and videos. The watermark is the primary viral growth mechanism. Cannot be removed on free tier.
+
+**Weekend Warrior** — A user persona representing casual maintenance trackers who primarily want to remember what service they've done and when.

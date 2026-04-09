@@ -22,6 +22,45 @@
 
 ---
 
+## Detailed User Personas
+
+### Persona 1: The Weekend Warrior
+- Does routine maintenance (oil changes, brakes, fluids)
+- Changes spark plugs, filters, minor upgrades
+- Wants to track what they've done for resale value or warranty
+- Not very technical, doesn't use spreadsheets
+- Time-pressed; wants quick entry method
+- **Primary goal**: Know what's been done and when
+- **Revenue segment**: Casual maintenance tracker — ad impressions (~$1.50/month)
+
+### Persona 2: The Enthusiast Builder
+- Modifying or upgrading a car (suspension, exhaust, turbo, wheels)
+- Takes detailed photos, keeps receipts
+- Active on forums, watches YouTube tutorials
+- Comfortable with technology
+- May want to share progress with friends or online
+- **Primary goal**: Track all work, parts, and decisions; share build progress
+- **Revenue segment**: Active builder — ads + affiliate (~$2–4/month)
+
+### Persona 3: The Restorer
+- Doing a frame-off or major restoration (years-long project)
+- Needs detailed inventory of hundreds or thousands of parts
+- Budgeting is critical; needs cost breakdowns
+- May employ help or collaborate with others
+- Wants a historical record of all work done
+- **Primary goal**: Complete organizational system for complex, multi-year projects
+- **Revenue segment**: Professional restorer — Enterprise tier candidate (~$20–50/month)
+
+### Persona 4: The Content Creator
+- Documenting builds for YouTube, Instagram, TikTok
+- Wants to share progress and reach an audience
+- Interested in community interaction and feedback
+- Might monetize through sponsorships or Patreon
+- **Primary goal**: Easy way to publish, build audience, engage community
+- **Revenue segment**: Premium subscriber — ad-free + social posting (~$7/month)
+
+---
+
 ## Core Journeys
 
 ### Journey 1: First Log Entry (Documenter)
