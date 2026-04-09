@@ -82,4 +82,68 @@ This document records key decisions made during RipEm's design and development. 
 
 ---
 
+## DD-006: Backend Language and Framework — Node.js + TypeScript + Express
+
+**Decision**: The RipEm backend is built with Node.js, TypeScript, and Express.
+
+**Rationale**:
+- TypeScript provides type safety across API contracts, reducing integration bugs between iOS and backend
+- Node.js's non-blocking I/O model is well-suited for the voice upload pipeline (upload to S3 → Whisper → OpenRouter — all async, IO-bound)
+- npm ecosystem provides mature SDKs for OpenAI Whisper, AWS S3, and OAuth
+- TypeScript is widely familiar to the iOS team (Swift/TypeScript interop for shared contract definitions)
+- Express is minimal and well-understood; avoids unnecessary framework overhead in an MVP phase where iteration speed matters
+- BullMQ (Redis-backed job queue) integrates cleanly in the Node ecosystem for async background jobs
+
+**Alternatives considered**:
+- Python/FastAPI — excellent for AI-heavy projects, but introduces language context switching overhead for a team likely anchored in JS/TS; also slower npm toolchain integration
+- NestJS — more structured than Express but heavier initial setup for an 8-week MVP
+
+**Date**: 2026-04-09
+
+---
+
+## DD-007: Hosting Provider — Railway
+
+**Decision**: RipEm infrastructure is hosted on Railway for the MVP (API + PostgreSQL + Redis).
+
+**Rationale**:
+- Railway natively manages PostgreSQL and Redis alongside the API service — single platform reduces ops context switching for a small team
+- Zero-config deployment from GitHub; aligns with our GitHub Actions CI/CD plan
+- Significantly lower ops overhead than AWS (no VPC, IAM, RDS, ElastiCache configuration at MVP stage)
+- Railway pricing is predictable and cost-effective for early-stage traffic
+- Post-launch migration path to AWS is well-defined if traffic demands it
+
+**Alternatives considered**:
+- Vercel — optimized for serverless/Next.js; does not support long-running Node processes or background job workers cleanly; not suited for BullMQ/Redis worker pattern
+- Render — viable, but Railway has stronger PostgreSQL+Redis native integration and simpler multi-service orchestration
+- AWS (EC2 + RDS) — correct scale-out choice but adds weeks of infrastructure overhead at MVP stage
+
+**Date**: 2026-04-09
+
+---
+
+## DD-008: Token-Usage Throttling for Agent Task Dispatch
+
+**Decision**: Implement a 5,000-token threshold guardrail: when any agent task is in-flight and has consumed (or is estimated to consume) more than 5,000 tokens, no new agent tasks are dispatched until that large task completes.
+
+**Rationale**:
+- Running many concurrent agent tasks compounds token usage exponentially (context sharing, tool calls)
+- A single large task (e.g., complex codebase investigation, large document synthesis) can consume >5K tokens; stacking another on top doubles costs unnecessarily
+- Throttling at the scheduler/runtime level keeps individual agents simple — they don't need per-task token accounting
+- Non-destructive: already-running tasks are never interrupted, only new dispatches are held
+
+**Implementation**:
+- Each agent's `runtimeConfig.heartbeat.tokenThrottleLimit` is set to `5000`
+- Agent instructions enforce behavioral check: before checkout of any new task, verify no in-progress task is a known large task
+- Future: Paperclip scheduler can enforce this natively using run token telemetry from `ai_token_usage` table
+
+**Alternatives considered**:
+- Per-user token caps (RipEm product level) — separate concern; addressed in free-tier monthly limits
+- Reducing agent concurrent runs to 1 (already set via `maxConcurrentRuns: 1`) — helps but doesn't prevent sequential large tasks from stacking
+- Hard token limits per run — too restrictive; would interrupt valid long-running tasks mid-execution
+
+**Date**: 2026-04-09
+
+---
+
 > Add new decisions as they are made. Format: DD-[sequential number], title, decision, rationale, alternatives, date.
