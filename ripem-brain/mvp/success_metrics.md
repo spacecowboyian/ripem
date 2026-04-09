@@ -1,83 +1,90 @@
 # Success Metrics
 
-## Phase 1 Success Criteria
+## MVP Launch Targets (8-Week Build)
 
-The MVP is successful if, within 90 days of Phase 1 launch:
+**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+
+### Phase 1 — Onboarding (Weeks 1-2)
+
+| Metric | Target |
+|--------|--------|
+| Questionnaire completion rate | 70%+ |
+| Completion time | 5-10 minutes |
+| First AI response satisfaction ("felt personal") | 80%+ |
+| Time to first voice log (after onboarding) | avg <5 min |
+| Day 7 retention | 50%+ |
+
+### Phase 2 — Voice Logging (Weeks 3-4)
+
+| Metric | Target |
+|--------|--------|
+| Voice logs per active user | avg 3+ |
+| Sync reliability | 99%+ success |
+| Offline recording usage | 30%+ of logs |
+| AI response satisfaction (qualitative) | Positive feedback |
+
+### Phase 3 — Social (Weeks 5-8)
+
+| Metric | Target |
+|--------|--------|
+| Instagram shares per active user | avg 1+ |
+| Watermark click-through rate | 5-10% |
+| Discovery feed subscriptions per user | avg 3+ |
+| New users from watermark | Tracked via UTM params |
+
+---
+
+## Post-Launch Success Criteria (90 Days)
 
 | Metric | Target |
 |--------|--------|
 | Registered users | 1,000+ (500+ in first month) |
-| Active users (logged ≥1 session) | 500+ |
-| Sessions logged per active user | ≥3 |
-| Day 7 retention | ≥30% |
+| Active users (logged ≥1 entry) | 500+ |
+| Log entries per active user | ≥3 |
+| Day 7 retention | ≥30% (target 50%) |
 | Day 30 retention | ≥20% |
 | App Store rating | ≥4.0 |
-| Voice transcription accuracy satisfaction | ≥80% (in-app feedback) |
-| Voice log entries created | 50+ |
-
-## Phase 2 Success Criteria
-
-| Metric | Target |
-|--------|--------|
-| AI chat sessions per active user per week | ≥1 |
-| AI response satisfaction (thumbs up) | ≥70% |
-| Day 30 retention (Phase 2 cohort vs Phase 1) | +10% improvement |
-| AI assistant rating | ≥4.0 stars |
-
-## Phase 3 Success Criteria
-
-| Metric | Target |
-|--------|--------|
-| Builds published (first 30 days) | 200+ |
 | Viral coefficient (installs from watermark) | ≥0.3 |
-| Parts search sessions per MAU per month | ≥2 |
-| Premium conversion rate | ≥3% |
+| Premium conversion rate | ≥3-5% |
+
+---
 
 ## Long-Term KPIs (12 Months)
 
-### Engagement Metrics
+### Engagement
 | KPI | Target |
 |-----|--------|
-| Monthly Active Users (MAU) | 50,000+ |
-| Daily/Weekly/Monthly active user ratio (DAU/WAU/MAU) | To be tracked |
-| Log entry frequency (avg. entries per week per active user) | ≥2 |
-| AI chat queries per user per week | ≥1 |
-| Retention — Day 30 | ≥20% |
-| Retention — Day 90 | ≥15% |
-| Average sessions per active vehicle per month | ≥2 |
+| MAU | 50,000+ |
+| Log entry frequency | ≥2/week per active user |
+| AI chat queries | ≥1/week per user |
+| Day 30 retention | ≥20% |
+| Day 90 retention | ≥15% |
 
-### Content Metrics
-| KPI | Target |
-|-----|--------|
-| Total log entries created | Tracked continuously |
-| Total published build posts | Tracked continuously |
-| Avg. engagement per post (likes, comments, shares) | Tracked continuously |
-| Video completion rate (auto-generated videos) | ≥40% |
-
-### Business Metrics
+### Business
 | KPI | Target |
 |-----|--------|
 | Premium subscribers | 2,500+ |
-| Monthly Recurring Revenue (MRR) | TBD (depends on final pricing) |
-| Watermark-driven installs (% of total) | ≥40% |
-| Customer Acquisition Cost (CAC) | ≤$5 |
-| LTV:CAC ratio | ≥3:1 |
-| Premium conversion rate | ≥5% |
+| Watermark-driven installs | ≥40% of total |
+| CAC | ≤$5 |
+| LTV:CAC | ≥3:1 |
 | Churn rate | ≤5%/month |
+| NPS | ≥40 |
 
-### Satisfaction Metrics
-| KPI | Target |
-|-----|--------|
-| NPS (Net Promoter Score) | ≥40 |
-| Feature satisfaction ratings | ≥4.0/5.0 |
-| AI assistant usefulness rating | ≥4.0/5.0 |
-| Support ticket volume | Tracked; trend downward |
+---
 
 ## What Failure Looks Like
 
-- Day 7 retention < 15%: Core value proposition is not landing
-- AI satisfaction < 50%: AI responses are not differentiated from generic chatbots
-- Viral coefficient < 0.1: Watermark growth loop is not working
+- Questionnaire completion < 50%: Too long or confusing → shorten
+- Day 7 retention < 15%: Core value prop not landing
+- AI satisfaction < 50%: AI not differentiated from generic ChatGPT
+- Sync reliability < 95%: Offline-first implementation broken
+- Viral coefficient < 0.1: Watermark growth loop not working
+- Watermark CTR < 1%: Posts not reaching new audience or watermark not compelling
+
+## See Also
+
+- [scope.md](./scope.md)
+- [timeline.md](./timeline.md)
 - Premium conversion < 2% after 6 months: Freemium balance is wrong
 
 ## See Also

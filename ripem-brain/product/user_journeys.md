@@ -97,8 +97,66 @@
 
 ---
 
+## Onboarding Questionnaire Flow (12 Screens)
+
+**Design Philosophy**: A conversation, not a form. Questions appear one-by-one. AI reacts to previous answers. User feels heard and understood.
+
+**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+
+| Screen | Question | Input Type | Why |
+|--------|----------|-----------|-----|
+| 1 | Welcome | CTA button | Set expectation: "I'm your AI garage buddy" |
+| 2 | What car are you building? | Year/Make/Model dropdowns | Foundation before emotion |
+| 3 | Where did you get this car? What's the story? | Free text | Captures "Dale moment" — the emotional hook |
+| 4 | What's your vision for this car? | Multi-select buttons (track car, restoration, daily driver, etc.) | Determines AI recommendation type |
+| 5 | How much mechanical experience do you have? | Single select (novice → professional) | AI calibrates tone and complexity |
+| 6 | What's your timeline and budget? | Sliders / text | Sets expectation for realistic advice |
+| 7 | What work have you already done? | Free text | Seeds the garage brain with history |
+| 8 | Does your car have a name? | Free text (optional) | Emotional peak — named cars = deeper investment |
+| 9 | What are you most excited about? | Free text | Sets AI's conversational focus |
+| 10 | Anything to ask your AI right now? | Free text (optional) | User-controlled first conversation |
+| 11 | How do you want to share your project? | Public / Private toggle | Sets discovery feed and watermark expectations |
+| 12 | Summary + First AI Response | Loading → AI message | **The magic moment** |
+
+**Target**: <10 minutes to complete, 70%+ completion rate.
+
+### The "Dale Moment" — First AI Response Example
+
+> "Dale's a kickass name. So the original owner was Dale? That's sick, I'm adding that to the history.
+>
+> Okay, so you've got a classic Celica track car project. 1972 is the perfect year for this—solid platform. Based on what you've shared, you've got mechanical chops (water pump + fluids = you know how to work). Here's what I'm thinking:
+>
+> With a $5K budget over 2 years and track car ambitions, the limiting factor is power. The stock 18R-C motor is... not a monster. There are some killer motor swap options:
+> - 4A-GE (~180hp, tunable)
+> - 20V Blacktop (200+hp, rarer)
+> - 2ZZ-GE (modern, reliable)
+>
+> Have you ever looked into swaps? Are you trying to keep it period-correct, or willing to go modern? Either way, let's make this thing a real monster."
+
+### Onboarding Data Structure
+
+```json
+{
+  "project_id": "proj_abc123",
+  "car_basics": { "year": 1972, "make": "Toyota", "model": "Celica" },
+  "story": "Got it from Dale, the original owner",
+  "vision": ["track_car"],
+  "skill_level": "intermediate",
+  "budget": { "amount": 5000, "currency": "USD" },
+  "timeline": { "months": 24 },
+  "work_completed": "Water pump, coolant, oil change, spark plugs",
+  "car_name": "Dale",
+  "primary_focus": "Motor swap",
+  "initial_question": "What motor swap would work best in my budget?",
+  "visibility": "public"
+}
+```
+
+---
+
 ## See Also
 
 - [product_definition.md](./product_definition.md)
 - [features.md](./features.md)
 - [/mvp/acceptance_criteria.md](../mvp/acceptance_criteria.md)
+- [/technical/ai_prompting.md](../technical/ai_prompting.md)
