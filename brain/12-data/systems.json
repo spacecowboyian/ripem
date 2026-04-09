@@ -1,0 +1,28 @@
+{
+  "systems": [
+    {
+      "id": "ios-app",
+      "name": "iOS App",
+      "platform": "ios",
+      "priority": "primary",
+      "description": "The primary ripem client application for iPhone and iPad.",
+      "documentation": "/brain/04-platforms/ios/architecture.md"
+    },
+    {
+      "id": "web-app",
+      "name": "Web App",
+      "platform": "web",
+      "priority": "secondary",
+      "description": "The secondary ripem client application for web browsers.",
+      "documentation": "/brain/04-platforms/web/architecture.md"
+    },
+    {
+      "id": "backend-api",
+      "name": "Backend API",
+      "platform": "server",
+      "priority": "primary",
+      "description": "The backend API that serves both the iOS and web apps.",
+      "documentation": "/brain/03-architecture/api-contracts.md"
+    }
+  ]
+}
