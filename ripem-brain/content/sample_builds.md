@@ -58,3 +58,31 @@ These fictional build examples are used for demos, onboarding screens, and marke
 - Session 4: Braided brake lines + fluid flush. 2 hours. $180.
 
 **Note for agents**: These builds should be used as demo content in onboarding, App Store screenshots, and marketing materials. Do not attribute to real people.
+
+---
+
+## Sample User Flow (Voice-to-Log)
+
+The following illustrates the core RipEm MVP user journey end-to-end:
+
+```
+User opens app → Sign up / Log in → Create vehicle
+  ↓
+Voice log entry screen
+  ↓
+  "Just replaced spark plugs, bought from AutoZone for $45, took 30 min"
+  ↓
+  App transcribes & auto-extracts:
+    Parts: spark plugs
+    Cost: $45
+    Time: 30 min
+    Supplier: AutoZone
+  ↓
+  User confirms/edits → adds photo → Log saved to build timeline
+  ↓
+  User can ask AI: "How much have I spent on maintenance?"
+  ↓
+  AI: "You've spent $189 on maintenance across 4 log entries" + breakdown
+  ↓
+  User publishes one log as "Build Post" → appears as public post in community feed
+```

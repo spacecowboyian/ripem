@@ -22,6 +22,40 @@ RipEm combines three powerful capabilities:
 | iOS | Primary | All features are designed and built here first |
 | Web | Secondary | Feature parity is a goal, not a guarantee |
 
+## Information Architecture
+
+Every vehicle project in RipEm stores five categories of information:
+
+### Project Details
+- Vehicle make, model, year, VIN
+- Purchase date, current status (active, archived, sold)
+- Location/storage info
+- Overall project goals and scope
+
+### Parts Inventory
+- All parts (installed, in-progress, needed)
+- Part name, part number, supplier/source
+- Cost, purchase date, warranty info
+- Installation date and notes
+- Current location (installed, on shelf, in storage)
+
+### Work History & Maintenance
+- Log entries (voice-transcribed or typed)
+- Date, time spent, description of work
+- Tools used, parts involved
+- Before/after photos and videos
+- Costs incurred
+
+### Timeline & Scheduling
+- Maintenance schedule (oil changes, inspections, etc.)
+- Upcoming tasks and deadlines
+- Work history (when things were done, how often)
+
+### Resources & Tools
+- Tools commonly used on this project
+- Preferred suppliers and vendors
+- Reference documents, manuals, links
+
 ## Three User Entry Points
 
 1. **Documenters** - Just want easy voice-based maintenance logging

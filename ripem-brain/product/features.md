@@ -30,6 +30,23 @@
 | Priority AI | Faster, more detailed AI responses | To be built |
 | Export Tools | Export build logs as PDF, CSV, or video | To be built |
 
+## Post-MVP Feature Roadmap
+
+Features planned for after the three-phase MVP:
+
+| Feature | Description |
+|---------|-------------|
+| Collaborative projects | Multiple users working on the same vehicle |
+| Part marketplace integration | Direct links to suppliers (eBay, Amazon, specialty vendors) |
+| Cost analytics & budget planning | Forecast total project cost |
+| Augmented reality | Visualize parts before purchase |
+| Export to PDF | Generate professional build logs for resale or documentation |
+| Mobile-first offline mode | Full access and updates without internet |
+| Integration with mechanic shops | Share history with trusted repair providers |
+| Marketplace for builds/services | Users can offer restoration services or sell completed projects |
+| Multi-vehicle support (expanded) | Enhanced management for users with many vehicles |
+| Video auto-generation | AI auto-edits photos into short video with voiceover or narration |
+
 ## Feature Constraints
 
 - Ads appear ONLY in parts/tools search — never in AI chat or project logs

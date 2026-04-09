@@ -26,6 +26,9 @@ Year 3 target: 500,000+ active monthly users
 
 ### Tailwinds
 - Car modification culture is growing (YouTube, TikTok car content exploding)
+- Rising interest in DIY culture and maker mindset
+- Growing prevalence of EVs and retrofitting projects
+- Remote work enabling more hobby time
 - No dominant dedicated build-logging app exists
 - AI tools are now accessible and expected by consumers
 - Short-form video (Reels, TikTok) drives car content virality
@@ -38,6 +41,25 @@ Year 3 target: 500,000+ active monthly users
 ## Competitive Landscape
 
 See [/strategy/competitive_analysis.md](../strategy/competitive_analysis.md) for detailed competitive positioning.
+
+## Adjacent Markets
+
+- Classic car restorers
+- Overlanders
+- Motorcycle builders
+- Truck and SUV modders
+- RV owners
+- Equipment builders
+- Boat owners
+
+These adjacent markets each represent millions of potential users with similar documentation and community needs.
+
+## Market Gaps
+
+- No dominant solution for hobbyist car projects (existing tools are business-focused or too generic)
+- Community-driven platforms for car projects lack structured logging
+- No platform that combines documentation + publishing + AI assistance in one place
+- Opportunity to create the "standard" for how car projects are documented
 
 ## Key Insight
 
