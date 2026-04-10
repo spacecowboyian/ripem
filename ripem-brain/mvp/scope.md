@@ -11,8 +11,8 @@
 **Goal**: User completes questionnaire, meets their AI buddy, feels "This app gets me."
 
 **iOS Screens**:
-- Screens 1-12 (questionnaire flow — see [/product/user_journeys.md](../product/user_journeys.md))
-- Welcome → Car basics → Story → Vision → Skill level → Budget/timeline → Completed work → Car name → Jam → Question for AI → Privacy setting → Summary + First AI Response
+- Screens 1-9 (questionnaire flow — see [/ux/wireframes.md](../ux/wireframes.md))
+- Welcome → Car basics → Vision+Skill (combined) → Budget/timeline → Story (optional) → Excitement focus → Privacy setting + public builds explainer → Car name (optional) → Question for AI (optional) → Summary + First AI Response
 
 **Backend**:
 - `POST /auth/register`, `POST /auth/login`, Google+Apple OAuth
@@ -23,10 +23,10 @@
 - `users`, `garages`, `projects`, `questionnaire_responses`, `ai_conversations`
 
 **Definition of Done**:
-- [ ] User can answer 12 questions in <10 minutes
+- [ ] User can complete onboarding in <6 minutes (9 questions, 2 optional)
 - [ ] Onboarding completes with personalized AI first response
 - [ ] First response references car name, story, and vision
-- [ ] 70%+ questionnaire completion rate in beta
+- [ ] 80%+ questionnaire completion rate in beta
 
 ---
 
