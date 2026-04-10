@@ -10,9 +10,15 @@
 
 ## Hosting
 
-Primary candidate: **Vercel** (mentioned in tech spec for simplicity). Alternatives: Railway, Render (simpler DevOps for early stage), AWS (EC2 + RDS for scale).
+**Decision**: **Railway** (DD-007)
 
-> Decision to be recorded in [/context/design_decisions.md](../context/design_decisions.md) when made.
+- API server: Railway service (Node.js + TypeScript + Express)
+- Database: Railway-managed PostgreSQL
+- Job queue: Railway-managed Redis (BullMQ)
+- All environments (dev, staging, prod) on Railway
+- Scale-out path: migrate to AWS if required post-launch
+
+Alternatives evaluated: Vercel (optimized for Next.js/serverless, not long-running Node processes or background job workers), Render (similar to Railway but Railway has better PostgreSQL+Redis native support), AWS (overkill ops complexity for MVP stage).
 
 ## Media Storage
 

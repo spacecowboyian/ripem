@@ -20,11 +20,13 @@
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
-| Language | TBD (Node.js or Python/FastAPI) | Agent-decided; both are primary candidates |
+| Language | **Node.js + TypeScript** | Type safety across API contracts; excellent async I/O for voice upload pipeline; npm ecosystem for OpenRouter/Whisper; strong match with iOS-team JS/TS familiarity; see DD-006 |
+| Framework | **Express** | Minimal, well-understood, fast to iterate; avoids framework overhead in MVP phase |
 | API style | REST over HTTPS | Simple, widely supported |
-| Auth | JWT / Bearer token | Stateless, standard |
-| Database | PostgreSQL (recommended) | Relational model; JSONB for AI context; vector-ready |
+| Auth | JWT / Bearer token | Stateless, standard; refresh tokens with 3600s expiry |
+| Database | **PostgreSQL on Railway** | Relational model; JSONB for AI context; vector-ready; Railway-managed removes ops overhead; see DD-007 |
 | Media storage | AWS S3 (presigned URLs) | Scalable object storage; no direct client access |
+| Background jobs | **Node.js worker threads / BullMQ (Redis)** | Async voice→Whisper→AI pipeline; decoupled from HTTP request cycle |
 
 ## AI Layer
 
@@ -58,19 +60,20 @@
 | Google OAuth | id_token exchange |
 | Apple OAuth | identity_token + user_identifier |
 
-## Decisions Confirmed
+## Decisions Confirmed (Updated)
 
+- **Backend language**: Node.js + TypeScript + Express (DD-006)
+- **Hosting**: Railway for MVP — API, PostgreSQL, Redis all on one platform (DD-007)
 - **LLM provider**: OpenRouter (all Claude calls) — not direct Anthropic
 - **Transcription**: Whisper API (OpenAI) — not Apple on-device Speech
 - **iOS architecture**: SwiftUI + MVVM + SQLite offline-first
 - **Storage**: AWS S3 with presigned URLs
-- **Database**: PostgreSQL recommended (confirm before implementation)
+- **Database**: PostgreSQL on Railway
 
 ## Decisions Pending
 
-- Backend language and framework (Node.js vs. Python/FastAPI)
-- Hosting provider (Vercel mentioned; Railway/Render also viable for MVP)
 - Vector database for semantic search (post-MVP)
+- CDN provider for photo delivery (CloudFront or Railway CDN — decide at Phase 3)
 
 ## See Also
 
