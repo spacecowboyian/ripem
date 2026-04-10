@@ -19,6 +19,13 @@ Monthly and annual subscription tiers unlocking:
 - Build export tools (PDF, CSV, video compilation)
 - Early access to new features
 
+### 3. Additional Cars — $2/month per car
+- **First car is always free** for every user (free and paid tiers)
+- Each additional car costs **$2/month**
+- Add-on works with any plan (Free, Premium, or Shop)
+- Enables tracking multiple builds simultaneously
+- Priced to be accessible while creating meaningful recurring revenue
+
 ### 3. Enterprise / Team Tier ($19.99+/month)
 For professional restorers, shops, and collaborative builds:
 - Multiple users per project (collaborative editing)
@@ -43,10 +50,11 @@ For professional restorers, shops, and collaborative builds:
 
 | Tier | Price | Key Benefits |
 |------|-------|-------------|
-| Free | $0/mo | Core logging + AI assistant + community + build publishing (watermarked) |
+| Free | $0/mo | 1 car free · Core logging + AI assistant + community + build publishing (watermarked) |
+| Additional Car | $2/mo per car | Add more project cars beyond the first free one |
 | Premium | $4.99–9.99/mo | Ad-free + direct social posting + analytics + watermark removal |
 | Annual | ~$49–79/yr | Premium at a discount (~30% off) |
-| Enterprise | $19.99+/mo | Team collaboration + API access + custom branding |
+| Shop | $19.99+/mo | Team collaboration + API access + custom branding |
 
 > Pricing to be validated through user research. See [/context/open_questions.md](../context/open_questions.md)
 
@@ -87,11 +95,12 @@ For professional restorers, shops, and collaborative builds:
 ## Key Business Rules
 
 1. Free tier must be genuinely valuable — not crippled
-2. Ads are strictly limited to parts/tools discovery contexts
-3. Watermark on free-tier published content is the core viral growth mechanism
-4. No selling or sharing user data with third-party advertisers
-5. AI never recommends products via sponsored content; only when users search for parts/tools
-6. All AI recommendations are transparent about confidence (see [/product/design_philosophy.md](../product/design_philosophy.md))
+2. **First car is always free** — additional cars are $2/month each
+3. Ads are strictly limited to parts/tools discovery contexts
+4. Watermark on free-tier published content is the core viral growth mechanism
+5. No selling or sharing user data with third-party advertisers
+6. AI never recommends products via sponsored content; only when users search for parts/tools
+7. All AI recommendations are transparent about confidence (see [/product/design_philosophy.md](../product/design_philosophy.md))
 
 ## Confidence Scoring & Transparency
 

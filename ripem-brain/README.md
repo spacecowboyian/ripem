@@ -23,5 +23,8 @@ This brain is structured for agent-native reading and operation. Start here:
 - **App Name**: RiPeM (TikTok-style two-syllable, RPM energy, "rip 'ems" conversational vibe)
 - **Core Loop**: Voice → Log → Publish → Watermark → Viral Growth
 - **Differentiation**: Automotive-context AI, not generic ChatGPT
+- **No Budget/Timeline in Onboarding**: Removed — RiPeM is about the joy of building, not project management constraints (DD-009)
+- **Onboarding Delineation**: "About You" (skill) vs "About Your Car" (build type, story, excitement) are clearly separated (DD-010)
+- **Car Pricing**: First car is always free. Additional cars cost $2/month each.
 
 For detailed navigation and structure, see CORE_KNOWLEDGE.md

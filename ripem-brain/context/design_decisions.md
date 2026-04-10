@@ -147,3 +147,38 @@ This document records key decisions made during RiPeM's design and development. 
 ---
 
 > Add new decisions as they are made. Format: DD-[sequential number], title, decision, rationale, alternatives, date.
+
+---
+
+## DD-009: Remove Budget and Timeline from Onboarding
+
+**Decision**: The budget and timeline step has been removed from the onboarding flow entirely.
+
+**Rationale**:
+- Car projects are passion-driven. Forcing users to think about money and time during setup creates friction and anxiety.
+- Budget and timeline data don't materially improve AI recommendations in the early experience.
+- Users who obsess over builds don't want to be reminded of constraints while they're excited.
+- This aligns with the product philosophy: RiPeM is about the joy of building, not project management.
+
+**Alternatives considered**: Making budget/timeline optional — rejected because even optional fields prime users to think in terms of money and deadlines, which undermines the emotional energy of onboarding.
+
+**Date**: 2026-04-10
+
+---
+
+## DD-010: Onboarding Delineation — "About You" vs "About Your Car"
+
+**Decision**: The onboarding flow is split into two clearly labeled sections: "About You" (questions about the human and their abilities) and "About Your Car" (questions about the project vehicle).
+
+**Rationale**:
+- Users benefit from understanding why each question is being asked.
+- "About You" questions (skill level) calibrate AI tone and depth — they're about the person, not the car.
+- "About Your Car" questions (make/model, build type, story, excitement) feed the car's AI profile.
+- Clear delineation reduces cognitive load and sets expectations during onboarding.
+
+**Implementation**:
+- s-s5 (Skill Level) is reactivated as the first onboarding step, labeled "About You".
+- s-s4 is simplified to only ask about build type (vision), labeled "About Your Car".
+- Each screen and the prototype drawer show distinct section labels.
+
+**Date**: 2026-04-10

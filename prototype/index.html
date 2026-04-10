@@ -387,18 +387,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
     <div class="drawer-body">
       <div class="drawer-phase">Phase 1 — Onboarding</div>
-      <div class="drawer-link" onclick="nav('s-welcome')"><span class="dl-num">1</span><span class="dl-name">Welcome</span></div>
+      <div class="drawer-link" onclick="nav('s-welcome')"><span class="dl-num">·</span><span class="dl-name">Welcome</span></div>
+      <div style="padding:4px 20px 2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;opacity:.6">🧑 About You</div>
+      <div class="drawer-link" onclick="nav('s-s5')"><span class="dl-num">1</span><span class="dl-name">Your Skill Level</span></div>
+      <div style="padding:4px 20px 2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;opacity:.6">🚗 About Your Car</div>
       <div class="drawer-link" onclick="nav('s-s2')"><span class="dl-num">2</span><span class="dl-name">Car Basics</span></div>
-      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">3</span><span class="dl-name">Vision + Skill (combined)</span></div>
-      <div class="drawer-link" onclick="nav('s-s6')"><span class="dl-num">4</span><span class="dl-name">Budget + Timeline</span></div>
-      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">5</span><span class="dl-name">Story (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">6</span><span class="dl-name">Excitement Focus</span></div>
-      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">7</span><span class="dl-name">Privacy Toggle</span></div>
-      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">8</span><span class="dl-name">Car Name (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">9</span><span class="dl-name">First AI Question (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">10</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
+      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">3</span><span class="dl-name">What Are You Building?</span></div>
+      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">4</span><span class="dl-name">Story (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">5</span><span class="dl-name">Excitement Focus</span></div>
+      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">6</span><span class="dl-name">Privacy Toggle</span></div>
+      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">7</span><span class="dl-name">Car Name (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">8</span><span class="dl-name">First AI Question (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">9</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
       <div class="drawer-phase" style="color:#333">— Removed from flow —</div>
-      <div class="drawer-link" onclick="nav('s-s5')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Skill Level (merged into 3)</span></div>
+      <div class="drawer-link" onclick="nav('s-s6')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Budget + Timeline (removed)</span></div>
       <div class="drawer-link" onclick="nav('s-s7')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Work Completed (removed)</span></div>
 
       <div class="drawer-phase">Phase 2 — Core Loop</div>
@@ -444,7 +446,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       </div>
     </div>
     <div class="w-actions">
-      <button class="btn" onclick="go('s-s2')">Let's Get Started →</button>
+      <button class="btn" onclick="go('s-s5')">Let's Get Started →</button>
       <div class="divider">or</div>
       <div class="signin">Already have an account? <span onclick="toast('👆 Sign in is for returning users — tap Let\'s Get Started!')">Sign in</span></div>
     </div>
@@ -456,11 +458,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s2">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-welcome')">← Back</button>
-      <span class="nav-right">1 of 9</span>
+      <button class="nav-back" onclick="go('s-s5')">← Back</button>
+      <span class="nav-right">2 of 8</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:11%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:22%"></div></div>
     <div class="body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🚗 About Your Car</div>
       <div class="h1">"What car are you building?"</div>
       <div class="sub">The foundation — your AI will know this car inside out.</div>
       <div>
@@ -497,15 +500,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
   </div>
 
-  <!-- SCREEN 3: Story (now step 4 of 9, simplified) -->
+  <!-- SCREEN 3: Story (step 4 of 8) -->
   <div class="screen" id="s-s3">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s6')">← Back</button>
-      <span class="nav-right">4 of 9</span>
+      <button class="nav-back" onclick="go('s-s4')">← Back</button>
+      <span class="nav-right">4 of 8</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:44%"></div></div>
     <div class="body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🚗 About Your Car</div>
       <div class="h1">"Your Car's Story"</div>
       <div class="sub">Where did you get it? Optional — but this becomes your AI's emotional hook.</div>
       <textarea class="inp" rows="4" id="txt-story" placeholder="e.g. Bought it from Dale, the original owner. He kept it in great shape for 15 years..."></textarea>
@@ -515,19 +519,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
   </div>
 
-  <!-- SCREEN 4 (combined): Vision + Skill Level -->
+  <!-- SCREEN 4: What Are You Building? (step 3 of 8) -->
   <div class="screen" id="s-s4">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s2')">← Back</button>
-      <span class="nav-right">2 of 9</span>
+      <span class="nav-right">3 of 8</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:22%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
     <div class="body">
-      <div class="h1">"Your Vision &amp; Experience"</div>
-      <div class="sub">Calibrates your AI recommendations.</div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🚗 About Your Car</div>
+      <div class="h1">"What Are You Building?"</div>
+      <div class="sub">Helps your AI focus on the right kind of advice.</div>
       <div>
-        <div class="label" style="margin-bottom:8px">What are you building?</div>
         <div class="grid2">
           <div class="card" onclick="toggleCard(this)"><span class="em">🏁</span><span class="lbl">Track Car</span></div>
           <div class="card" onclick="toggleCard(this)"><span class="em">🔧</span><span class="lbl">Restoration</span></div>
@@ -537,31 +541,23 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
           <div class="card" onclick="toggleCard(this)"><span class="em">✨</span><span class="lbl">Just Vibes</span></div>
         </div>
       </div>
-      <div>
-        <div class="label" style="margin-bottom:8px">Your mechanical skill?</div>
-        <div class="grid2" id="skill-grid">
-          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">🔰</span><span class="lbl">Novice</span></div>
-          <div class="card on" onclick="selectGridCard(this,'skill-grid')"><span class="em">🔧</span><span class="lbl">Intermediate</span></div>
-          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">⚙️</span><span class="lbl">Advanced</span></div>
-          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">🏆</span><span class="lbl">Professional</span></div>
-        </div>
-      </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s6')">Next →</button>
+      <button class="btn" onclick="go('s-s3')">Next →</button>
     </div>
   </div>
 
-  <!-- SCREEN 5: Skill Level (merged into Screen 4 — kept for drawer reference, redirects) -->
+  <!-- SCREEN 5: Your Skill Level — About You (step 1 of 8) -->
   <div class="screen" id="s-s5">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s4')">← Back</button>
-      <span class="nav-right">2 of 9</span>
+      <button class="nav-back" onclick="go('s-welcome')">← Back</button>
+      <span class="nav-right">1 of 8</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:22%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:11%"></div></div>
     <div class="body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🧑 About You</div>
       <div class="h1">"How much mechanical experience do you have?"</div>
-      <div class="sub">AI calibrates tone and depth based on your level.</div>
+      <div class="sub">Your AI calibrates its tone and depth based on your level.</div>
       <div class="list">
         <div class="row" onclick="selectOne(this)"><div class="row-title">🔰 Novice</div><div class="row-sub">Just starting out</div></div>
         <div class="row on" onclick="selectOne(this)"><div class="row-title">🔧 Weekend Warrior</div><div class="row-sub">Maintenance + minor mods</div></div>
@@ -569,7 +565,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         <div class="row" onclick="selectOne(this)"><div class="row-title">🏆 Professional</div><div class="row-sub">Full builds, fabrication</div></div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s6')">Next →</button>
+      <button class="btn" onclick="go('s-s2')">Next →</button>
     </div>
   </div>
 
@@ -619,15 +615,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
   </div>
 
-  <!-- SCREEN 8: Car Name (Optional) -->
+  <!-- SCREEN 8: Car Name (Optional, step 7 of 8) -->
   <div class="screen" id="s-s8">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s11')">← Back</button>
-      <span class="nav-right">7 of 9</span>
+      <span class="nav-right">7 of 8</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:78%"></div></div>
     <div class="body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🚗 About Your Car</div>
       <div class="h1">"Does your car have a name?"</div>
       <div class="sub" style="color:#ff4d00;font-size:12px">Optional — feel free to skip</div>
       <input class="inp" type="text" id="car-name" placeholder="e.g. Dale, Black Betty, Project X..."/>
@@ -641,15 +638,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
   </div>
 
-  <!-- SCREEN 9: Excitement Focus -->
+  <!-- SCREEN 9: Excitement Focus (step 5 of 8) -->
   <div class="screen" id="s-s9">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s3')">← Back</button>
-      <span class="nav-right">5 of 9</span>
+      <span class="nav-right">5 of 8</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:56%"></div></div>
     <div class="body">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ff4d00;opacity:.7;margin-bottom:8px;padding:2px 8px;background:rgba(255,77,0,.1);border-radius:4px;display:inline-block">🚗 About Your Car</div>
       <div class="h1">"What are you most excited about?"</div>
       <div class="sub">Tell me what's got you fired up about this build.</div>
       <textarea class="inp" rows="5" placeholder="e.g. Finally doing a proper suspension setup, maybe a turbo down the road..."></textarea>
@@ -665,7 +663,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s8')">← Back</button>
-      <span class="nav-right">8 of 9</span>
+      <span class="nav-right">8 of 8</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:89%"></div></div>
     <div class="body">
@@ -683,7 +681,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s9')">← Back</button>
-      <span class="nav-right">6 of 9</span>
+      <span class="nav-right">6 of 8</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:67%"></div></div>
     <div class="body">
@@ -723,7 +721,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <!-- Response state -->
     <div id="s12-content" class="body" style="display:none">
       <div class="nav" style="padding:6px 0 4px">
-        <span style="font-size:13px;color:#555">9 of 9</span>
+        <span style="font-size:13px;color:#555">Almost there ✦</span>
       </div>
       <div class="h1">Meet your AI buddy 🤝</div>
       <div class="ai-wrap">
@@ -1390,7 +1388,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <!-- Free tier baseline -->
       <div style="background:#1a1a1a;border:1px solid #252525;border-radius:12px;padding:12px 14px">
         <div style="font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Current: Free</div>
-        <div style="font-size:12px;color:#666;line-height:1.7">• 1 project<br>• Async AI chat (response in 5–30 sec)<br>• Ad-supported</div>
+        <div style="font-size:12px;color:#666;line-height:1.7">• 1 car — always free<br>• Async AI chat (response in 5–30 sec)<br>• Ad-supported</div>
       </div>
       <!-- Chat Pro tier -->
       <div class="tier-card highlight">
@@ -1414,14 +1412,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       </div>
       <!-- Projects+ addon -->
       <div class="tier-card">
-        <div class="tier-name">🚗 Projects+</div>
-        <div class="tier-price">$1.99<span>/mo per project</span></div>
+        <div class="tier-name">🚗 More Cars</div>
+        <div class="tier-price">$2<span>/mo per additional car</span></div>
         <ul class="tier-feat">
-          <li>Add more car projects ($2 each)</li>
+          <li><b>First car is always free</b></li>
+          <li>Add more cars for $2/mo each</li>
           <li>Works with any plan</li>
           <li>Track multiple builds simultaneously</li>
         </ul>
-        <button class="btn btn2 btn-sm" style="margin-top:10px" onclick="toast('🚗 Add project flow coming in Phase 2!')">Add Project →</button>
+        <button class="btn btn2 btn-sm" style="margin-top:10px" onclick="toast('🚗 Add car flow coming in Phase 2!')">Add a Car →</button>
       </div>
       <!-- Shop tier -->
       <div class="tier-card">
@@ -1509,7 +1508,7 @@ function startS12() {
     const intro = name ? name + " is a great name for a WRX. 👊\n\n" : '';
     const msg = intro +
       "2008 WRX with the EJ25 — you picked a platform the community knows inside and out.\n\n" +
-      "You're running it as a daily with a $5k budget over 2 years — smart. Based on 2,400+ WRX builds, the top first mods are: Cobb AccessPort, cold air intake, and an upgraded intercooler.\n\n" +
+      "Based on 2,400+ WRX builds, the top first mods are: Cobb AccessPort, cold air intake, and an upgraded intercooler.\n\n" +
       "What do you want to tackle first — performance, reliability, or both?";
     typewrite(el, msg, 16);
   }, 2600);
@@ -1605,9 +1604,8 @@ document.getElementById('app').addEventListener('click', e => {
       's-welcome':    '👆 Tap "Let\'s Get Started" to begin!',
       's-s2':         '👆 Fill your car details, then tap Next →',
       's-s3':         '👆 Type your story (or skip), then tap Next →',
-      's-s4':         '👆 Select vision + skill, then tap Next →',
+      's-s4':         '👆 Select your build type, then tap Next →',
       's-s5':         '👆 Pick your skill level, then tap Next →',
-      's-s6':         '👆 Set your budget & timeline, then tap Next →',
       's-s7':         '👆 Describe work done (or "Just got it"), then Next →',
       's-s8':         '👆 Name your car (optional), then tap Next →',
       's-s9':         '👆 Tell us what excites you (or skip), then Next →',
