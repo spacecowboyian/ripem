@@ -25,6 +25,7 @@ This brain is structured for agent-native reading and operation. Start here:
 - **Differentiation**: Automotive-context AI, not generic ChatGPT
 - **No Budget/Timeline in Onboarding**: Removed — RiPeM is about the joy of building, not project management constraints (DD-009)
 - **Onboarding Delineation**: "About You" (skill) vs "About Your Car" (build type, story, excitement) are clearly separated (DD-010)
+- **Chat-Forward Onboarding**: All onboarding steps replaced by a single AI-led chat — dictation is primary input, car name step removed entirely (DD-011)
 - **Car Pricing**: First car is always free. Additional cars cost $2/month each.
 
 For detailed navigation and structure, see CORE_KNOWLEDGE.md

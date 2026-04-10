@@ -182,3 +182,25 @@ This document records key decisions made during RiPeM's design and development. 
 - Each screen and the prototype drawer show distinct section labels.
 
 **Date**: 2026-04-10
+
+---
+
+## DD-011: Chat-Forward Onboarding — Single AI Chat Replaces Multi-Step Forms
+
+**Decision**: The entire onboarding flow is replaced by a single AI-led chat screen (`s-onboarding`). All onboarding data (skill level, car, build type, privacy) is gathered conversationally through this chat. The car name step is removed entirely. Voice dictation is the primary input method; the standard text input is the secondary option.
+
+**Rationale**:
+- Multi-step form flows feel bureaucratic — they undermine the "excited AI buddy" brand personality before the user even reaches the product.
+- A chat-forward interface is architecturally consistent with RiPeM's AI-first identity; the AI should feel present from the first interaction.
+- Dictation as primary input reinforces the voice-first design principle (DD-002) established at project inception.
+- Skill selection cards, build type grids, and privacy options are rendered inline within AI chat bubbles — no loss of UI expressiveness, but the context is conversational, not form-filling.
+- Removing the car name step eliminates a purely cosmetic piece of friction; users who want to name their car can do so later in settings.
+- A single chat screen is significantly simpler to maintain and extend compared to 8+ separate sequential screens.
+- The AI's first response (formerly a separate loading screen) now appears naturally at the end of the onboarding chat — creating a seamless transition into the main AI experience.
+
+**Alternatives considered**:
+- Keeping multi-step forms with a "chat skin" overlay — rejected as cosmetic, not architectural; it doesn't change the fundamental user experience.
+- Making car name optional (keep the screen) — rejected per the problem statement; cut entirely.
+- Progressive disclosure wizard (one question per screen, styled as chat) — rejected in favour of a true persistent chat thread where all context is visible.
+
+**Date**: 2026-04-10

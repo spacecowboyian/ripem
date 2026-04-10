@@ -362,6 +362,52 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
    SCREEN 12 special
 ══════════════════════════════════════════════════════ */
 #s12-load{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:40px}
+
+/* ══════════════════════════════════════════════════════
+   ONBOARDING CHAT
+══════════════════════════════════════════════════════ */
+.ob-chat{gap:12px !important;padding-bottom:12px !important}
+.ob-msg{animation:ob-fadein .35s ease}
+@keyframes ob-fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.ob-ai-msg{align-self:flex-start;width:100%;max-width:100%}
+.ob-ai-label{font-size:11px;color:#4a7a4a;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:4px}
+.ob-ai-bubble{background:#162216;border:1.5px solid #274027;border-radius:15px;border-top-left-radius:4px;padding:13px 14px;font-size:14px;color:#ccc;line-height:1.6}
+.ob-user-msg{align-self:flex-end;max-width:82%}
+.ob-user-bubble{background:#1a1a36;border:1.5px solid #2d2d5a;border-radius:14px;border-bottom-right-radius:3px;padding:11px 14px;font-size:14px;color:#ccc;line-height:1.5}
+.ob-opts{display:flex;flex-direction:column;gap:7px;margin-top:9px}
+.ob-opt-row{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.ob-opt-row:active{opacity:.7}
+.ob-opt-row.ob-selected{border-color:#ff4d00;background:#250e00;pointer-events:none}
+.ob-opt-row .ot{font-size:14px;font-weight:600;color:#f0f0f0}
+.ob-opt-row .os{font-size:12px;color:#666;margin-top:2px}
+.ob-opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.ob-opt-card{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:11px;padding:11px 9px;cursor:pointer;text-align:center;transition:border-color .15s,background .15s;user-select:none}
+.ob-opt-card:active{opacity:.7}
+.ob-opt-card.ob-selected{border-color:#ff4d00;background:#250e00;pointer-events:none}
+.ob-opt-card .ce{font-size:20px;display:block;margin-bottom:3px}
+.ob-opt-card .cl{font-size:12px;font-weight:600;color:#ccc}
+.ob-priv-opts{display:flex;flex-direction:column;gap:7px;margin-top:9px}
+.ob-priv-row{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:11px;padding:12px 13px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.ob-priv-row:active{opacity:.7}
+.ob-priv-row.ob-selected{border-color:#ff4d00;background:#250e00;pointer-events:none}
+.ob-priv-row .pt{font-size:14px;font-weight:700;color:#f0f0f0;margin-bottom:2px}
+.ob-priv-row .pd{font-size:12px;color:#666;line-height:1.45}
+.ob-car-card{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:11px;padding:12px 13px;margin-top:9px}
+.ob-car-card .ct{font-size:15px;font-weight:700;color:#f0f0f0;margin-bottom:4px}
+.ob-car-card .cs{font-size:12px;color:#666}
+.ob-inp-bar{padding:8px 14px 20px;background:#161616;border-top:1px solid #1e1e1e;flex-shrink:0;display:flex;gap:8px;align-items:center}
+.ob-mic{width:46px;height:46px;border-radius:50%;background:#ff4d00;border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(255,77,0,.45);transition:transform .15s,box-shadow .2s}
+.ob-mic:active{transform:scale(.93)}
+.ob-mic.recording{animation:ob-pulse .8s ease-in-out infinite}
+@keyframes ob-pulse{0%,100%{box-shadow:0 2px 10px rgba(255,77,0,.45),0 0 0 0 rgba(255,77,0,.35)}50%{box-shadow:0 2px 10px rgba(255,77,0,.45),0 0 0 9px rgba(255,77,0,0)}}
+.ob-text-inp{flex:1;background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:22px;color:#555;font-size:13px;padding:10px 15px;outline:none;font-family:inherit;cursor:pointer;min-height:40px;display:flex;align-items:center}
+.ob-send{background:#ff4d00;border:none;border-radius:10px;width:38px;height:38px;color:#fff;font-size:15px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.ob-typing-wrap{display:flex;gap:4px;align-items:center;height:20px}
+.ob-typing-dot{width:6px;height:6px;background:#4a7a4a;border-radius:50%;animation:bop .9s infinite}
+.ob-typing-dot:nth-child(2){animation-delay:.15s}
+.ob-typing-dot:nth-child(3){animation-delay:.3s}
+.ob-enter-btn{width:100%;background:#ff4d00;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:11px;padding:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-family:inherit;transition:opacity .15s}
+.ob-enter-btn:active{opacity:.8}
 </style>
 </head>
 <body>
@@ -388,18 +434,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="drawer-body">
       <div class="drawer-phase">Phase 1 — Onboarding</div>
       <div class="drawer-link" onclick="nav('s-welcome')"><span class="dl-num">·</span><span class="dl-name">Welcome</span></div>
-      <div style="padding:4px 20px 2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;opacity:.6">🧑 About You</div>
-      <div class="drawer-link" onclick="nav('s-s5')"><span class="dl-num">1</span><span class="dl-name">Your Skill Level</span></div>
-      <div style="padding:4px 20px 2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;opacity:.6">🚗 About Your Car</div>
-      <div class="drawer-link" onclick="nav('s-s2')"><span class="dl-num">2</span><span class="dl-name">Car Basics</span></div>
-      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">3</span><span class="dl-name">What Are You Building?</span></div>
-      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">4</span><span class="dl-name">Story (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">5</span><span class="dl-name">Excitement Focus</span></div>
-      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">6</span><span class="dl-name">Privacy Toggle</span></div>
-      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">7</span><span class="dl-name">Car Name (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">8</span><span class="dl-name">First AI Question (optional)</span></div>
-      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">9</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
-      <div class="drawer-phase" style="color:#333">— Removed from flow —</div>
+      <div class="drawer-link" onclick="nav('s-onboarding')"><span class="dl-num">1</span><span class="dl-name">AI Onboarding Chat <span class="dl-badge">✦ new</span></span></div>
+
+      <div class="drawer-phase" style="color:#333">— Replaced by onboarding chat —</div>
+      <div class="drawer-link" onclick="nav('s-s5')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Your Skill Level (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s2')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Car Basics (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s4')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">What Are You Building? (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s3')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Story (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s9')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Excitement Focus (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s11')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Privacy Toggle (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s8')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Car Name — removed entirely</span></div>
+      <div class="drawer-link" onclick="nav('s-s10')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">First AI Question (old)</span></div>
+      <div class="drawer-link" onclick="nav('s-s12')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">AI First Response (old)</span></div>
       <div class="drawer-link" onclick="nav('s-s6')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Budget + Timeline (removed)</span></div>
       <div class="drawer-link" onclick="nav('s-s7')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Work Completed (removed)</span></div>
 
@@ -446,7 +492,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       </div>
     </div>
     <div class="w-actions">
-      <button class="btn" onclick="go('s-s5')">Let's Get Started →</button>
+      <button class="btn" onclick="go('s-onboarding')">Let's Get Started →</button>
       <div class="divider">or</div>
       <div class="signin">Already have an account? <span onclick="toast('👆 Sign in is for returning users — tap Let\'s Get Started!')">Sign in</span></div>
     </div>
@@ -731,6 +777,24 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div style="font-size:12px;color:#444;text-align:center">Garage ready · AI memory active</div>
       <div class="spacer"></div>
       <button class="btn" onclick="go('s-home')">Enter My Garage →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+  ██  ONBOARDING CHAT (replaces all multi-step screens)
+  ══════════════════════════════════════════════════ -->
+  <div class="screen" id="s-onboarding">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 18px 8px;flex-shrink:0">
+      <div style="font-size:22px;font-weight:900;color:#ff4d00;letter-spacing:-1.5px">RiPeM</div>
+      <div style="font-size:10px;color:#444;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Setting up your garage</div>
+    </div>
+    <div class="prog-wrap" style="margin-bottom:0"><div id="ob-prog-fill" class="prog-fill" style="width:5%;transition:width .5s"></div></div>
+    <div class="body ob-chat" id="ob-chat" style="padding-top:14px;padding-bottom:8px"></div>
+    <div class="ob-inp-bar">
+      <button class="ob-mic" id="ob-mic-btn" onclick="obVoiceInput()" title="Tap to speak — dictation is the primary input">🎤</button>
+      <div class="ob-text-inp" onclick="toast('⌨️ Full text entry in the real app — for this prototype, tap 🎤 or select an option above!')">or type here...</div>
+      <button class="ob-send">↑</button>
     </div>
   </div>
 
@@ -1464,6 +1528,8 @@ function go(id) {
   updateDrawer(id);
   // special: screen 12 loading
   if (id === 's-s12') startS12();
+  // special: onboarding chat
+  if (id === 's-onboarding') startOnboarding();
   // special: record screen — start timer
   if (id === 's-record') startRecordTimer();
   closeDrawer();
@@ -1594,40 +1660,251 @@ function updateTL(el) {
   document.getElementById('tl-val').textContent = lbs[el.value - 1];
 }
 
-/* ── Global off-path tap hint ────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   ONBOARDING CHAT STATE MACHINE
+══════════════════════════════════════════════════════ */
+const OB = { SKILL: 0, CAR: 1, BUILD: 2, PRIVACY: 3, DONE: 4 };
+let obStep = OB.SKILL;
+
+const OB_INITIAL_DELAY_MS = 350;
+const OB_TYPING_DELAY_MS = 900;
+const OB_DONE_TYPING_DELAY_MS = 1300;
+const OB_SCROLL_DELAY_MS = 60;
+const OB_PICK_DELAY_MS = 420;
+const OB_SELECTED_OPACITY = '1';
+const OB_UNSELECTED_OPACITY = '0.3';
+
+function startOnboarding() {
+  obStep = OB.SKILL;
+  const chat = document.getElementById('ob-chat');
+  chat.innerHTML = '';
+  obSetProg(8);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgSkill()); obSetProg(18); }, OB_TYPING_DELAY_MS), OB_INITIAL_DELAY_MS);
+}
+
+function obSetProg(pct) {
+  const f = document.getElementById('ob-prog-fill');
+  if (f) f.style.width = pct + '%';
+}
+
+function obScrollChat() {
+  const c = document.getElementById('ob-chat');
+  if (c) setTimeout(() => { c.scrollTop = c.scrollHeight; }, OB_SCROLL_DELAY_MS);
+}
+
+function obAddTyping(chat, cb, delay) {
+  const wrap = document.createElement('div');
+  wrap.className = 'ob-msg ob-ai-msg';
+  wrap.id = 'ob-typing-indicator';
+  wrap.innerHTML = '<div class="ob-ai-label">🤖 AI Buddy</div><div class="ob-ai-bubble"><div class="ob-typing-wrap"><div class="ob-typing-dot"></div><div class="ob-typing-dot"></div><div class="ob-typing-dot"></div></div></div>';
+  chat.appendChild(wrap);
+  obScrollChat();
+  setTimeout(() => {
+    const ind = document.getElementById('ob-typing-indicator');
+    if (ind) ind.remove();
+    cb();
+    obScrollChat();
+  }, delay);
+}
+
+function obAddAiMsg(chat, html) {
+  const msg = document.createElement('div');
+  msg.className = 'ob-msg ob-ai-msg';
+  msg.innerHTML = '<div class="ob-ai-label">🤖 AI Buddy</div><div class="ob-ai-bubble">' + html + '</div>';
+  chat.appendChild(msg);
+  obScrollChat();
+}
+
+function obAddUserMsg(chat, text) {
+  const msg = document.createElement('div');
+  msg.className = 'ob-msg ob-user-msg';
+  msg.innerHTML = '<div class="ob-user-bubble">' + text + '</div>';
+  chat.appendChild(msg);
+  obScrollChat();
+}
+
+/* ── Message content ─────────────────────────────────── */
+
+function obMsgSkill() {
+  return 'Hey! I\'m your AI garage buddy 👋<br><br>Let\'s get you set up in about a minute. First — <b>how much mechanical experience do you have?</b>' +
+    '<div class="ob-opts">' +
+      '<div class="ob-opt-row" onclick="obPickSkill(this,\'🔰 Novice\')"><div class="ot">🔰 Novice</div><div class="os">Just starting out — learning the ropes</div></div>' +
+      '<div class="ob-opt-row" onclick="obPickSkill(this,\'🔧 Weekend Warrior\')"><div class="ot">🔧 Weekend Warrior</div><div class="os">Maintenance, bolt-ons, minor mods</div></div>' +
+      '<div class="ob-opt-row" onclick="obPickSkill(this,\'⚙️ Enthusiast Builder\')"><div class="ot">⚙️ Enthusiast Builder</div><div class="os">Mods, tuning, full builds</div></div>' +
+      '<div class="ob-opt-row" onclick="obPickSkill(this,\'🏆 Professional\')"><div class="ot">🏆 Professional</div><div class="os">Full builds, fabrication, the real deal</div></div>' +
+    '</div>';
+}
+
+function obMsgCar() {
+  return '<b>What car are we building?</b><br><span style="font-size:12px;color:#666">Tap 🎤 and say the year, make, and model — or confirm the default below.</span>' +
+    '<div class="ob-car-card">' +
+      '<div class="ct">2008 Subaru WRX</div>' +
+      '<div class="cs">EJ25 · community legend 🔥</div>' +
+      '<div style="display:flex;gap:8px;margin-top:10px">' +
+        '<button class="btn btn-sm" style="flex:1;padding:10px 0;font-size:13px;border-radius:9px" onclick="obPickCar(this,\'2008 Subaru WRX\')">That\'s my car ✓</button>' +
+        '<button class="btn btn2 btn-sm" style="flex:1;padding:10px 0;font-size:13px;border-radius:9px" onclick="obChangeCar()">Change it</button>' +
+      '</div>' +
+    '</div>';
+}
+
+function obMsgBuild() {
+  return 'Nice — the EJ25 is a community favourite.<br><b>What kind of build are we doing?</b>' +
+    '<div class="ob-opt-grid">' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'🏁 Track Car\')"><span class="ce">🏁</span><span class="cl">Track Car</span></div>' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'🔧 Restoration\')"><span class="ce">🔧</span><span class="cl">Restoration</span></div>' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'🚗 Daily Driver\')"><span class="ce">🚗</span><span class="cl">Daily Driver</span></div>' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'📸 Content Creator\')"><span class="ce">📸</span><span class="cl">Content Creator</span></div>' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'🎨 Show Car\')"><span class="ce">🎨</span><span class="cl">Show Car</span></div>' +
+      '<div class="ob-opt-card" onclick="obPickBuild(this,\'✨ Just Vibes\')"><span class="ce">✨</span><span class="cl">Just Vibes</span></div>' +
+    '</div>';
+}
+
+function obMsgPrivacy() {
+  return 'Love it — a WRX daily is a solid choice.<br><b>How do you want to share your builds?</b>' +
+    '<div class="ob-priv-opts">' +
+      '<div class="ob-priv-row" onclick="obPickPrivacy(this,\'🌍 Public — Discovery feed\')"><div class="pt">🌍 Public</div><div class="pd">Discovery feed + watermarked posts = free followers. Always changeable in settings.</div></div>' +
+      '<div class="ob-priv-row" onclick="obPickPrivacy(this,\'🔒 Private — Just for me\')"><div class="pt">🔒 Private</div><div class="pd">Just for me. No public posts. Full AI access still included.</div></div>' +
+    '</div>';
+}
+
+function obMsgDone() {
+  return 'You\'re all set 🔥<br><br><b>2008 Subaru WRX</b> is now in your garage. Based on <b>2,400+ WRX builds</b> in the community, here\'s where most people start:<br><br>' +
+    '• <b>Cobb AccessPort</b> (~$450 used) — best first ECU tune for the EJ<br>' +
+    '• <b>Cold air intake</b> (~$150) — quick gains + that intake sound<br>' +
+    '• <b>Intercooler upgrade</b> (~$250–350) — kills heat soak on summer drives<br><br>' +
+    'What do you want to tackle first — performance, reliability, or both?' +
+    '<button class="ob-enter-btn" onclick="go(\'s-home\')">Enter My Garage 🏁</button>';
+}
+
+/* ── Step handlers ───────────────────────────────────── */
+
+function obPickSkill(el, label) {
+  if (obStep !== OB.SKILL) return;
+  obStep = OB.CAR;
+  obSetProg(38);
+  el.classList.add('ob-selected');
+  el.closest('.ob-opts').querySelectorAll('.ob-opt-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
+  const chat = document.getElementById('ob-chat');
+  obAddUserMsg(chat, label);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgCar()); obSetProg(45); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
+}
+
+function obPickCar(btn, label) {
+  if (obStep !== OB.CAR) return;
+  obStep = OB.BUILD;
+  obSetProg(60);
+  btn.closest('.ob-car-card').querySelectorAll('button').forEach(b => { b.disabled = true; b.style.opacity = OB_UNSELECTED_OPACITY; });
+  const chat = document.getElementById('ob-chat');
+  obAddUserMsg(chat, label + ' ✓');
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
+}
+
+function obChangeCar() {
+  toast('🔧 Full car search in the real app — using 2008 WRX for this prototype!');
+}
+
+function obPickBuild(el, label) {
+  if (obStep !== OB.BUILD) return;
+  obStep = OB.PRIVACY;
+  obSetProg(78);
+  el.classList.add('ob-selected');
+  el.closest('.ob-opt-grid').querySelectorAll('.ob-opt-card').forEach(c => { c.onclick = null; c.style.opacity = c === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
+  const chat = document.getElementById('ob-chat');
+  obAddUserMsg(chat, label);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgPrivacy()); obSetProg(85); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
+}
+
+function obPickPrivacy(el, label) {
+  if (obStep !== OB.PRIVACY) return;
+  obStep = OB.DONE;
+  obSetProg(95);
+  el.classList.add('ob-selected');
+  el.closest('.ob-priv-opts').querySelectorAll('.ob-priv-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
+  const chat = document.getElementById('ob-chat');
+  obAddUserMsg(chat, label);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgDone()); obSetProg(100); }, OB_DONE_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
+}
+
+/* ── Voice input simulation ──────────────────────────── */
+
+function obVoiceInput() {
+  const btn = document.getElementById('ob-mic-btn');
+  if (!btn || btn.classList.contains('recording')) return;
+  btn.classList.add('recording');
+  btn.innerHTML = '⏹';
+  toast('🎤 Listening...');
+  setTimeout(() => {
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤';
+    const chat = document.getElementById('ob-chat');
+    switch (obStep) {
+      case OB.SKILL: {
+        const el = document.querySelector('#ob-chat .ob-opt-row:nth-child(2)');
+        if (el && !el.classList.contains('ob-selected')) { toast('🎤 "Weekend Warrior"'); obPickSkill(el, '🔧 Weekend Warrior'); }
+        break;
+      }
+      case OB.CAR: {
+        toast('🎤 "2008 Subaru WRX — that\'s my car"');
+        setTimeout(() => {
+          if (obStep !== OB.CAR) return;
+          obStep = OB.BUILD; obSetProg(60);
+          document.querySelectorAll('.ob-car-card button').forEach(b => { b.disabled = true; b.style.opacity = OB_UNSELECTED_OPACITY; });
+          obAddUserMsg(chat, '2008 Subaru WRX ✓');
+          setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
+        }, 200);
+        break;
+      }
+      case OB.BUILD: {
+        const el = document.querySelector('#ob-chat .ob-opt-card:nth-child(3)');
+        if (el && !el.classList.contains('ob-selected')) { toast('🎤 "Daily Driver"'); obPickBuild(el, '🚗 Daily Driver'); }
+        break;
+      }
+      case OB.PRIVACY: {
+        const el = document.querySelector('#ob-chat .ob-priv-row:first-child');
+        if (el && !el.classList.contains('ob-selected')) { toast('🎤 "Public"'); obPickPrivacy(el, '🌍 Public — Discovery feed'); }
+        break;
+      }
+      default:
+        toast('🎤 Voice capture complete! Tap Enter My Garage to continue.');
+    }
+  }, 1800);
+}
+
+
 document.getElementById('app').addEventListener('click', e => {
   const tag = e.target.tagName.toLowerCase();
   const interactive = ['button','a','select','input','textarea'].includes(tag)
-    || e.target.closest('button,[onclick],.card,.row,.priv-card,.log-item,.ni,.chk-item,.feed-card,.feed-act,.feed-follow,.build-stat');
+    || e.target.closest('button,[onclick],.card,.row,.priv-card,.log-item,.ni,.chk-item,.feed-card,.feed-act,.feed-follow,.build-stat,.ob-opt-row,.ob-opt-card,.ob-priv-row');
   if (!interactive) {
     const hints = {
-      's-welcome':    '👆 Tap "Let\'s Get Started" to begin!',
-      's-s2':         '👆 Fill your car details, then tap Next →',
-      's-s3':         '👆 Type your story (or skip), then tap Next →',
-      's-s4':         '👆 Select your build type, then tap Next →',
-      's-s5':         '👆 Pick your skill level, then tap Next →',
-      's-s7':         '👆 Describe work done (or "Just got it"), then Next →',
-      's-s8':         '👆 Name your car (optional), then tap Next →',
-      's-s9':         '👆 Tell us what excites you (or skip), then Next →',
-      's-s10':        '👆 Ask your AI something (optional), then Next →',
-      's-s11':        '👆 Choose Public or Private, then tap Next →',
-      's-s12':        '⏳ Your AI is loading — almost there!',
-      's-home':       '👆 Tap the orange + button to log a session!',
-      's-record':     '👆 Tap the Stop ■ button to finish recording!',
-      's-review':     '👆 Tap the transcript to edit, or "Looks Good →" to confirm!',
-      's-air':        '👆 Respond to your AI or tap "Back to Garage"!',
-      's-log-detail': '👆 Scroll to see full details!',
-      's-ai':         '👆 Tap the chat input to ask your AI anything!',
-      's-pub-trigger':'👆 Tap "Publish! 🚀" to start the publish flow!',
-      's-sel-logs':   '👆 Toggle sessions, then tap Generate Caption →',
-      's-caption':    '👆 Review your caption, then tap Next →',
-      's-wm-preview': '👆 Review how your post will look, then tap Looks Good →',
-      's-platform':   '👆 Choose platforms, then tap Post Now →',
-      's-published':  '🎉 You\'re live! Tap Back to Garage to continue.',
-      's-discover':   '👆 Tap a build card to see full details!',
+      's-welcome':     '👆 Tap "Let\'s Get Started" to begin!',
+      's-onboarding':  '🎤 Tap the orange mic button to speak — or tap an option above!',
+      's-s2':          '👆 Fill your car details, then tap Next →',
+      's-s3':          '👆 Type your story (or skip), then tap Next →',
+      's-s4':          '👆 Select your build type, then tap Next →',
+      's-s5':          '👆 Pick your skill level, then tap Next →',
+      's-s7':          '👆 Describe work done (or "Just got it"), then Next →',
+      's-s8':          '👆 Name your car (optional), then tap Next →',
+      's-s9':          '👆 Tell us what excites you (or skip), then Next →',
+      's-s10':         '👆 Ask your AI something (optional), then Next →',
+      's-s11':         '👆 Choose Public or Private, then tap Next →',
+      's-s12':         '⏳ Your AI is loading — almost there!',
+      's-home':        '👆 Tap the orange + button to log a session!',
+      's-record':      '👆 Tap the Stop ■ button to finish recording!',
+      's-review':      '👆 Tap the transcript to edit, or "Looks Good →" to confirm!',
+      's-air':         '👆 Respond to your AI or tap "Back to Garage"!',
+      's-log-detail':  '👆 Scroll to see full details!',
+      's-ai':          '👆 Tap the chat input to ask your AI anything!',
+      's-pub-trigger': '👆 Tap "Publish! 🚀" to start the publish flow!',
+      's-sel-logs':    '👆 Toggle sessions, then tap Generate Caption →',
+      's-caption':     '👆 Review your caption, then tap Next →',
+      's-wm-preview':  '👆 Review how your post will look, then tap Looks Good →',
+      's-platform':    '👆 Choose platforms, then tap Post Now →',
+      's-published':   '🎉 You\'re live! Tap Back to Garage to continue.',
+      's-discover':    '👆 Tap a build card to see full details!',
       's-build-detail':'👆 Scroll down to see build details + comments!',
-      's-profile':    '👆 Tap "Upgrade to Chat Pro" to see the plans!',
-      's-upgrade':    '👆 Choose a plan and tap to subscribe!',
+      's-profile':     '👆 Tap "Upgrade to Chat Pro" to see the plans!',
+      's-upgrade':     '👆 Choose a plan and tap to subscribe!',
     };
     toast(hints[current] || '👆 Tap a button to continue!');
   }
