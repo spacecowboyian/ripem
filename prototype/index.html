@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>RipEm — MVP Prototype</title>
+<style>
+/* ── Reset ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#080808;display:flex;align-items:center;justify-content:center}
+
+/* ── Phone Shell ────────────────────────────────────── */
+#app{
+  position:relative;width:390px;height:100svh;max-height:844px;
+  background:#111;overflow:hidden;display:flex;flex-direction:column;
+}
+@media(min-width:500px){
+  #app{border-radius:44px;box-shadow:0 0 0 2px #333,0 0 0 4px #555,0 32px 64px rgba(0,0,0,.9)}
+}
+@media(max-width:499px){
+  body{align-items:flex-start}
+  #app{width:100vw;height:100svh;max-height:none;border-radius:0}
+}
+
+/* ── Status Bar ─────────────────────────────────────── */
+.sb{display:flex;justify-content:space-between;padding:14px 20px 4px;font-size:12px;font-weight:600;color:#555;flex-shrink:0;position:relative;z-index:5}
+
+/* ── Screens ────────────────────────────────────────── */
+.screen{display:none;flex-direction:column;width:100%;height:100%;position:absolute;inset:0;background:#111;color:#f0f0f0;overflow:hidden}
+.screen.active{display:flex}
+
+/* ── Nav Bar ─────────────────────────────────────────── */
+.nav{display:flex;align-items:center;padding:6px 18px 10px;flex-shrink:0;position:relative;z-index:4}
+.nav-back{background:none;border:none;color:#ff4d00;font-size:15px;cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:3px;font-weight:600}
+.nav-right{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:12px;color:#555;font-weight:500}
+
+/* ── Progress Strip ──────────────────────────────────── */
+.prog-wrap{height:3px;background:#1e1e1e;margin:0 18px 4px;border-radius:2px;flex-shrink:0}
+.prog-fill{height:100%;background:#ff4d00;border-radius:2px;transition:width .3s}
+
+/* ── Scroll Body ─────────────────────────────────────── */
+.body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 22px 28px;display:flex;flex-direction:column;gap:14px}
+
+/* ── Typography ──────────────────────────────────────── */
+.h1{font-size:24px;font-weight:800;line-height:1.2;color:#f0f0f0}
+.h2{font-size:18px;font-weight:700;color:#f0f0f0}
+.sub{font-size:14px;color:#777;line-height:1.5}
+.label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#555;margin-bottom:5px}
+.section-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#444}
+
+/* ── Inputs ──────────────────────────────────────────── */
+.inp{width:100%;background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:12px;color:#f0f0f0;font-size:15px;padding:13px 15px;outline:none;-webkit-appearance:none;transition:border-color .2s;font-family:inherit}
+.inp:focus{border-color:#ff4d00}
+.inp.sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' fill='none'%3E%3Cpath d='M1 1l4.5 5L10 1' stroke='%23555' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+textarea.inp{resize:none;line-height:1.5;min-height:90px}
+
+/* ── Option Cards ────────────────────────────────────── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.card{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:13px;padding:15px 11px;cursor:pointer;text-align:center;transition:border-color .15s,background .15s;user-select:none}
+.card:active{opacity:.7}
+.card .em{font-size:22px;display:block;margin-bottom:5px}
+.card .lbl{font-size:12px;font-weight:600;color:#ccc}
+.card.on{border-color:#ff4d00;background:#250e00}
+
+.list{display:flex;flex-direction:column;gap:9px}
+.row{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:13px;padding:14px 15px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.row:active{opacity:.7}
+.row.on{border-color:#ff4d00;background:#250e00}
+.row-title{font-size:15px;font-weight:600;color:#f0f0f0}
+.row-sub{font-size:12px;color:#666;margin-top:2px}
+
+/* ── Privacy Cards ───────────────────────────────────── */
+.priv-card{background:#1c1c1c;border:2px solid #2c2c2c;border-radius:15px;padding:18px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.priv-card:active{opacity:.7}
+.priv-card.on{border-color:#ff4d00;background:#250e00}
+.priv-card .pi{font-size:26px;margin-bottom:7px}
+.priv-card .pt{font-size:17px;font-weight:700;color:#f0f0f0;margin-bottom:3px}
+.priv-card .pd{font-size:12px;color:#666;line-height:1.5}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn{width:100%;background:#ff4d00;color:#fff;font-size:16px;font-weight:700;border:none;border-radius:13px;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;flex-shrink:0;transition:opacity .15s;font-family:inherit}
+.btn:active{opacity:.8}
+.btn2{background:#1c1c1c;color:#f0f0f0;border:1.5px solid #2c2c2c;font-size:15px;font-weight:600}
+.btn-t{background:none;border:none;color:#666;font-size:14px;cursor:pointer;padding:9px;text-align:center;width:100%;font-family:inherit}
+.btn-t:active{color:#ff4d00}
+.btn-sm{padding:12px 14px;font-size:13px;border-radius:10px}
+.btn-row{display:flex;gap:9px}
+.btn-row .btn,.btn-row .btn.btn2{flex:1}
+.spacer{flex:1;min-height:12px}
+
+/* ── Slider ──────────────────────────────────────────── */
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:#222;border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#ff4d00;border:2px solid #fff;box-shadow:0 1px 4px rgba(255,77,0,.5);cursor:pointer}
+.slider-lbl{display:flex;justify-content:space-between;font-size:10px;color:#555;margin-top:5px}
+
+/* ── AI Bubble ───────────────────────────────────────── */
+.ai-wrap{background:#162216;border:1.5px solid #274027;border-radius:15px;border-top-left-radius:4px;padding:16px}
+.ai-icon{font-size:20px;margin-bottom:8px}
+.ai-txt{font-size:14px;color:#ccc;line-height:1.65;white-space:pre-line}
+
+/* ── Typing dots ─────────────────────────────────────── */
+.dots{display:flex;gap:5px;align-items:center;padding:4px 0}
+.dot{width:7px;height:7px;background:#4a7a4a;border-radius:50%;animation:bop .9s infinite}
+.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+@keyframes bop{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-5px);opacity:1}}
+
+/* ── Extracted Card ──────────────────────────────────── */
+.ext-card{background:#162216;border:1px solid #274027;border-radius:12px;padding:13px}
+.ext-row{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #1e2e1e;font-size:13px}
+.ext-row:last-child{border-bottom:none}
+.ext-k{color:#555;width:48px;flex-shrink:0}
+.ext-v{color:#ccc;font-weight:500}
+
+/* ── Waveform ─────────────────────────────────────────── */
+.wave{display:flex;align-items:center;justify-content:center;gap:3px;height:70px}
+.wb{width:3px;background:#ff4d00;border-radius:2px;animation:wv 1s ease-in-out infinite}
+.wb:nth-child(1){height:18px;animation-delay:0s}.wb:nth-child(2){height:36px;animation-delay:.1s}
+.wb:nth-child(3){height:54px;animation-delay:.2s}.wb:nth-child(4){height:45px;animation-delay:.3s}
+.wb:nth-child(5){height:62px;animation-delay:.4s}.wb:nth-child(6){height:40px;animation-delay:.5s}
+.wb:nth-child(7){height:30px;animation-delay:.6s}.wb:nth-child(8){height:50px;animation-delay:.7s}
+.wb:nth-child(9){height:22px;animation-delay:.8s}
+@keyframes wv{0%,100%{transform:scaleY(1);opacity:.6}50%{transform:scaleY(1.6);opacity:1}}
+
+/* ── Spinner ─────────────────────────────────────────── */
+.spinner{width:54px;height:54px;border:4px solid #222;border-top-color:#ff4d00;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Loading Screen ──────────────────────────────────── */
+.load-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:40px 24px}
+
+/* ── Log List ─────────────────────────────────────────── */
+.log-list{background:#1c1c1c;border-radius:13px;overflow:hidden}
+.log-item{display:flex;align-items:center;padding:13px 15px;border-bottom:1px solid #222;gap:10px;cursor:pointer}
+.log-item:last-child{border-bottom:none}
+.log-item:active{background:#242424}
+.log-dot{width:7px;height:7px;background:#ff4d00;border-radius:50%;flex-shrink:0}
+.log-date{font-size:11px;color:#555;width:44px;flex-shrink:0}
+.log-desc{font-size:13px;color:#ccc;flex:1}
+.log-arr{font-size:13px;color:#444}
+
+/* ── Car Header ──────────────────────────────────────── */
+.car-hd{display:flex;align-items:center;gap:12px;padding:12px 22px 14px;background:#161616;border-bottom:1px solid #1e1e1e;flex-shrink:0}
+.car-em{font-size:32px}
+.car-name{font-size:18px;font-weight:700;color:#f0f0f0}
+.car-mod{font-size:12px;color:#555}
+
+/* ── Top Bar ─────────────────────────────────────────── */
+.top-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 10px;flex-shrink:0;position:relative;z-index:4}
+.top-icons{display:flex;gap:12px;font-size:19px;color:#666;cursor:pointer}
+
+/* ── Bottom Nav ──────────────────────────────────────── */
+.bnav{display:flex;justify-content:space-around;align-items:center;padding:9px 0 18px;background:#161616;border-top:1px solid #1e1e1e;flex-shrink:0;position:relative;z-index:4}
+.ni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:3px 14px;border-radius:8px}
+.ni:active{opacity:.6}
+.ni .ic{font-size:20px}
+.ni .nl{font-size:9px;color:#555;font-weight:500;text-transform:uppercase;letter-spacing:.3px}
+.ni.on .nl{color:#ff4d00}
+
+/* ── FAB ─────────────────────────────────────────────── */
+.fab{position:absolute;bottom:72px;right:20px;width:54px;height:54px;background:#ff4d00;border:none;border-radius:50%;font-size:26px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(255,77,0,.55);z-index:10;transition:transform .15s}
+.fab:active{transform:scale(.93)}
+
+/* ── Check List ──────────────────────────────────────── */
+.chk-list{display:flex;flex-direction:column;gap:9px}
+.chk-item{display:flex;align-items:center;gap:11px;background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .15s}
+.chk-item:active{opacity:.7}
+.chk-item.on{border-color:#ff4d00}
+.chk-box{width:20px;height:20px;border-radius:5px;border:2px solid #3a3a3a;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;transition:all .15s}
+.chk-item.on .chk-box{background:#ff4d00;border-color:#ff4d00;color:#fff}
+.chk-meta{flex:1}
+.chk-lbl{font-size:13px;color:#ccc;font-weight:500}
+.chk-date{font-size:11px;color:#555;margin-top:1px}
+
+/* ── Caption Box ─────────────────────────────────────── */
+.cap-box{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:13px;padding:15px;font-size:13px;color:#ccc;line-height:1.65;position:relative}
+.cap-edit-btn{position:absolute;top:10px;right:10px;background:#2a2a2a;border:none;color:#ff4d00;font-size:11px;font-weight:700;padding:5px 9px;border-radius:7px;cursor:pointer}
+
+/* ── Watermark Preview ───────────────────────────────── */
+.wm-img{background:#1c1c1c;border-radius:13px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;max-height:200px}
+.wm-photo-ph{font-size:56px;opacity:.2}
+.wm-badge{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.75);border-radius:5px;padding:4px 8px;font-size:9px;font-weight:700;color:#ff4d00;letter-spacing:.4px}
+
+/* ── Discovery Feed Card ─────────────────────────────── */
+.feed-card{background:#1c1c1c;border-radius:15px;overflow:hidden;border:1px solid #222}
+.feed-photo{background:#222;height:200px;display:flex;align-items:center;justify-content:center;font-size:56px;opacity:.3}
+.feed-body{padding:14px}
+.feed-user{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.feed-avatar{width:30px;height:30px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-size:14px}
+.feed-name{font-size:13px;font-weight:600;color:#f0f0f0}
+.feed-time{font-size:11px;color:#555}
+.feed-caption{font-size:13px;color:#aaa;line-height:1.5;margin-bottom:10px}
+.feed-actions{display:flex;gap:14px;align-items:center}
+.feed-act{font-size:12px;color:#666;cursor:pointer;display:flex;align-items:center;gap:4px}
+.feed-act:active{color:#ff4d00}
+.feed-follow{margin-left:auto;background:#ff4d00;color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border:none;border-radius:20px;cursor:pointer}
+
+/* ── Build Detail ────────────────────────────────────── */
+.build-stat{display:flex;align-items:center;gap:10px;font-size:13px;color:#aaa;padding:5px 0;border-bottom:1px solid #1e1e1e}
+.build-stat:last-child{border-bottom:none}
+.build-stat .bs-icon{width:20px;text-align:center;font-size:15px}
+
+/* ── Comment bubble ──────────────────────────────────── */
+.comment{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #1e1e1e}
+.comment:last-child{border-bottom:none}
+.cmt-av{width:26px;height:26px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
+.cmt-name{font-size:12px;font-weight:600;color:#888}
+.cmt-txt{font-size:13px;color:#ccc;margin-top:1px;line-height:1.4}
+
+/* ── Profile avatar ──────────────────────────────────── */
+.pf-hero{text-align:center;padding:16px 0 20px}
+.pf-av{width:72px;height:72px;border-radius:50%;background:#2a2a2a;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.pf-name{font-size:20px;font-weight:700;color:#f0f0f0}
+.pf-role{font-size:13px;color:#555}
+
+/* ── Chat Input ──────────────────────────────────────── */
+.chat-inp-bar{padding:10px 16px 20px;background:#161616;border-top:1px solid #1e1e1e;flex-shrink:0;display:flex;gap:9px;align-items:center}
+.chat-inp{flex:1;background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:22px;color:#555;font-size:14px;padding:11px 16px;outline:none;font-family:inherit}
+.chat-send{background:#ff4d00;border:none;border-radius:10px;width:40px;height:40px;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+
+/* ── Publish Prompt Card ─────────────────────────────── */
+.pub-prompt{background:#162216;border:1.5px solid #274027;border-radius:15px;padding:16px}
+.pub-prompt .ai-icon{font-size:20px;margin-bottom:8px}
+
+/* ── Published success ───────────────────────────────── */
+.pub-success{text-align:center}
+.pub-icon{width:72px;height:72px;border-radius:50%;background:#162216;border:2px solid #274027;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px}
+.pub-share-row{background:#1c1c1c;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.pub-share-item{display:flex;align-items:center;gap:9px;font-size:13px;color:#ccc}
+.pub-check{width:18px;height:18px;border-radius:50%;background:#274027;border:1.5px solid #4a7a4a;display:flex;align-items:center;justify-content:center;font-size:10px;color:#6dbe6d;flex-shrink:0}
+
+/* ── AI follow-up teaser ─────────────────────────────── */
+.ai-teaser{background:#111;border:1px solid #222;border-radius:12px;padding:12px 14px;display:flex;gap:9px;align-items:flex-start}
+.ai-teaser .ic{font-size:16px;flex-shrink:0;margin-top:1px}
+.ai-teaser .txt{font-size:13px;color:#666;line-height:1.5}
+
+/* ── Divider ─────────────────────────────────────────── */
+.divider{display:flex;align-items:center;gap:10px;font-size:12px;color:#444}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#1e1e1e}
+
+/* ── Signin link ─────────────────────────────────────── */
+.signin{text-align:center;font-size:13px;color:#555}
+.signin span{color:#ff4d00;cursor:pointer}
+
+/* ══════════════════════════════════════════════════════
+   DRAWER
+══════════════════════════════════════════════════════ */
+#drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);opacity:0;pointer-events:none;transition:opacity .3s;z-index:100}
+#drawer-overlay.open{opacity:1;pointer-events:all}
+
+#drawer{
+  position:absolute;top:0;left:0;bottom:0;width:270px;
+  background:#0f0f0f;border-right:1px solid #1e1e1e;
+  transform:translateX(-100%);transition:transform .3s cubic-bezier(.25,.46,.45,.94);
+  z-index:101;display:flex;flex-direction:column;overflow:hidden;
+}
+#drawer.open{transform:translateX(0)}
+
+.drawer-header{padding:48px 20px 16px;border-bottom:1px solid #1a1a1a;flex-shrink:0}
+.drawer-logo{font-size:26px;font-weight:900;color:#ff4d00;letter-spacing:-1.5px}
+.drawer-tagline{font-size:11px;color:#444;margin-top:3px}
+
+.drawer-body{flex:1;overflow-y:auto;padding:12px 0 24px}
+
+.drawer-phase{padding:14px 20px 6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#444}
+
+.drawer-link{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;color:#888;cursor:pointer;transition:color .15s,background .15s;border-radius:0}
+.drawer-link:active{background:#1c1c1c}
+.drawer-link .dl-num{font-size:10px;color:#444;width:18px;text-align:right;flex-shrink:0}
+.drawer-link .dl-name{flex:1}
+.drawer-link.current{color:#ff4d00;background:#1c0800}
+.drawer-link .dl-badge{font-size:9px;background:#ff4d00;color:#fff;padding:2px 6px;border-radius:20px;font-weight:700}
+
+/* ══════════════════════════════════════════════════════
+   PROTO BANNER
+══════════════════════════════════════════════════════ */
+#banner{position:absolute;top:0;left:50%;transform:translateX(-50%);background:rgba(255,77,0,.85);backdrop-filter:blur(4px);color:#fff;font-size:9px;font-weight:700;letter-spacing:.5px;padding:3px 12px;border-radius:0 0 7px 7px;z-index:200;pointer-events:none;white-space:nowrap}
+
+/* ══════════════════════════════════════════════════════
+   PROTOTYPE NAV BUTTON (not part of the product)
+══════════════════════════════════════════════════════ */
+#proto-nav{
+  position:absolute;top:10px;left:12px;z-index:500;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+}
+#proto-r-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:#ff4d00;color:#fff;font-size:15px;font-weight:900;
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(255,77,0,.5);
+  transition:transform .15s;
+}
+#proto-r-btn:active{transform:scale(.92)}
+#proto-nav-label{
+  font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+  color:rgba(255,77,0,.6);white-space:nowrap;pointer-events:none;
+}
+
+/* ══════════════════════════════════════════════════════
+   HINT TOAST
+══════════════════════════════════════════════════════ */
+#toast{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);
+  background:rgba(255,255,255,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12);color:#fff;font-size:13px;font-weight:500;
+  padding:11px 18px;border-radius:100px;white-space:nowrap;max-width:92%;text-align:center;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:300
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══════════════════════════════════════════════════════
+   WELCOME SCREEN
+══════════════════════════════════════════════════════ */
+#s-welcome{background:radial-gradient(ellipse 80% 60% at 50% 20%,#1a0800,#0a0a0a 70%)}
+.w-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 28px 28px;text-align:center}
+.w-flame{font-size:52px}
+.w-logo{font-size:44px;font-weight:900;color:#ff4d00;letter-spacing:-2.5px}
+.w-tag{font-size:19px;font-weight:600;color:#f0f0f0;line-height:1.3}
+.w-sub{font-size:14px;color:#666}
+.w-actions{padding:20px 22px 28px;display:flex;flex-direction:column;gap:11px}
+
+/* ══════════════════════════════════════════════════════
+   SCREEN 12 special
+══════════════════════════════════════════════════════ */
+#s12-load{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:40px}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div id="banner">✦ PROTOTYPE — Wireframe · Not final product</div>
+
+  <!-- Prototype-only nav trigger — does not exist in the real product -->
+  <div id="proto-nav">
+    <button id="proto-r-btn" onclick="openDrawer()" title="Prototype screen index">R</button>
+    <span id="proto-nav-label">Screen Index</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       DRAWER OVERLAY + PANEL
+  ══════════════════════════════════════════════════ -->
+  <div id="drawer-overlay" onclick="closeDrawer()"></div>
+  <div id="drawer">
+    <div class="drawer-header">
+      <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;background:rgba(255,77,0,.12);border:1px solid rgba(255,77,0,.25);border-radius:5px;padding:3px 8px;display:inline-block;margin-bottom:10px">⚙ Prototype Tool Only</div>
+      <div class="drawer-logo">Screen Index</div>
+      <div class="drawer-tagline">Navigate wireframe screens · Not part of the product</div>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-phase">Phase 1 — Onboarding</div>
+      <div class="drawer-link" onclick="nav('s-welcome')"><span class="dl-num">1</span><span class="dl-name">Welcome</span></div>
+      <div class="drawer-link" onclick="nav('s-s2')"><span class="dl-num">2</span><span class="dl-name">Car Basics</span></div>
+      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">3</span><span class="dl-name">Story</span></div>
+      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">4</span><span class="dl-name">Vision</span></div>
+      <div class="drawer-link" onclick="nav('s-s5')"><span class="dl-num">5</span><span class="dl-name">Skill Level</span></div>
+      <div class="drawer-link" onclick="nav('s-s6')"><span class="dl-num">6</span><span class="dl-name">Budget + Timeline</span></div>
+      <div class="drawer-link" onclick="nav('s-s7')"><span class="dl-num">7</span><span class="dl-name">Work Completed</span></div>
+      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">8</span><span class="dl-name">Car Name</span></div>
+      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">9</span><span class="dl-name">Excitement Focus</span></div>
+      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">10</span><span class="dl-name">First AI Question</span></div>
+      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">11</span><span class="dl-name">Privacy Toggle</span></div>
+      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">12</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
+
+      <div class="drawer-phase">Phase 2 — Core Loop</div>
+      <div class="drawer-link" onclick="nav('s-home')"><span class="dl-num"></span><span class="dl-name">Garage Home</span></div>
+      <div class="drawer-link" onclick="nav('s-record')"><span class="dl-num"></span><span class="dl-name">Voice Record</span></div>
+      <div class="drawer-link" onclick="nav('s-review')"><span class="dl-num"></span><span class="dl-name">Review Transcription</span></div>
+      <div class="drawer-link" onclick="nav('s-air')"><span class="dl-num"></span><span class="dl-name">AI Log Response</span></div>
+      <div class="drawer-link" onclick="nav('s-log-detail')"><span class="dl-num"></span><span class="dl-name">Log Entry Detail</span></div>
+      <div class="drawer-link" onclick="nav('s-ai')"><span class="dl-num"></span><span class="dl-name">AI Chat</span></div>
+
+      <div class="drawer-phase">Phase 3 — Publishing + Discovery</div>
+      <div class="drawer-link" onclick="nav('s-pub-trigger')"><span class="dl-num"></span><span class="dl-name">Publish Prompt</span></div>
+      <div class="drawer-link" onclick="nav('s-sel-logs')"><span class="dl-num"></span><span class="dl-name">Select Logs</span></div>
+      <div class="drawer-link" onclick="nav('s-caption')"><span class="dl-num"></span><span class="dl-name">AI Caption Preview</span></div>
+      <div class="drawer-link" onclick="nav('s-platform')"><span class="dl-num"></span><span class="dl-name">Platform + Watermark</span></div>
+      <div class="drawer-link" onclick="nav('s-published')"><span class="dl-num"></span><span class="dl-name">Published! <span class="dl-badge">🎉</span></span></div>
+      <div class="drawer-link" onclick="nav('s-discover')"><span class="dl-num"></span><span class="dl-name">Discovery Feed</span></div>
+      <div class="drawer-link" onclick="nav('s-build-detail')"><span class="dl-num"></span><span class="dl-name">Build Detail</span></div>
+
+      <div class="drawer-phase">Account</div>
+      <div class="drawer-link" onclick="nav('s-profile')"><span class="dl-num"></span><span class="dl-name">Profile + Settings</span></div>
+      <div class="drawer-link" onclick="nav('s-upgrade')"><span class="dl-num"></span><span class="dl-name">Upgrade to Chat Pro</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+  ██  PHASE 1 — ONBOARDING
+  ══════════════════════════════════════════════════ -->
+
+  <!-- WELCOME -->
+  <div class="screen active" id="s-welcome">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="w-hero">
+      <div class="w-flame">🔥</div>
+      <div class="w-logo">RipEm</div>
+      <div class="w-tag">"Your AI garage buddy<br>is ready."</div>
+      <div class="w-sub">Set up your garage in under 10 minutes.</div>
+    </div>
+    <div class="w-actions">
+      <button class="btn" onclick="go('s-s2')">Let's Get Started →</button>
+      <div class="divider">or</div>
+      <div class="signin">Already have an account? <span onclick="toast('👆 Sign in is for returning users — tap Let\'s Get Started!')">Sign in</span></div>
+    </div>
+    <div style="height:10px"></div>
+    <!-- R logo (drawer trigger) on welcome screen too -->
+  </div>
+
+  <!-- SCREEN 2: Car Basics -->
+  <div class="screen" id="s-s2">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-welcome')">← Back</button>
+      <span class="nav-right">1 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:8%"></div></div>
+    <div class="body">
+      <div class="h1">"What car are you building?"</div>
+      <div class="sub">The foundation — your AI will know this car inside out.</div>
+      <div>
+        <div class="label">Year</div>
+        <select class="inp sel" id="sel-year">
+          <option value="2008" selected>2008</option>
+          <option value="2007">2007</option>
+          <option value="2004">2004</option>
+          <option value="1995">1995</option>
+          <option value="1972">1972</option>
+        </select>
+      </div>
+      <div>
+        <div class="label">Make</div>
+        <select class="inp sel" id="sel-make">
+          <option value="Subaru" selected>Subaru</option>
+          <option value="Honda">Honda</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Mazda">Mazda</option>
+          <option value="Nissan">Nissan</option>
+        </select>
+      </div>
+      <div>
+        <div class="label">Model</div>
+        <select class="inp sel" id="sel-model">
+          <option value="WRX" selected>WRX</option>
+          <option value="STI">STI</option>
+          <option value="Outback">Outback</option>
+        </select>
+      </div>
+      <div class="sub" style="font-size:12px">Can't find your car? <span style="color:#ff4d00;cursor:pointer" onclick="toast('🔧 Manual entry coming in a future sprint!')">Enter manually</span></div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s3')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Story -->
+  <div class="screen" id="s-s3">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s2')">← Back</button>
+      <span class="nav-right">2 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:17%"></div></div>
+    <div class="body">
+      <div class="h1">"Where did you get this car? What's the story?"</div>
+      <div class="sub">Even "bought it off Craigslist" works — this becomes the AI's emotional hook.</div>
+      <textarea class="inp" rows="5" id="txt-story" placeholder="e.g. Got it from Dale, the original owner — he kept it in amazing shape for 15 years..."></textarea>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s4')">Next →</button>
+      <button class="btn-t" onclick="go('s-s4')">Skip for now →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: Vision -->
+  <div class="screen" id="s-s4">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s3')">← Back</button>
+      <span class="nav-right">3 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:25%"></div></div>
+    <div class="body">
+      <div class="h1">"What's your vision for this car?"</div>
+      <div class="sub">Select all that apply — calibrates AI recommendations.</div>
+      <div class="grid2">
+        <div class="card" onclick="toggleCard(this)"><span class="em">🏁</span><span class="lbl">Track Car</span></div>
+        <div class="card" onclick="toggleCard(this)"><span class="em">🔧</span><span class="lbl">Restoration</span></div>
+        <div class="card on" onclick="toggleCard(this)"><span class="em">🚗</span><span class="lbl">Daily Driver</span></div>
+        <div class="card" onclick="toggleCard(this)"><span class="em">📸</span><span class="lbl">Content Creator</span></div>
+        <div class="card" onclick="toggleCard(this)"><span class="em">🎨</span><span class="lbl">Show Car</span></div>
+        <div class="card" onclick="toggleCard(this)"><span class="em">✨</span><span class="lbl">Just Vibes</span></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s5')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5: Skill Level -->
+  <div class="screen" id="s-s5">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s4')">← Back</button>
+      <span class="nav-right">4 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
+    <div class="body">
+      <div class="h1">"How much mechanical experience do you have?"</div>
+      <div class="sub">AI calibrates tone and depth based on your level.</div>
+      <div class="list">
+        <div class="row" onclick="selectOne(this)"><div class="row-title">🔰 Novice</div><div class="row-sub">Just starting out</div></div>
+        <div class="row on" onclick="selectOne(this)"><div class="row-title">🔧 Weekend Warrior</div><div class="row-sub">Maintenance + minor mods</div></div>
+        <div class="row" onclick="selectOne(this)"><div class="row-title">⚙️ Enthusiast Builder</div><div class="row-sub">Mods, tuning, full builds</div></div>
+        <div class="row" onclick="selectOne(this)"><div class="row-title">🏆 Professional</div><div class="row-sub">Full builds, fabrication</div></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s6')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 6: Budget + Timeline -->
+  <div class="screen" id="s-s6">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s5')">← Back</button>
+      <span class="nav-right">5 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:42%"></div></div>
+    <div class="body">
+      <div class="h1">"What's your budget and timeline?"</div>
+      <div class="sub">AI gives realistic advice, not fantasy builds.</div>
+      <div>
+        <div class="label">Budget</div>
+        <input class="inp" type="text" placeholder="$ 5,000" value="$ 5,000"/>
+      </div>
+      <div>
+        <div class="label">Timeline</div>
+        <input type="range" min="1" max="5" value="3" oninput="updateTL(this)"/>
+        <div class="slider-lbl">
+          <span>6 mo</span><span>1 yr</span><span id="tl-val" style="color:#ff4d00;font-weight:700">2 yr</span><span>3 yr</span><span>5+ yr</span>
+        </div>
+      </div>
+      <button class="btn btn2" onclick="go('s-s7')">Not sure yet</button>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s7')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 7: Work Completed -->
+  <div class="screen" id="s-s7">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s6')">← Back</button>
+      <span class="nav-right">6 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:50%"></div></div>
+    <div class="body">
+      <div class="h1">"What work have you already done?"</div>
+      <div class="sub">Seeds your garage brain — AI knows your history from day one.</div>
+      <textarea class="inp" rows="4" placeholder="e.g. Oil change, spark plugs, brake pads, coilover swap..."></textarea>
+      <button class="btn btn2" onclick="go('s-s8')">Just got it — nothing yet</button>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s8')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 8: Car Name -->
+  <div class="screen" id="s-s8">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s7')">← Back</button>
+      <span class="nav-right">7 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:58%"></div></div>
+    <div class="body">
+      <div class="h1">"Does your car have a name?"</div>
+      <input class="inp" type="text" id="car-name" placeholder="e.g. Dale, Black Betty, Project X..."/>
+      <div style="text-align:center;padding:10px 0">
+        <div style="font-size:12px;color:#444;font-style:italic">"Named cars get into trouble."</div>
+        <div style="font-size:11px;color:#333;margin-top:3px">— RipEm</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s9')">Next →</button>
+      <button class="btn-t" onclick="go('s-s9')">Skip — it's nameless</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 9: Excitement Focus -->
+  <div class="screen" id="s-s9">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s8')">← Back</button>
+      <span class="nav-right">8 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:67%"></div></div>
+    <div class="body">
+      <div class="h1">"What are you most excited about?"</div>
+      <div class="sub">Tell me what's got you fired up about this build.</div>
+      <textarea class="inp" rows="5" placeholder="e.g. Finally doing a proper suspension setup, maybe a turbo down the road..."></textarea>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s10')">Next →</button>
+      <button class="btn-t" onclick="go('s-s10')">Skip for now →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 10: First Question -->
+  <div class="screen" id="s-s10">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s9')">← Back</button>
+      <span class="nav-right">9 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:75%"></div></div>
+    <div class="body">
+      <div class="h1">"Anything to ask your AI right now?"</div>
+      <div class="sub">Ask specs, mods, where to start — your AI is ready.</div>
+      <textarea class="inp" rows="5" placeholder="e.g. What's the best bang-for-buck mod under $1k for a WRX?"></textarea>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s11')">Next →</button>
+      <button class="btn-t" onclick="go('s-s11')">Skip — surprise me</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 11: Privacy -->
+  <div class="screen" id="s-s11">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-s10')">← Back</button>
+      <span class="nav-right">10 of 12</span>
+    </div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:83%"></div></div>
+    <div class="body">
+      <div class="h1">"How do you want to share?"</div>
+      <div class="sub">Change this any time in your profile settings.</div>
+      <div class="priv-card on" id="priv-pub" onclick="selPrivacy('pub')">
+        <div class="pi">🌍</div>
+        <div class="pt">Public</div>
+        <div class="pd">Appear in the Discovery feed. Watermarked posts drive followers back to your build — a free co-sign.</div>
+      </div>
+      <div class="priv-card" id="priv-priv" onclick="selPrivacy('priv')">
+        <div class="pi">🔒</div>
+        <div class="pt">Private</div>
+        <div class="pd">Just for me — no Discovery feed, no watermark. Full AI access still included.</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-s12')">Next →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 12: AI First Response -->
+  <div class="screen" id="s-s12">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+
+    <!-- Loading state -->
+    <div id="s12-load" class="load-center">
+      <div class="spinner"></div>
+      <div style="font-size:17px;font-weight:700;color:#f0f0f0">Setting up your garage...</div>
+      <div style="font-size:13px;color:#555">Personalizing your AI buddy</div>
+    </div>
+
+    <!-- Response state -->
+    <div id="s12-content" class="body" style="display:none">
+      <div class="nav" style="padding:6px 0 4px">
+        <span style="font-size:13px;color:#555">11 of 12</span>
+      </div>
+      <div class="h1">Meet your AI buddy 🤝</div>
+      <div class="ai-wrap">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt" id="ai-first-resp"></div>
+      </div>
+      <div style="font-size:12px;color:#444;text-align:center">Garage ready · AI memory active</div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-home')">Enter My Garage →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+  ██  PHASE 2 — CORE LOOP
+  ══════════════════════════════════════════════════ -->
+
+  <!-- GARAGE HOME -->
+  <div class="screen" id="s-home">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="top-bar">
+      <div style="font-size:17px;font-weight:800;color:#f0f0f0">RipEm</div>
+      <div class="top-icons">
+        <span onclick="toast('🔍 Search coming in Phase 2!')">🔍</span>
+        <span onclick="go('s-profile')">👤</span>
+      </div>
+    </div>
+    <div class="car-hd">
+      <div class="car-em">🚗</div>
+      <div>
+        <div class="car-name">2008 Subaru WRX</div>
+        <div class="car-mod">Active project · 3 log entries</div>
+      </div>
+    </div>
+    <div class="body" style="padding-top:16px;padding-bottom:80px">
+      <!-- AI nudge -->
+      <div class="pub-prompt">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt" style="margin-bottom:12px">You've logged 8 sessions since your last update. Ready to publish a build update?</div>
+        <div class="btn-row">
+          <button class="btn btn-sm" onclick="go('s-pub-trigger')">Publish! 🚀</button>
+          <button class="btn btn2 btn-sm" onclick="toast('👍 I\'ll remind you after a few more sessions!')">Not yet</button>
+        </div>
+      </div>
+      <!-- Logs -->
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Recent Logs</div>
+        <div class="log-list">
+          <div class="log-item" onclick="go('s-log-detail')">
+            <div class="log-dot"></div>
+            <div class="log-date">Mar 22</div>
+            <div class="log-desc">Rear brake pads — EBC Greenstuff</div>
+            <div class="log-arr">›</div>
+          </div>
+          <div class="log-item" onclick="go('s-log-detail')">
+            <div class="log-dot"></div>
+            <div class="log-date">Mar 10</div>
+            <div class="log-desc">Oil change — Motul 5W-30</div>
+            <div class="log-arr">›</div>
+          </div>
+          <div class="log-item" onclick="go('s-log-detail')">
+            <div class="log-dot"></div>
+            <div class="log-date">Feb 28</div>
+            <div class="log-desc">Spark plugs — NGK Iridium</div>
+            <div class="log-arr">›</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="fab" onclick="go('s-record')">+</button>
+    <div class="bnav">
+      <div class="ni" onclick="go('s-discover')"><div class="ic">🔭</div><div class="nl">Discover</div></div>
+      <div class="ni on"><div class="ic">🏠</div><div class="nl">Garage</div></div>
+      <div class="ni" onclick="go('s-ai')"><div class="ic">🤖</div><div class="nl">AI Chat</div></div>
+      <div class="ni" onclick="go('s-profile')"><div class="ic">👤</div><div class="nl">Profile</div></div>
+    </div>
+  </div>
+
+  <!-- RECORD -->
+  <div class="screen" id="s-record">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-home')">✕ Cancel</button>
+    </div>
+    <div class="body" style="align-items:center;text-align:center;justify-content:center">
+      <div class="wave">
+        <div class="wb"></div><div class="wb"></div><div class="wb"></div>
+        <div class="wb"></div><div class="wb"></div><div class="wb"></div>
+        <div class="wb"></div><div class="wb"></div><div class="wb"></div>
+      </div>
+      <div class="h2" style="font-size:20px">Listening...</div>
+      <div class="sub">"Just tell me what you did —<br>I'll handle the details."</div>
+      <div style="background:#1c1c1c;border-radius:11px;padding:12px 15px;text-align:left;width:100%;margin-top:8px">
+        <div style="font-size:11px;color:#444;margin-bottom:5px">Example:</div>
+        <div style="font-size:13px;color:#777;line-height:1.6">"Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" style="width:110px;border-radius:50px;padding:18px 0;font-size:14px" onclick="go('s-review')">■ Stop</button>
+      <div class="divider" style="width:100%;margin-top:8px">or</div>
+      <button class="btn-t" onclick="toast('⌨️ Type mode coming in a future sprint!')">type instead</button>
+    </div>
+  </div>
+
+  <!-- REVIEW TRANSCRIPTION -->
+  <div class="screen" id="s-review">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-record')">← Back</button>
+    </div>
+    <div class="body">
+      <div class="h1">"Here's what I heard:"</div>
+      <div style="position:relative">
+        <div class="inp" style="font-size:13px;line-height:1.6;padding:12px 52px 12px 14px;background:#1c1c1c;border-radius:12px;color:#ccc">
+          "Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."
+        </div>
+        <button style="position:absolute;top:9px;right:9px;background:#252525;border:none;color:#ff4d00;font-size:10px;font-weight:700;padding:5px 8px;border-radius:7px;cursor:pointer" onclick="toast('✏️ Inline edit coming in a future sprint!')">Edit</button>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">I extracted:</div>
+        <div class="ext-card">
+          <div class="ext-row"><span class="ext-k">Part</span><span class="ext-v">EBC Greenstuff brake pads (rear)</span></div>
+          <div class="ext-row"><span class="ext-k">Time</span><span class="ext-v">1 hour</span></div>
+          <div class="ext-row"><span class="ext-k">Cost</span><span class="ext-v">$45</span></div>
+          <div class="ext-row"><span class="ext-k">Source</span><span class="ext-v">RockAuto</span></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-air')">Looks Good →</button>
+      <div class="btn-row" style="margin-top:9px">
+        <button class="btn btn2" onclick="go('s-record')">Re-record</button>
+        <button class="btn btn2" onclick="toast('✏️ Field editing coming in a future sprint!')">Edit fields</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI RESPONSE after log -->
+  <div class="screen" id="s-air">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+    </div>
+    <div class="body" style="padding-top:12px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">✅</span>
+        <span style="font-size:15px;font-weight:700;color:#6dbe6d">Log saved</span>
+      </div>
+      <div class="ai-wrap">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt">EBC Greenstuff — solid choice for street use. Based on your EJ25, you should be good for 30–40k miles on those pads.<br><br>Want me to set a mileage reminder for a brake inspection?</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-sm" onclick="toast('✅ Reminder set! Would sync to your notifications.')">Yes, remind me</button>
+        <button class="btn btn2 btn-sm" onclick="go('s-home')">No thanks</button>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-home')">Back to Garage</button>
+    </div>
+  </div>
+
+  <!-- LOG ENTRY DETAIL -->
+  <div class="screen" id="s-log-detail">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-home')">← Back</button>
+      <span class="nav-right">Mar 22</span>
+    </div>
+    <div class="body">
+      <div class="h1">Rear Brake Pads</div>
+      <div class="sub">Logged via voice · March 22, 2025</div>
+      <div class="ext-card">
+        <div class="ext-row"><span class="ext-k">Part</span><span class="ext-v">EBC Greenstuff (rear)</span></div>
+        <div class="ext-row"><span class="ext-k">Time</span><span class="ext-v">1 hour</span></div>
+        <div class="ext-row"><span class="ext-k">Cost</span><span class="ext-v">$45</span></div>
+        <div class="ext-row"><span class="ext-k">Source</span><span class="ext-v">RockAuto</span></div>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Voice Transcript</div>
+        <div class="inp" style="font-size:13px;line-height:1.6;color:#888;cursor:default">"Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."</div>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">AI Notes</div>
+        <div class="ai-wrap">
+          <div class="ai-icon">🤖</div>
+          <div class="ai-txt">EBC Greenstuff — solid for daily street use. Paired with your EJ25 you're looking at 30–40k miles. Reminder set for brake inspection.</div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="toast('✏️ Edit log entry coming in a future sprint!')">Edit Entry</button>
+    </div>
+  </div>
+
+  <!-- AI CHAT -->
+  <div class="screen" id="s-ai">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="top-bar">
+      <div style="font-size:16px;font-weight:700;color:#f0f0f0">AI Chat</div>
+      <div class="top-icons"><span onclick="go('s-home')">⌂</span></div>
+    </div>
+    <div class="body" style="gap:12px;padding-bottom:0">
+      <div class="ai-wrap">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt">Hey! I know your 2008 WRX inside and out. You've done: rear brake pads, oil change, and spark plugs so far.<br><br>What's on your mind — mods, maintenance, or something else?</div>
+      </div>
+      <div style="display:flex;justify-content:flex-end">
+        <div style="background:#1a1a36;border:1.5px solid #2d2d5a;border-radius:14px;border-bottom-right-radius:3px;padding:12px 14px;max-width:80%;font-size:13px;color:#ccc;line-height:1.5">
+          Best bang-for-buck mod under $500?
+        </div>
+      </div>
+      <div class="ai-wrap">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt">Top 3 for your WRX daily under $500:<br><br>1. <b>Cold air intake</b> (~$150) — noticeable gains + sound<br>2. <b>Cobb AccessPort</b> (~$450 used) — best ROI on EJ motors<br>3. <b>Intercooler upgrade</b> (~$200–350) — kills heat soak<br><br>Based on 2,400+ WRX builds, AccessPort is #1 most-recommended first mod. Want full specs? <b style="color:#6dbe6d">Confidence: High</b></div>
+      </div>
+      <div style="height:20px"></div>
+    </div>
+    <div class="chat-inp-bar">
+      <div class="chat-inp" onclick="toast('💬 Live AI chat is coming in Phase 2!')">Ask anything about your WRX...</div>
+      <button class="chat-send" onclick="toast('💬 Live AI chat is coming in Phase 2!')">↑</button>
+    </div>
+    <div class="bnav">
+      <div class="ni" onclick="go('s-discover')"><div class="ic">🔭</div><div class="nl">Discover</div></div>
+      <div class="ni" onclick="go('s-home')"><div class="ic">🏠</div><div class="nl">Garage</div></div>
+      <div class="ni on"><div class="ic">🤖</div><div class="nl">AI Chat</div></div>
+      <div class="ni" onclick="go('s-profile')"><div class="ic">👤</div><div class="nl">Profile</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+  ██  PHASE 3 — PUBLISHING + DISCOVERY
+  ══════════════════════════════════════════════════ -->
+
+  <!-- PUBLISH TRIGGER (from garage home) -->
+  <div class="screen" id="s-pub-trigger">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="top-bar">
+      <div style="font-size:17px;font-weight:800;color:#f0f0f0">RipEm</div>
+      <div class="top-icons"><span onclick="go('s-profile')">👤</span></div>
+    </div>
+    <div class="car-hd">
+      <div class="car-em">🚗</div>
+      <div>
+        <div class="car-name">2008 Subaru WRX</div>
+        <div class="car-mod">8 sessions since last update</div>
+      </div>
+    </div>
+    <div class="body" style="padding-top:20px">
+      <div class="pub-prompt">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-txt" style="margin-bottom:12px">You've logged <b>8 sessions</b> since your last update. Ready to publish a build update?</div>
+        <div class="btn-row">
+          <button class="btn btn-sm" onclick="go('s-sel-logs')">Publish! 🚀</button>
+          <button class="btn btn2 btn-sm" onclick="go('s-home')">Not yet</button>
+        </div>
+      </div>
+      <div class="sub" style="text-align:center;font-size:12px;padding:4px 0">Tapping Publish will start a short 3-step flow.</div>
+    </div>
+    <div class="bnav">
+      <div class="ni" onclick="go('s-discover')"><div class="ic">🔭</div><div class="nl">Discover</div></div>
+      <div class="ni on"><div class="ic">🏠</div><div class="nl">Garage</div></div>
+      <div class="ni" onclick="go('s-ai')"><div class="ic">🤖</div><div class="nl">AI Chat</div></div>
+      <div class="ni" onclick="go('s-profile')"><div class="ic">👤</div><div class="nl">Profile</div></div>
+    </div>
+  </div>
+
+  <!-- SELECT LOGS -->
+  <div class="screen" id="s-sel-logs">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-pub-trigger')">✕ Cancel</button>
+    </div>
+    <div class="body">
+      <div class="h1">"Which sessions should I include?"</div>
+      <div class="sub">Recent ones are pre-selected. Toggle to include or exclude.</div>
+      <div class="chk-list">
+        <div class="chk-item on" onclick="toggleChk(this)">
+          <div class="chk-box">✓</div>
+          <div class="chk-meta"><div class="chk-lbl">Rear brake pads — EBC Greenstuff</div><div class="chk-date">Mar 22</div></div>
+        </div>
+        <div class="chk-item on" onclick="toggleChk(this)">
+          <div class="chk-box">✓</div>
+          <div class="chk-meta"><div class="chk-lbl">Oil change — Motul 5W-30</div><div class="chk-date">Mar 10</div></div>
+        </div>
+        <div class="chk-item on" onclick="toggleChk(this)">
+          <div class="chk-box">✓</div>
+          <div class="chk-meta"><div class="chk-lbl">Spark plugs — NGK Iridium</div><div class="chk-date">Feb 28</div></div>
+        </div>
+        <div class="chk-item" onclick="toggleChk(this)">
+          <div class="chk-box"></div>
+          <div class="chk-meta"><div class="chk-lbl">Coolant flush</div><div class="chk-date">Feb 14</div></div>
+        </div>
+        <div class="chk-item" onclick="toggleChk(this)">
+          <div class="chk-box"></div>
+          <div class="chk-meta"><div class="chk-lbl">Battery replacement</div><div class="chk-date">Feb 01</div></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#555">
+        <span style="cursor:pointer;color:#ff4d00" onclick="toast('☑️ Select all toggled!')">Select all</span>
+        <span style="cursor:pointer" onclick="toast('☐ All cleared!')">Clear all</span>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-caption')">Generate Caption →</button>
+    </div>
+  </div>
+
+  <!-- AI CAPTION PREVIEW -->
+  <div class="screen" id="s-caption">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-sel-logs')">← Back</button>
+    </div>
+    <div class="body">
+      <div class="h1">"Here's your build update:"</div>
+      <div>
+        <div class="cap-box">
+          Knocked out a solid maintenance run on the WRX. Fresh EBC Greenstuff brake pads in the rear, Motul 5W-30 oil change, and NGK Iridium plugs — keeping the EJ25 happy before summer driving season. Small wins, but they add up. Next up: intake and a tune.<br><br>
+          <span style="color:#666">#RipEm #SubaruWRX #EJ25 #WRXDaily #CarMaintenance #NGK #EBCBrakes</span>
+          <button class="cap-edit-btn" onclick="toast('✏️ Caption editing coming in a future sprint!')">Edit</button>
+        </div>
+      </div>
+      <div class="row" onclick="toast('📷 Media picker coming in Phase 3!')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px">📷</span>
+          <div>
+            <div class="row-title" style="font-size:14px">Add photos / video</div>
+            <div class="row-sub">Optional — pulls from your camera roll</div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-platform')">Next: Choose Where →</button>
+    </div>
+  </div>
+
+  <!-- PLATFORM SELECT + WATERMARK -->
+  <div class="screen" id="s-platform">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-caption')">← Back</button>
+    </div>
+    <div class="body">
+      <div class="h1">"Where do you want to post?"</div>
+      <div class="chk-list">
+        <div class="chk-item on" onclick="toggleChk(this)">
+          <div class="chk-box">✓</div>
+          <div class="chk-meta"><div class="chk-lbl">RipEm Discovery Feed</div><div class="chk-date">Always included on Public builds</div></div>
+        </div>
+        <div class="chk-item on" onclick="toggleChk(this)">
+          <div class="chk-box">✓</div>
+          <div class="chk-meta"><div class="chk-lbl">Instagram</div><div class="chk-date">Connected ✓</div></div>
+        </div>
+        <div class="chk-item" onclick="toggleChk(this)">
+          <div class="chk-box"></div>
+          <div class="chk-meta"><div class="chk-lbl">Copy to Clipboard</div><div class="chk-date">Caption + image</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Watermark Preview</div>
+        <div class="wm-img">
+          <div class="wm-photo-ph">🚗</div>
+          <div class="wm-badge">RipEm ↗</div>
+        </div>
+        <div class="sub" style="font-size:12px;margin-top:8px">Watermark links viewers to your build — free followers.</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-published')">Post Now →</button>
+    </div>
+  </div>
+
+  <!-- PUBLISHED CONFIRMATION -->
+  <div class="screen" id="s-published">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+    </div>
+    <div class="body" style="align-items:center;text-align:center;justify-content:center;gap:16px">
+      <div class="pub-icon">🎉</div>
+      <div class="h1">Build update posted!</div>
+      <div class="pub-share-row" style="width:100%;text-align:left">
+        <div class="pub-share-item"><div class="pub-check">✓</div>RipEm Discovery Feed</div>
+        <div class="pub-share-item"><div class="pub-check">✓</div>Instagram</div>
+      </div>
+      <div class="ai-teaser" style="width:100%;text-align:left">
+        <div class="ic">🤖</div>
+        <div class="txt">I'll let you know when people engage with your post. Your watermark is live — new followers incoming.</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn2" style="width:100%" onclick="toast('📱 Opens Instagram app in real build!')">View on Instagram →</button>
+      <button class="btn" style="width:100%;margin-top:4px" onclick="go('s-home')">Back to Garage</button>
+    </div>
+  </div>
+
+  <!-- DISCOVERY FEED -->
+  <div class="screen" id="s-discover">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="top-bar">
+      <div style="font-size:17px;font-weight:800;color:#f0f0f0">Discover</div>
+      <div class="top-icons">
+        <span onclick="toast('🔽 Filter: make, mod type, skill level, following')">⚙️</span>
+        <span onclick="toast('🔍 Search builds coming in Phase 3!')">🔍</span>
+      </div>
+    </div>
+    <div class="body" style="gap:14px;padding-bottom:72px">
+      <!-- Card 1 -->
+      <div class="feed-card" onclick="go('s-build-detail')">
+        <div class="feed-photo">🚗</div>
+        <div class="feed-body">
+          <div class="feed-user">
+            <div class="feed-avatar">👩</div>
+            <div>
+              <div class="feed-name">Jordan's EG Civic</div>
+              <div class="feed-time">@jordan_builds · 2h ago</div>
+            </div>
+            <button class="feed-follow" onclick="event.stopPropagation();toast('✅ Following jordan_builds!')">+ Follow</button>
+          </div>
+          <div class="feed-caption">"Finally got the coils in. BC Racing BR series on the EG — sitting about 2 inches lower. 6 hours in the garage today..."</div>
+          <div class="feed-actions">
+            <div class="feed-act" onclick="event.stopPropagation();toast('❤️ Liked!')">❤️ 42</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('💬 Comments coming in Phase 3!')">💬 7</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="feed-card" onclick="go('s-build-detail')">
+        <div class="feed-photo">🏎️</div>
+        <div class="feed-body">
+          <div class="feed-user">
+            <div class="feed-avatar">👨</div>
+            <div>
+              <div class="feed-name">Devon's RX-8</div>
+              <div class="feed-time">@rotary_devon · 6h ago</div>
+            </div>
+            <button class="feed-follow" onclick="event.stopPropagation();toast('✅ Following rotary_devon!')">+ Follow</button>
+          </div>
+          <div class="feed-caption">"Compression test done. Apex seals are holding — she's healthy. Starting the engine bay clean-up next weekend."</div>
+          <div class="feed-actions">
+            <div class="feed-act" onclick="event.stopPropagation();toast('❤️ Liked!')">❤️ 28</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('💬 Comments coming in Phase 3!')">💬 3</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub" style="text-align:center;font-size:12px">↓ More builds below</div>
+      <!-- Card 3 -->
+      <div class="feed-card" onclick="go('s-build-detail')">
+        <div class="feed-photo">🚙</div>
+        <div class="feed-body">
+          <div class="feed-user">
+            <div class="feed-avatar">🧑</div>
+            <div>
+              <div class="feed-name">Marcus's WRX</div>
+              <div class="feed-time">@marcus_wrx · 1d ago</div>
+            </div>
+            <button class="feed-follow" onclick="event.stopPropagation();toast('✅ Following marcus_wrx!')">+ Follow</button>
+          </div>
+          <div class="feed-caption">"EBC Greenstuff brake pads in the rear, NGK Iridium plugs, and fresh Motul oil. Keeping the EJ25 dialled."</div>
+          <div class="feed-actions">
+            <div class="feed-act" onclick="event.stopPropagation();toast('❤️ Liked!')">❤️ 15</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('💬 Comments coming in Phase 3!')">💬 2</div>
+            <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bnav">
+      <div class="ni on"><div class="ic">🔭</div><div class="nl">Discover</div></div>
+      <div class="ni" onclick="go('s-home')"><div class="ic">🏠</div><div class="nl">Garage</div></div>
+      <div class="ni" onclick="go('s-ai')"><div class="ic">🤖</div><div class="nl">AI Chat</div></div>
+      <div class="ni" onclick="go('s-profile')"><div class="ic">👤</div><div class="nl">Profile</div></div>
+    </div>
+  </div>
+
+  <!-- BUILD DETAIL -->
+  <div class="screen" id="s-build-detail">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-discover')">← Back</button>
+      <span class="nav-right" style="cursor:pointer" onclick="toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</span>
+    </div>
+    <div class="body">
+      <!-- Photo gallery placeholder -->
+      <div style="background:#1c1c1c;border-radius:13px;height:180px;display:flex;align-items:center;justify-content:center;font-size:56px;opacity:.3;position:relative;overflow:hidden">
+        🚗
+        <div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);border-radius:5px;padding:3px 8px;font-size:9px;font-weight:700;color:#ff4d00">RipEm ↗</div>
+      </div>
+      <!-- Builder info -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="feed-avatar" style="width:36px;height:36px;font-size:16px">👩</div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:700;color:#f0f0f0">Jordan's EG Civic</div>
+          <div style="font-size:12px;color:#555">@jordan_builds</div>
+        </div>
+        <button class="feed-follow" onclick="toast('✅ Following jordan_builds!')">+ Follow</button>
+      </div>
+      <!-- Caption -->
+      <div class="sub" style="font-size:13px;line-height:1.65">Finally got the coils in. BC Racing BR series on the EG — sitting about 2 inches lower. 6 hours in the garage today. Next up: camber plates and a wheel fitment check. Drop game is underway.</div>
+      <!-- Build details -->
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Build Details</div>
+        <div style="background:#1c1c1c;border-radius:13px;padding:14px">
+          <div class="build-stat"><span class="bs-icon">🚗</span><span>1995 Honda Civic EG hatch</span></div>
+          <div class="build-stat"><span class="bs-icon">🔧</span><span>Coilovers: BC Racing BR series</span></div>
+          <div class="build-stat"><span class="bs-icon">💰</span><span>$650 installed</span></div>
+          <div class="build-stat"><span class="bs-icon">⏱</span><span>6 hours</span></div>
+        </div>
+      </div>
+      <!-- Comments -->
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Comments</div>
+        <div style="background:#1c1c1c;border-radius:13px;padding:12px">
+          <div class="comment"><div class="cmt-av">🧑</div><div><div class="cmt-name">marcus_wrx</div><div class="cmt-txt">Clean setup! What spring rate are you running?</div></div></div>
+          <div class="comment"><div class="cmt-av">🧑</div><div><div class="cmt-name">rotary_devon</div><div class="cmt-txt">That drop is perfect 🔥</div></div></div>
+        </div>
+      </div>
+      <!-- AI Shortcut -->
+      <button class="btn" onclick="go('s-ai')">Ask AI about this mod →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+  ██  ACCOUNT
+  ══════════════════════════════════════════════════ -->
+
+  <!-- PROFILE -->
+  <div class="screen" id="s-profile">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="top-bar">
+      <div style="font-size:17px;font-weight:800;color:#f0f0f0">Profile</div>
+      <div class="top-icons"><span onclick="toast('⚙️ Settings panel coming in Phase 2!')">⚙️</span></div>
+    </div>
+    <div class="body">
+      <div class="pf-hero">
+        <div class="pf-av">👤</div>
+        <div class="pf-name">Marcus W.</div>
+        <div class="pf-role">Weekend Warrior · WRX owner · Public build</div>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">My Garage</div>
+        <div class="log-list">
+          <div class="log-item" onclick="go('s-home')">
+            <div style="font-size:20px">🚗</div>
+            <div class="log-desc">2008 Subaru WRX</div>
+            <div style="font-size:11px;color:#555">3 logs ›</div>
+          </div>
+          <div class="log-item" onclick="toast('🚗 Add another vehicle coming in Phase 2!')">
+            <div style="font-size:20px;color:#333">＋</div>
+            <div class="log-desc" style="color:#444">Add another vehicle</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Account</div>
+        <div class="log-list">
+          <div class="log-item" onclick="toast('🔒 Privacy settings coming in Phase 2!')">
+            <div class="log-desc">Privacy settings</div>
+            <div class="log-arr">›</div>
+          </div>
+          <div class="log-item" onclick="toast('🔔 Notification preferences coming in Phase 2!')">
+            <div class="log-desc">Notifications</div>
+            <div class="log-arr">›</div>
+          </div>
+          <div class="log-item" onclick="go('s-upgrade')">
+            <div class="log-desc">Upgrade to Chat Pro</div>
+            <div style="font-size:11px;color:#ff4d00;font-weight:600">$6/mo ›</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bnav">
+      <div class="ni" onclick="go('s-discover')"><div class="ic">🔭</div><div class="nl">Discover</div></div>
+      <div class="ni" onclick="go('s-home')"><div class="ic">🏠</div><div class="nl">Garage</div></div>
+      <div class="ni" onclick="go('s-ai')"><div class="ic">🤖</div><div class="nl">AI Chat</div></div>
+      <div class="ni on"><div class="ic">👤</div><div class="nl">Profile</div></div>
+    </div>
+  </div>
+
+  <!-- UPGRADE / CHAT PRO -->
+  <div class="screen" id="s-upgrade">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-profile')">← Back</button>
+    </div>
+    <div class="body">
+      <div style="text-align:center;padding:12px 0 20px">
+        <div style="font-size:44px;margin-bottom:10px">⚡</div>
+        <div class="h1" style="text-align:center">Chat Pro</div>
+        <div class="sub" style="text-align:center;margin-top:6px">Unlock the full RipEm experience</div>
+      </div>
+      <div class="list" style="gap:11px">
+        <div style="display:flex;gap:11px;align-items:flex-start">
+          <span style="font-size:18px">🚫</span>
+          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Ad-free AI Chat</div><div style="font-size:12px;color:#666;margin-top:2px">No ads, ever, in your AI conversations</div></div>
+        </div>
+        <div style="display:flex;gap:11px;align-items:flex-start">
+          <span style="font-size:18px">📲</span>
+          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Direct social publishing</div><div style="font-size:12px;color:#666;margin-top:2px">Post to Instagram (+ TikTok coming)</div></div>
+        </div>
+        <div style="display:flex;gap:11px;align-items:flex-start">
+          <span style="font-size:18px">📊</span>
+          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Build analytics</div><div style="font-size:12px;color:#666;margin-top:2px">Track views, follows from your posts</div></div>
+        </div>
+        <div style="display:flex;gap:11px;align-items:flex-start">
+          <span style="font-size:18px">🚗</span>
+          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Multiple projects</div><div style="font-size:12px;color:#666;margin-top:2px">Track more than one vehicle</div></div>
+        </div>
+      </div>
+      <div style="background:#1c1c1c;border-radius:13px;padding:18px;text-align:center;margin-top:4px">
+        <div style="font-size:28px;font-weight:900;color:#f0f0f0">$6<span style="font-size:14px;font-weight:400;color:#555">/month</span></div>
+        <div style="font-size:12px;color:#555;margin-top:3px">Cancel any time · No contracts</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="toast('💳 Subscription flow coming in Phase 3!')">Start Chat Pro →</button>
+      <button class="btn-t" onclick="go('s-profile')">Maybe later</button>
+    </div>
+  </div>
+
+  <!-- ── TOAST ─────────────────────────────────────────── -->
+  <div id="toast"></div>
+
+</div><!-- /app -->
+
+<script>
+/* ── State ───────────────────────────────────────────── */
+let current = 's-welcome';
+let toastTimer = null;
+
+/* ── Navigation ──────────────────────────────────────── */
+function go(id) {
+  const from = document.getElementById(current);
+  const to = document.getElementById(id);
+  if (!to) { toast('🚧 This screen is not built yet!'); return; }
+  from.classList.remove('active');
+  to.classList.add('active');
+  current = id;
+  // scroll to top
+  to.querySelectorAll('.body').forEach(b => b.scrollTop = 0);
+  // update drawer highlight
+  updateDrawer(id);
+  // special: screen 12 loading
+  if (id === 's-s12') startS12();
+  closeDrawer();
+}
+
+function nav(id) { go(id); }
+
+/* ── Drawer ──────────────────────────────────────────── */
+function openDrawer() {
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('open');
+  updateDrawer(current);
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+}
+
+function updateDrawer(id) {
+  document.querySelectorAll('.drawer-link').forEach(l => {
+    l.classList.remove('current');
+    if (l.getAttribute('onclick') && l.getAttribute('onclick').includes("'"+id+"'")) {
+      l.classList.add('current');
+    }
+  });
+}
+
+/* ── Screen 12 ───────────────────────────────────────── */
+function startS12() {
+  const load = document.getElementById('s12-load');
+  const cont = document.getElementById('s12-content');
+  const el = document.getElementById('ai-first-resp');
+  load.style.display = 'flex';
+  cont.style.display = 'none';
+  el.textContent = '';
+
+  setTimeout(() => {
+    load.style.display = 'none';
+    cont.style.display = 'flex';
+    const name = (document.getElementById('car-name') || {}).value || '';
+    const intro = name ? name + " is a great name for a WRX. 👊\n\n" : '';
+    const msg = intro +
+      "2008 WRX with the EJ25 — you picked a platform the community knows inside and out.\n\n" +
+      "You're running it as a daily with a $5k budget over 2 years — smart. Based on 2,400+ WRX builds, the top first mods are: Cobb AccessPort, cold air intake, and an upgraded intercooler.\n\n" +
+      "What do you want to tackle first — performance, reliability, or both?";
+    typewrite(el, msg, 16);
+  }, 2600);
+}
+
+function typewrite(el, txt, speed) {
+  let i = 0;
+  el.style.whiteSpace = 'pre-line';
+  const t = setInterval(() => {
+    el.textContent += txt[i++];
+    if (i >= txt.length) clearInterval(t);
+  }, speed);
+}
+
+/* ── Toast Hint ──────────────────────────────────────── */
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ── Option helpers ──────────────────────────────────── */
+function toggleCard(el) { el.classList.toggle('on'); }
+function selectOne(el) {
+  el.closest('.list').querySelectorAll('.row').forEach(r => r.classList.remove('on'));
+  el.classList.add('on');
+}
+function selPrivacy(t) {
+  document.getElementById('priv-pub').classList.toggle('on', t === 'pub');
+  document.getElementById('priv-priv').classList.toggle('on', t === 'priv');
+}
+function toggleChk(el) {
+  el.classList.toggle('on');
+  el.querySelector('.chk-box').textContent = el.classList.contains('on') ? '✓' : '';
+}
+function updateTL(el) {
+  const lbs = ['6 mo','1 yr','2 yr','3 yr','5+ yr'];
+  document.getElementById('tl-val').textContent = lbs[el.value - 1];
+}
+
+/* ── Global off-path tap hint ────────────────────────── */
+document.getElementById('app').addEventListener('click', e => {
+  const tag = e.target.tagName.toLowerCase();
+  const interactive = ['button','a','select','input','textarea'].includes(tag)
+    || e.target.closest('button,[onclick],.card,.row,.priv-card,.log-item,.ni,.chk-item,.feed-card,.feed-act,.feed-follow,.build-stat');
+  if (!interactive) {
+    const hints = {
+      's-welcome':    '👆 Tap "Let\'s Get Started" to begin!',
+      's-s2':         '👆 Fill your car details, then tap Next →',
+      's-s3':         '👆 Type your story (or skip), then tap Next →',
+      's-s4':         '👆 Select your vision options, then tap Next →',
+      's-s5':         '👆 Pick your skill level, then tap Next →',
+      's-s6':         '👆 Set your budget & timeline, then tap Next →',
+      's-s7':         '👆 Describe work done (or "Just got it"), then Next →',
+      's-s8':         '👆 Name your car (or skip), then tap Next →',
+      's-s9':         '👆 Tell us what excites you (or skip), then Next →',
+      's-s10':        '👆 Ask your AI something (or skip), then Next →',
+      's-s11':        '👆 Choose Public or Private, then tap Next →',
+      's-s12':        '⏳ Your AI is loading — almost there!',
+      's-home':       '👆 Tap the orange + button to log a session!',
+      's-record':     '👆 Tap the Stop ■ button to finish recording!',
+      's-review':     '👆 Tap "Looks Good →" to confirm your log!',
+      's-air':        '👆 Respond to your AI or tap "Back to Garage"!',
+      's-log-detail': '👆 Scroll to see full details!',
+      's-ai':         '👆 Tap the chat input to ask your AI anything!',
+      's-pub-trigger':'👆 Tap "Publish! 🚀" to start the publish flow!',
+      's-sel-logs':   '👆 Toggle sessions, then tap Generate Caption →',
+      's-caption':    '👆 Review your caption, then tap Next →',
+      's-platform':   '👆 Choose platforms, then tap Post Now →',
+      's-published':  '🎉 You\'re live! Tap Back to Garage to continue.',
+      's-discover':   '👆 Tap a build card to see full details!',
+      's-build-detail':'👆 Scroll down to see build details + comments!',
+      's-profile':    '👆 Tap "Upgrade to Chat Pro" to see the plans!',
+      's-upgrade':    '👆 Tap "Start Chat Pro →" to subscribe!',
+    };
+    toast(hints[current] || '👆 Tap a button to continue!');
+  }
+});
+</script>
+</body>
+</html>
