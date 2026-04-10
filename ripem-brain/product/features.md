@@ -7,9 +7,9 @@
 | Tier | Price | Key Features |
 |------|-------|--------------|
 | **Free** | $0 | 1 project, unlimited logs on that project, async AI responses, offline recording + sync, discovery feed, Instagram sharing (with watermark), ads shown |
-| **Chat Pro** | $5-7/mo | Everything free + real-time voice chat (stretch goal), ad-free |
-| **Projects Add-on** | $2/mo each | Additional projects beyond the 1 free |
-| **Shop** | $20-50/mo | Unlimited projects, multi-user workspace (shop staff), higher storage, no ads, premium support |
+| **Chat Pro** | $5.99/mo | Everything free + real-time voice chat (stretch goal), ad-free, direct social publishing, build analytics |
+| **Projects Add-on** | $1.99/mo each | Additional projects beyond the 1 free |
+| **Shop** | $24.99–49.99/mo | Unlimited projects, multi-user workspace (shop staff), higher storage, no ads, premium support |
 
 iOS In-App Purchase (StoreKit). Subscription managed via `subscriptions` table.
 
@@ -21,7 +21,7 @@ iOS In-App Purchase (StoreKit). Subscription managed via `subscriptions` table.
 
 | Feature | Description | Phase |
 |---------|-------------|-------|
-| Onboarding Questionnaire | 12-question "Car Buddy first meeting" flow | Phase 1 (Wk 1-2) |
+| Onboarding Questionnaire | 9-question "Car Buddy first meeting" flow (combined Vision+Skill, optional Car Name + AI Q) | Phase 1 (Wk 1-2) |
 | AI First Response | Personalized "Dale moment" after onboarding | Phase 1 (Wk 1-2) |
 | Voice-to-Log | Record voice; Whisper transcription; AI contextual response | Phase 2 (Wk 3-4) |
 | Offline Sync | Record offline; sync to server when online | Phase 2 (Wk 3-4) |

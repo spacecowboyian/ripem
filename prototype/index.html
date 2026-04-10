@@ -317,7 +317,46 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .w-logo{font-size:44px;font-weight:900;color:#ff4d00;letter-spacing:-2.5px}
 .w-tag{font-size:19px;font-weight:600;color:#f0f0f0;line-height:1.3}
 .w-sub{font-size:14px;color:#666}
+.w-stats{display:flex;flex-direction:column;gap:5px;background:#191410;border:1px solid #2a1e14;border-radius:12px;padding:12px 18px;width:100%}
+.w-stat{font-size:13px;color:#888;display:flex;align-items:center;gap:7px}
 .w-actions{padding:20px 22px 28px;display:flex;flex-direction:column;gap:11px}
+
+/* ── Sync Status ──────────────────────────────────── */
+.sync-bar{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:7px 12px;border-radius:9px;flex-shrink:0}
+.sync-bar.online{background:#162216;border:1px solid #274027;color:#6dbe6d}
+.sync-bar.offline{background:#1e1010;border:1px solid #4a1818;color:#e06060}
+.sync-bar.syncing{background:#1a1a2a;border:1px solid #2d2d5a;color:#8888dd}
+.sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sync-bar.online .sync-dot{background:#6dbe6d}
+.sync-bar.offline .sync-dot{background:#e06060;animation:blink 1s step-end infinite}
+.sync-bar.syncing .sync-dot{background:#8888dd;animation:blink .7s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ── Voice Timer ──────────────────────────────────── */
+.rec-timer{font-size:28px;font-weight:800;color:#f0f0f0;letter-spacing:2px;font-variant-numeric:tabular-nums}
+
+/* ── Photo Thumbnail Row ──────────────────────────── */
+.photo-thumb-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.photo-thumb{width:56px;height:56px;border-radius:9px;background:#252525;border:1.5px solid #333;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;cursor:pointer;overflow:hidden}
+.photo-add{border-style:dashed;color:#555;font-size:20px}
+
+/* ── Recommendation Badge ─────────────────────────── */
+.rec-badge{font-size:11px;color:#555;padding:4px 10px 8px;display:flex;align-items:center;gap:5px}
+.rec-badge::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#444;flex-shrink:0}
+
+/* ── Explainer Card ───────────────────────────────── */
+.explainer{background:#162216;border:1.5px solid #274027;border-radius:13px;padding:14px 16px}
+.explainer .ex-title{font-size:14px;font-weight:700;color:#f0f0f0;margin-bottom:5px}
+.explainer .ex-body{font-size:13px;color:#888;line-height:1.55}
+
+/* ── Tier Card ────────────────────────────────────── */
+.tier-card{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:14px;padding:16px}
+.tier-card.highlight{border-color:#ff4d00;background:#1a0800}
+.tier-name{font-size:16px;font-weight:700;color:#f0f0f0}
+.tier-price{font-size:22px;font-weight:900;color:#ff4d00;margin:4px 0}
+.tier-price span{font-size:13px;font-weight:400;color:#555}
+.tier-feat{font-size:12px;color:#777;line-height:1.65;margin-top:6px}
+.tier-feat li{margin-left:14px;margin-top:2px}
 
 /* ══════════════════════════════════════════════════════
    SCREEN 12 special
@@ -350,16 +389,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div class="drawer-phase">Phase 1 — Onboarding</div>
       <div class="drawer-link" onclick="nav('s-welcome')"><span class="dl-num">1</span><span class="dl-name">Welcome</span></div>
       <div class="drawer-link" onclick="nav('s-s2')"><span class="dl-num">2</span><span class="dl-name">Car Basics</span></div>
-      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">3</span><span class="dl-name">Story</span></div>
-      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">4</span><span class="dl-name">Vision</span></div>
-      <div class="drawer-link" onclick="nav('s-s5')"><span class="dl-num">5</span><span class="dl-name">Skill Level</span></div>
-      <div class="drawer-link" onclick="nav('s-s6')"><span class="dl-num">6</span><span class="dl-name">Budget + Timeline</span></div>
-      <div class="drawer-link" onclick="nav('s-s7')"><span class="dl-num">7</span><span class="dl-name">Work Completed</span></div>
-      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">8</span><span class="dl-name">Car Name</span></div>
-      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">9</span><span class="dl-name">Excitement Focus</span></div>
-      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">10</span><span class="dl-name">First AI Question</span></div>
-      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">11</span><span class="dl-name">Privacy Toggle</span></div>
-      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">12</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
+      <div class="drawer-link" onclick="nav('s-s4')"><span class="dl-num">3</span><span class="dl-name">Vision + Skill (combined)</span></div>
+      <div class="drawer-link" onclick="nav('s-s6')"><span class="dl-num">4</span><span class="dl-name">Budget + Timeline</span></div>
+      <div class="drawer-link" onclick="nav('s-s3')"><span class="dl-num">5</span><span class="dl-name">Story (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s9')"><span class="dl-num">6</span><span class="dl-name">Excitement Focus</span></div>
+      <div class="drawer-link" onclick="nav('s-s11')"><span class="dl-num">7</span><span class="dl-name">Privacy Toggle</span></div>
+      <div class="drawer-link" onclick="nav('s-s8')"><span class="dl-num">8</span><span class="dl-name">Car Name (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s10')"><span class="dl-num">9</span><span class="dl-name">First AI Question (optional)</span></div>
+      <div class="drawer-link" onclick="nav('s-s12')"><span class="dl-num">10</span><span class="dl-name">AI First Response <span class="dl-badge">✦</span></span></div>
+      <div class="drawer-phase" style="color:#333">— Removed from flow —</div>
+      <div class="drawer-link" onclick="nav('s-s5')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Skill Level (merged into 3)</span></div>
+      <div class="drawer-link" onclick="nav('s-s7')" style="opacity:.4"><span class="dl-num">–</span><span class="dl-name">Work Completed (removed)</span></div>
 
       <div class="drawer-phase">Phase 2 — Core Loop</div>
       <div class="drawer-link" onclick="nav('s-home')"><span class="dl-num"></span><span class="dl-name">Garage Home</span></div>
@@ -373,6 +413,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div class="drawer-link" onclick="nav('s-pub-trigger')"><span class="dl-num"></span><span class="dl-name">Publish Prompt</span></div>
       <div class="drawer-link" onclick="nav('s-sel-logs')"><span class="dl-num"></span><span class="dl-name">Select Logs</span></div>
       <div class="drawer-link" onclick="nav('s-caption')"><span class="dl-num"></span><span class="dl-name">AI Caption Preview</span></div>
+      <div class="drawer-link" onclick="nav('s-wm-preview')"><span class="dl-num"></span><span class="dl-name">Post Preview + Watermark <span class="dl-badge">new</span></span></div>
       <div class="drawer-link" onclick="nav('s-platform')"><span class="dl-num"></span><span class="dl-name">Platform + Watermark</span></div>
       <div class="drawer-link" onclick="nav('s-published')"><span class="dl-num"></span><span class="dl-name">Published! <span class="dl-badge">🎉</span></span></div>
       <div class="drawer-link" onclick="nav('s-discover')"><span class="dl-num"></span><span class="dl-name">Discovery Feed</span></div>
@@ -395,7 +436,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <div class="w-flame">🔥</div>
       <div class="w-logo">RiPeM</div>
       <div class="w-tag">"Your AI garage buddy<br>is ready."</div>
-      <div class="w-sub">Set up your garage in under 10 minutes.</div>
+      <div class="w-sub">Set up your garage in under 5 minutes.</div>
+      <div class="w-stats">
+        <div class="w-stat">🚗 10,000+ car builders on RiPeM</div>
+        <div class="w-stat">📝 500,000+ build log entries</div>
+        <div class="w-stat">💪 Trusted by mechanics &amp; enthusiasts</div>
+      </div>
     </div>
     <div class="w-actions">
       <button class="btn" onclick="go('s-s2')">Let's Get Started →</button>
@@ -411,9 +457,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-welcome')">← Back</button>
-      <span class="nav-right">1 of 12</span>
+      <span class="nav-right">1 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:8%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:11%"></div></div>
     <div class="body">
       <div class="h1">"What car are you building?"</div>
       <div class="sub">The foundation — your AI will know this car inside out.</div>
@@ -447,60 +493,72 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       </div>
       <div class="sub" style="font-size:12px">Can't find your car? <span style="color:#ff4d00;cursor:pointer" onclick="toast('🔧 Manual entry coming in a future sprint!')">Enter manually</span></div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s3')">Next →</button>
+      <button class="btn" onclick="go('s-s4')">Next →</button>
     </div>
   </div>
 
-  <!-- SCREEN 3: Story -->
+  <!-- SCREEN 3: Story (now step 4 of 9, simplified) -->
   <div class="screen" id="s-s3">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s2')">← Back</button>
-      <span class="nav-right">2 of 12</span>
+      <button class="nav-back" onclick="go('s-s6')">← Back</button>
+      <span class="nav-right">4 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:17%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:44%"></div></div>
     <div class="body">
-      <div class="h1">"Where did you get this car? What's the story?"</div>
-      <div class="sub">Even "bought it off Craigslist" works — this becomes the AI's emotional hook.</div>
-      <textarea class="inp" rows="5" id="txt-story" placeholder="e.g. Got it from Dale, the original owner — he kept it in amazing shape for 15 years..."></textarea>
+      <div class="h1">"Your Car's Story"</div>
+      <div class="sub">Where did you get it? Optional — but this becomes your AI's emotional hook.</div>
+      <textarea class="inp" rows="4" id="txt-story" placeholder="e.g. Bought it from Dale, the original owner. He kept it in great shape for 15 years..."></textarea>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s4')">Next →</button>
-      <button class="btn-t" onclick="go('s-s4')">Skip for now →</button>
+      <button class="btn" onclick="go('s-s9')">Next →</button>
+      <button class="btn-t" onclick="go('s-s9')">Skip for now →</button>
     </div>
   </div>
 
-  <!-- SCREEN 4: Vision -->
+  <!-- SCREEN 4 (combined): Vision + Skill Level -->
   <div class="screen" id="s-s4">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s3')">← Back</button>
-      <span class="nav-right">3 of 12</span>
+      <button class="nav-back" onclick="go('s-s2')">← Back</button>
+      <span class="nav-right">2 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:25%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:22%"></div></div>
     <div class="body">
-      <div class="h1">"What's your vision for this car?"</div>
-      <div class="sub">Select all that apply — calibrates AI recommendations.</div>
-      <div class="grid2">
-        <div class="card" onclick="toggleCard(this)"><span class="em">🏁</span><span class="lbl">Track Car</span></div>
-        <div class="card" onclick="toggleCard(this)"><span class="em">🔧</span><span class="lbl">Restoration</span></div>
-        <div class="card on" onclick="toggleCard(this)"><span class="em">🚗</span><span class="lbl">Daily Driver</span></div>
-        <div class="card" onclick="toggleCard(this)"><span class="em">📸</span><span class="lbl">Content Creator</span></div>
-        <div class="card" onclick="toggleCard(this)"><span class="em">🎨</span><span class="lbl">Show Car</span></div>
-        <div class="card" onclick="toggleCard(this)"><span class="em">✨</span><span class="lbl">Just Vibes</span></div>
+      <div class="h1">"Your Vision &amp; Experience"</div>
+      <div class="sub">Calibrates your AI recommendations.</div>
+      <div>
+        <div class="label" style="margin-bottom:8px">What are you building?</div>
+        <div class="grid2">
+          <div class="card" onclick="toggleCard(this)"><span class="em">🏁</span><span class="lbl">Track Car</span></div>
+          <div class="card" onclick="toggleCard(this)"><span class="em">🔧</span><span class="lbl">Restoration</span></div>
+          <div class="card on" onclick="toggleCard(this)"><span class="em">🚗</span><span class="lbl">Daily Driver</span></div>
+          <div class="card" onclick="toggleCard(this)"><span class="em">📸</span><span class="lbl">Content Creator</span></div>
+          <div class="card" onclick="toggleCard(this)"><span class="em">🎨</span><span class="lbl">Show Car</span></div>
+          <div class="card" onclick="toggleCard(this)"><span class="em">✨</span><span class="lbl">Just Vibes</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:8px">Your mechanical skill?</div>
+        <div class="grid2" id="skill-grid">
+          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">🔰</span><span class="lbl">Novice</span></div>
+          <div class="card on" onclick="selectGridCard(this,'skill-grid')"><span class="em">🔧</span><span class="lbl">Intermediate</span></div>
+          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">⚙️</span><span class="lbl">Advanced</span></div>
+          <div class="card" onclick="selectGridCard(this,'skill-grid')"><span class="em">🏆</span><span class="lbl">Professional</span></div>
+        </div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s5')">Next →</button>
+      <button class="btn" onclick="go('s-s6')">Next →</button>
     </div>
   </div>
 
-  <!-- SCREEN 5: Skill Level -->
+  <!-- SCREEN 5: Skill Level (merged into Screen 4 — kept for drawer reference, redirects) -->
   <div class="screen" id="s-s5">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s4')">← Back</button>
-      <span class="nav-right">4 of 12</span>
+      <span class="nav-right">2 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:22%"></div></div>
     <div class="body">
       <div class="h1">"How much mechanical experience do you have?"</div>
       <div class="sub">AI calibrates tone and depth based on your level.</div>
@@ -519,10 +577,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s6">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s5')">← Back</button>
-      <span class="nav-right">5 of 12</span>
+      <button class="nav-back" onclick="go('s-s4')">← Back</button>
+      <span class="nav-right">3 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:42%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
     <div class="body">
       <div class="h1">"What's your budget and timeline?"</div>
       <div class="sub">AI gives realistic advice, not fantasy builds.</div>
@@ -537,48 +595,49 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
           <span>6 mo</span><span>1 yr</span><span id="tl-val" style="color:#ff4d00;font-weight:700">2 yr</span><span>3 yr</span><span>5+ yr</span>
         </div>
       </div>
-      <button class="btn btn2" onclick="go('s-s7')">Not sure yet</button>
+      <button class="btn btn2" onclick="go('s-s3')">Not sure yet</button>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s7')">Next →</button>
+      <button class="btn" onclick="go('s-s3')">Next →</button>
     </div>
   </div>
 
-  <!-- SCREEN 7: Work Completed -->
+  <!-- SCREEN 7: Work Completed (removed from main flow — kept for drawer reference) -->
   <div class="screen" id="s-s7">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-s6')">← Back</button>
-      <span class="nav-right">6 of 12</span>
+      <span class="nav-right">3 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:50%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
     <div class="body">
       <div class="h1">"What work have you already done?"</div>
       <div class="sub">Seeds your garage brain — AI knows your history from day one.</div>
       <textarea class="inp" rows="4" placeholder="e.g. Oil change, spark plugs, brake pads, coilover swap..."></textarea>
-      <button class="btn btn2" onclick="go('s-s8')">Just got it — nothing yet</button>
+      <button class="btn btn2" onclick="go('s-s3')">Just got it — nothing yet</button>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s8')">Next →</button>
+      <button class="btn" onclick="go('s-s3')">Next →</button>
     </div>
   </div>
 
-  <!-- SCREEN 8: Car Name -->
+  <!-- SCREEN 8: Car Name (Optional) -->
   <div class="screen" id="s-s8">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s7')">← Back</button>
-      <span class="nav-right">7 of 12</span>
+      <button class="nav-back" onclick="go('s-s11')">← Back</button>
+      <span class="nav-right">7 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:58%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:78%"></div></div>
     <div class="body">
       <div class="h1">"Does your car have a name?"</div>
+      <div class="sub" style="color:#ff4d00;font-size:12px">Optional — feel free to skip</div>
       <input class="inp" type="text" id="car-name" placeholder="e.g. Dale, Black Betty, Project X..."/>
       <div style="text-align:center;padding:10px 0">
         <div style="font-size:12px;color:#444;font-style:italic">"Named cars get into trouble."</div>
         <div style="font-size:11px;color:#333;margin-top:3px">— RiPeM</div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s9')">Next →</button>
-      <button class="btn-t" onclick="go('s-s9')">Skip — it's nameless</button>
+      <button class="btn" onclick="go('s-s10')">Next →</button>
+      <button class="btn-t" onclick="go('s-s10')">Skip — it's nameless</button>
     </div>
   </div>
 
@@ -586,35 +645,36 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s9">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s8')">← Back</button>
-      <span class="nav-right">8 of 12</span>
+      <button class="nav-back" onclick="go('s-s3')">← Back</button>
+      <span class="nav-right">5 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:67%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:56%"></div></div>
     <div class="body">
       <div class="h1">"What are you most excited about?"</div>
       <div class="sub">Tell me what's got you fired up about this build.</div>
       <textarea class="inp" rows="5" placeholder="e.g. Finally doing a proper suspension setup, maybe a turbo down the road..."></textarea>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s10')">Next →</button>
-      <button class="btn-t" onclick="go('s-s10')">Skip for now →</button>
+      <button class="btn" onclick="go('s-s11')">Next →</button>
+      <button class="btn-t" onclick="go('s-s11')">Skip for now →</button>
     </div>
   </div>
+  </div>
 
-  <!-- SCREEN 10: First Question -->
+  <!-- SCREEN 10: First Question (Optional) -->
   <div class="screen" id="s-s10">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s9')">← Back</button>
-      <span class="nav-right">9 of 12</span>
+      <button class="nav-back" onclick="go('s-s8')">← Back</button>
+      <span class="nav-right">8 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:75%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:89%"></div></div>
     <div class="body">
       <div class="h1">"Anything to ask your AI right now?"</div>
-      <div class="sub">Ask specs, mods, where to start — your AI is ready.</div>
+      <div class="sub" style="color:#ff4d00;font-size:12px">Optional — ask specs, mods, where to start</div>
       <textarea class="inp" rows="5" placeholder="e.g. What's the best bang-for-buck mod under $1k for a WRX?"></textarea>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s11')">Next →</button>
-      <button class="btn-t" onclick="go('s-s11')">Skip — surprise me</button>
+      <button class="btn" onclick="go('s-s12')">Next →</button>
+      <button class="btn-t" onclick="go('s-s12')">Skip — surprise me</button>
     </div>
   </div>
 
@@ -622,25 +682,30 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s11">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-s10')">← Back</button>
-      <span class="nav-right">10 of 12</span>
+      <button class="nav-back" onclick="go('s-s9')">← Back</button>
+      <span class="nav-right">6 of 9</span>
     </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:83%"></div></div>
+    <div class="prog-wrap"><div class="prog-fill" style="width:67%"></div></div>
     <div class="body">
       <div class="h1">"How do you want to share?"</div>
       <div class="sub">Change this any time in your profile settings.</div>
+      <!-- 1.3: Public builds explainer -->
+      <div class="explainer">
+        <div class="ex-title">🌍 Public Builds = Community</div>
+        <div class="ex-body">When you share your builds publicly, others discover you and learn from your journey. Public builds also grow your garage following — every post watermarks back to you. You can always change this later in settings.</div>
+      </div>
       <div class="priv-card on" id="priv-pub" onclick="selPrivacy('pub')">
         <div class="pi">🌍</div>
         <div class="pt">Public</div>
-        <div class="pd">Appear in the Discovery feed. Watermarked posts drive followers back to your build — a free co-sign.</div>
+        <div class="pd">Appear in the Discovery feed. Watermarked posts drive followers back to your build — a free co-sign. Learn from 10,000+ builders.</div>
       </div>
       <div class="priv-card" id="priv-priv" onclick="selPrivacy('priv')">
         <div class="pi">🔒</div>
         <div class="pt">Private</div>
-        <div class="pd">Just for me — no Discovery feed, no watermark. Full AI access still included.</div>
+        <div class="pd">Just for me — no Discovery feed, no watermark. Full AI access still included. Can change anytime.</div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-s12')">Next →</button>
+      <button class="btn" onclick="go('s-s8')">Next →</button>
     </div>
   </div>
 
@@ -658,7 +723,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <!-- Response state -->
     <div id="s12-content" class="body" style="display:none">
       <div class="nav" style="padding:6px 0 4px">
-        <span style="font-size:13px;color:#555">11 of 12</span>
+        <span style="font-size:13px;color:#555">9 of 9</span>
       </div>
       <div class="h1">Meet your AI buddy 🤝</div>
       <div class="ai-wrap">
@@ -740,9 +805,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-record">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-home')">✕ Cancel</button>
+      <button class="nav-back" onclick="stopRecordTimer();go('s-home')">✕ Cancel</button>
+      <!-- 1.1: Connectivity indicator -->
+      <span id="rec-sync-status" class="sync-bar online" style="margin-left:auto;font-size:11px;padding:5px 10px"><span class="sync-dot"></span>Connected</span>
     </div>
     <div class="body" style="align-items:center;text-align:center;justify-content:center">
+      <!-- 3.3: Voice duration timer -->
+      <div class="rec-timer" id="rec-timer">0:00</div>
       <div class="wave">
         <div class="wb"></div><div class="wb"></div><div class="wb"></div>
         <div class="wb"></div><div class="wb"></div><div class="wb"></div>
@@ -755,7 +824,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         <div style="font-size:13px;color:#777;line-height:1.6">"Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."</div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" style="width:110px;border-radius:50px;padding:18px 0;font-size:14px" onclick="go('s-review')">■ Stop</button>
+      <button class="btn" style="width:110px;border-radius:50px;padding:18px 0;font-size:14px" onclick="stopRecordTimer();go('s-review')">■ Stop</button>
       <div class="divider" style="width:100%;margin-top:8px">or</div>
       <button class="btn-t" onclick="toast('⌨️ Type mode coming in a future sprint!')">type instead</button>
     </div>
@@ -766,14 +835,24 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
       <button class="nav-back" onclick="go('s-record')">← Back</button>
+      <!-- 1.1: Sync status on review screen -->
+      <span class="sync-bar syncing" style="margin-left:auto;font-size:11px;padding:5px 10px"><span class="sync-dot"></span>Syncing...</span>
     </div>
     <div class="body">
       <div class="h1">"Here's what I heard:"</div>
-      <div style="position:relative">
-        <div class="inp" style="font-size:13px;line-height:1.6;padding:12px 52px 12px 14px;background:#1c1c1c;border-radius:12px;color:#ccc">
-          "Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."
+      <!-- 2.4: Editable transcript -->
+      <div>
+        <div id="transcript-display" style="position:relative">
+          <div class="inp" id="transcript-text" style="font-size:13px;line-height:1.6;padding:12px 52px 12px 14px;background:#1c1c1c;border-radius:12px;color:#ccc;cursor:text" onclick="editTranscript()">
+            "Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."
+          </div>
+          <button style="position:absolute;top:9px;right:9px;background:#252525;border:none;color:#ff4d00;font-size:10px;font-weight:700;padding:5px 8px;border-radius:7px;cursor:pointer" onclick="editTranscript()">Edit</button>
         </div>
-        <button style="position:absolute;top:9px;right:9px;background:#252525;border:none;color:#ff4d00;font-size:10px;font-weight:700;padding:5px 8px;border-radius:7px;cursor:pointer" onclick="toast('✏️ Inline edit coming in a future sprint!')">Edit</button>
+        <div id="transcript-edit" style="display:none">
+          <textarea class="inp" id="transcript-ta" rows="4" style="font-size:13px;line-height:1.6">"Just swapped the rear brake pads — used EBC Greenstuff, took about an hour, cost $45 from RockAuto."</textarea>
+          <button class="btn btn2 btn-sm" style="margin-top:6px" onclick="saveTranscript()">Save transcript</button>
+        </div>
+        <div style="font-size:11px;color:#555;margin-top:5px">Tap to fix anything Whisper got wrong.</div>
       </div>
       <div>
         <div class="section-hd" style="margin-bottom:8px">I extracted:</div>
@@ -783,6 +862,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
           <div class="ext-row"><span class="ext-k">Cost</span><span class="ext-v">$45</span></div>
           <div class="ext-row"><span class="ext-k">Source</span><span class="ext-v">RockAuto</span></div>
         </div>
+      </div>
+      <!-- 2.2: Photo thumbnail preview -->
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">Photos (2)</div>
+        <div class="photo-thumb-row">
+          <div class="photo-thumb" onclick="toast('🖼️ Tap to remove or view photo')">🔧</div>
+          <div class="photo-thumb" onclick="toast('🖼️ Tap to remove or view photo')">🚗</div>
+          <div class="photo-thumb photo-add" onclick="toast('📷 Add more photos — media picker coming in Phase 3!')">＋</div>
+        </div>
+      </div>
+      <!-- 1.1: Sync status note -->
+      <div class="sync-bar syncing" style="justify-content:center;font-size:12px">
+        <span class="sync-dot"></span>Uploading recording... will process when complete
       </div>
       <div class="spacer"></div>
       <button class="btn" onclick="go('s-air')">Looks Good →</button>
@@ -985,7 +1077,50 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         </div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" onclick="go('s-platform')">Next: Choose Where →</button>
+      <button class="btn" onclick="go('s-wm-preview')">Next: Preview Post →</button>
+    </div>
+  </div>
+
+  <!-- WATERMARK PREVIEW (new screen — between Caption and Platform) -->
+  <div class="screen" id="s-wm-preview">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="nav">
+      <button class="nav-back" onclick="go('s-caption')">← Back</button>
+    </div>
+    <div class="body">
+      <div class="h1">Preview Your Post</div>
+      <div class="sub">This is how it'll look on Instagram — including your watermark.</div>
+      <!-- Instagram-style post mockup -->
+      <div style="background:#1c1c1c;border:1px solid #2c2c2c;border-radius:13px;overflow:hidden">
+        <!-- Post header -->
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 13px">
+          <div style="width:30px;height:30px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;font-size:14px">🚗</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#f0f0f0">Marcus W.</div>
+            <div style="font-size:11px;color:#555">@marcus_wrx</div>
+          </div>
+        </div>
+        <!-- Photo area -->
+        <div style="background:#222;aspect-ratio:4/5;max-height:210px;display:flex;align-items:center;justify-content:center;font-size:56px;opacity:.25;position:relative;overflow:hidden">
+          🚗
+          <!-- Watermark badge overlay -->
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;display:flex;justify-content:space-between;align-items:flex-end">
+            <div style="background:rgba(0,0,0,.8);border-radius:6px;padding:6px 10px">
+              <div style="font-size:10px;font-weight:700;color:#ff4d00;letter-spacing:.4px">🏎️ Building Dale on RiPeM</div>
+              <div style="font-size:9px;color:#aaa;margin-top:1px">ripem.app/marcus_wrx/dale</div>
+            </div>
+          </div>
+        </div>
+        <!-- Caption -->
+        <div style="padding:11px 13px">
+          <div style="font-size:13px;color:#ccc;line-height:1.55;margin-bottom:6px">Knocked out a solid maintenance run on the WRX. Fresh EBC Greenstuff brake pads, Motul oil change, and NGK Iridium plugs — keeping the EJ25 happy.<br><br><span style="color:#555">#RiPeM #SubaruWRX #EJ25 #WRXDaily</span></div>
+          <div style="font-size:11px;color:#666;font-style:italic">Watermark links back to your full build on RiPeM — free followers.</div>
+        </div>
+      </div>
+      <div class="sub" style="font-size:12px;text-align:center">Your watermark is automatically added. It drives viewers back to your full garage profile.</div>
+      <div class="spacer"></div>
+      <button class="btn" onclick="go('s-platform')">Looks Good →</button>
+      <button class="btn-t" onclick="toast('✏️ Watermark text customization coming in Phase 3!')">Customize watermark</button>
     </div>
   </div>
 
@@ -993,7 +1128,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-platform">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="nav-back" onclick="go('s-caption')">← Back</button>
+      <button class="nav-back" onclick="go('s-wm-preview')">← Back</button>
     </div>
     <div class="body">
       <div class="h1">"Where do you want to post?"</div>
@@ -1036,6 +1171,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
         <div class="pub-share-item"><div class="pub-check">✓</div>RiPeM Discovery Feed</div>
         <div class="pub-share-item"><div class="pub-check">✓</div>Instagram</div>
       </div>
+      <!-- 3.4: Engagement stats after publishing -->
+      <div style="background:#1c1c1c;border:1px solid #2c2c2c;border-radius:13px;padding:14px;width:100%;text-align:left">
+        <div class="section-hd" style="margin-bottom:10px">📊 Track Engagement</div>
+        <div style="display:flex;gap:18px;justify-content:center;text-align:center;padding:4px 0 10px">
+          <div><div style="font-size:22px;font-weight:800;color:#f0f0f0">0</div><div style="font-size:11px;color:#555">Views</div></div>
+          <div><div style="font-size:22px;font-weight:800;color:#f0f0f0">0</div><div style="font-size:11px;color:#555">Likes</div></div>
+          <div><div style="font-size:22px;font-weight:800;color:#f0f0f0">0</div><div style="font-size:11px;color:#555">New Follows</div></div>
+        </div>
+        <div style="font-size:12px;color:#555;text-align:center">Stats update as your post gets traction.</div>
+      </div>
       <div class="ai-teaser" style="width:100%;text-align:left">
         <div class="ic">🤖</div>
         <div class="txt">I'll let you know when people engage with your post. Your watermark is live — new followers incoming.</div>
@@ -1076,6 +1221,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
             <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
           </div>
         </div>
+        <div class="rec-badge">Trending: 42 likes in 2 hours</div>
       </div>
       <!-- Card 2 -->
       <div class="feed-card" onclick="go('s-build-detail')">
@@ -1096,6 +1242,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
             <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
           </div>
         </div>
+        <div class="rec-badge">Recommended: Similar build goals</div>
       </div>
       <div class="sub" style="text-align:center;font-size:12px">↓ More builds below</div>
       <!-- Card 3 -->
@@ -1117,6 +1264,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
             <div class="feed-act" onclick="event.stopPropagation();toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</div>
           </div>
         </div>
+        <div class="rec-badge">Recommended: Same car type (WRX)</div>
       </div>
     </div>
     <div class="bnav">
@@ -1238,35 +1386,55 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
       <button class="nav-back" onclick="go('s-profile')">← Back</button>
     </div>
     <div class="body">
-      <div style="text-align:center;padding:12px 0 20px">
-        <div style="font-size:44px;margin-bottom:10px">⚡</div>
-        <div class="h1" style="text-align:center">Chat Pro</div>
-        <div class="sub" style="text-align:center;margin-top:6px">Unlock the full RiPeM experience</div>
+      <div class="h2" style="margin-bottom:4px">Choose Your Plan</div>
+      <!-- Free tier baseline -->
+      <div style="background:#1a1a1a;border:1px solid #252525;border-radius:12px;padding:12px 14px">
+        <div style="font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Current: Free</div>
+        <div style="font-size:12px;color:#666;line-height:1.7">• 1 project<br>• Async AI chat (response in 5–30 sec)<br>• Ad-supported</div>
       </div>
-      <div class="list" style="gap:11px">
-        <div style="display:flex;gap:11px;align-items:flex-start">
-          <span style="font-size:18px">🚫</span>
-          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Ad-free AI Chat</div><div style="font-size:12px;color:#666;margin-top:2px">No ads, ever, in your AI conversations</div></div>
+      <!-- Chat Pro tier -->
+      <div class="tier-card highlight">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <div class="tier-name">⚡ Chat Pro</div>
+            <div class="tier-price">$5.99<span>/mo</span></div>
+          </div>
+          <div style="background:#ff4d00;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;margin-top:4px">Most Popular</div>
         </div>
-        <div style="display:flex;gap:11px;align-items:flex-start">
-          <span style="font-size:18px">📲</span>
-          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Direct social publishing</div><div style="font-size:12px;color:#666;margin-top:2px">Post to Instagram (+ TikTok coming)</div></div>
+        <ul class="tier-feat">
+          <li><b>Real-time voice chat</b> — talk to your AI instantly</li>
+          <li>No ads, ever</li>
+          <li>Direct social publishing (Instagram)</li>
+          <li>Build analytics</li>
+        </ul>
+        <div style="font-size:11px;color:#666;margin-top:8px;background:#111;border-radius:7px;padding:7px 9px;line-height:1.55">
+          <b style="color:#888">Why does this cost more?</b> Real-time chat uses faster servers and more AI resources. It's not something we can offer for free — but it means instant replies instead of waiting 5–30 seconds.
         </div>
-        <div style="display:flex;gap:11px;align-items:flex-start">
-          <span style="font-size:18px">📊</span>
-          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Build analytics</div><div style="font-size:12px;color:#666;margin-top:2px">Track views, follows from your posts</div></div>
-        </div>
-        <div style="display:flex;gap:11px;align-items:flex-start">
-          <span style="font-size:18px">🚗</span>
-          <div><div style="font-size:14px;font-weight:600;color:#f0f0f0">Multiple projects</div><div style="font-size:12px;color:#666;margin-top:2px">Track more than one vehicle</div></div>
-        </div>
+        <button class="btn btn-sm" style="margin-top:12px" onclick="toast('💳 Subscription flow coming in Phase 3!')">Start Chat Pro →</button>
       </div>
-      <div style="background:#1c1c1c;border-radius:13px;padding:18px;text-align:center;margin-top:4px">
-        <div style="font-size:28px;font-weight:900;color:#f0f0f0">$6<span style="font-size:14px;font-weight:400;color:#555">/month</span></div>
-        <div style="font-size:12px;color:#555;margin-top:3px">Cancel any time · No contracts</div>
+      <!-- Projects+ addon -->
+      <div class="tier-card">
+        <div class="tier-name">🚗 Projects+</div>
+        <div class="tier-price">$1.99<span>/mo per project</span></div>
+        <ul class="tier-feat">
+          <li>Add more car projects ($2 each)</li>
+          <li>Works with any plan</li>
+          <li>Track multiple builds simultaneously</li>
+        </ul>
+        <button class="btn btn2 btn-sm" style="margin-top:10px" onclick="toast('🚗 Add project flow coming in Phase 2!')">Add Project →</button>
       </div>
-      <div class="spacer"></div>
-      <button class="btn" onclick="toast('💳 Subscription flow coming in Phase 3!')">Start Chat Pro →</button>
+      <!-- Shop tier -->
+      <div class="tier-card">
+        <div class="tier-name">🏆 Shop</div>
+        <div class="tier-price">$24.99–$49.99<span>/mo</span></div>
+        <ul class="tier-feat">
+          <li>For mechanics &amp; shop owners</li>
+          <li>Unlimited projects + multi-user workspace</li>
+          <li>Real-time chat + priority support</li>
+          <li>Customer vehicle tracking</li>
+        </ul>
+        <button class="btn btn2 btn-sm" style="margin-top:10px" onclick="toast('📧 Contact us at hello@ripem.app for Shop pricing!')">Contact Sales →</button>
+      </div>
       <button class="btn-t" onclick="go('s-profile')">Maybe later</button>
     </div>
   </div>
@@ -1280,6 +1448,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 /* ── State ───────────────────────────────────────────── */
 let current = 's-welcome';
 let toastTimer = null;
+let recTimerInterval = null;
+let recSeconds = 0;
 
 /* ── Navigation ──────────────────────────────────────── */
 function go(id) {
@@ -1295,6 +1465,8 @@ function go(id) {
   updateDrawer(id);
   // special: screen 12 loading
   if (id === 's-s12') startS12();
+  // special: record screen — start timer
+  if (id === 's-record') startRecordTimer();
   closeDrawer();
 }
 
@@ -1352,6 +1524,45 @@ function typewrite(el, txt, speed) {
   }, speed);
 }
 
+/* ── Recording Timer (3.3) ───────────────────────────── */
+function startRecordTimer() {
+  stopRecordTimer();
+  recSeconds = 0;
+  updateTimerDisplay();
+  recTimerInterval = setInterval(() => {
+    recSeconds++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopRecordTimer() {
+  if (recTimerInterval) { clearInterval(recTimerInterval); recTimerInterval = null; }
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('rec-timer');
+  if (!el) return;
+  const m = Math.floor(recSeconds / 60);
+  const s = recSeconds % 60;
+  el.textContent = m + ':' + String(s).padStart(2, '0');
+}
+
+/* ── Transcript Edit (2.4) ───────────────────────────── */
+function editTranscript() {
+  document.getElementById('transcript-display').style.display = 'none';
+  document.getElementById('transcript-edit').style.display = 'block';
+  const ta = document.getElementById('transcript-ta');
+  ta.focus();
+}
+
+function saveTranscript() {
+  const ta = document.getElementById('transcript-ta');
+  const display = document.getElementById('transcript-text');
+  display.textContent = ta.value;
+  document.getElementById('transcript-display').style.display = 'block';
+  document.getElementById('transcript-edit').style.display = 'none';
+}
+
 /* ── Toast Hint ──────────────────────────────────────── */
 function toast(msg) {
   const el = document.getElementById('toast');
@@ -1365,6 +1576,10 @@ function toast(msg) {
 function toggleCard(el) { el.classList.toggle('on'); }
 function selectOne(el) {
   el.closest('.list').querySelectorAll('.row').forEach(r => r.classList.remove('on'));
+  el.classList.add('on');
+}
+function selectGridCard(el, gridId) {
+  document.getElementById(gridId).querySelectorAll('.card').forEach(c => c.classList.remove('on'));
   el.classList.add('on');
 }
 function selPrivacy(t) {
@@ -1390,30 +1605,31 @@ document.getElementById('app').addEventListener('click', e => {
       's-welcome':    '👆 Tap "Let\'s Get Started" to begin!',
       's-s2':         '👆 Fill your car details, then tap Next →',
       's-s3':         '👆 Type your story (or skip), then tap Next →',
-      's-s4':         '👆 Select your vision options, then tap Next →',
+      's-s4':         '👆 Select vision + skill, then tap Next →',
       's-s5':         '👆 Pick your skill level, then tap Next →',
       's-s6':         '👆 Set your budget & timeline, then tap Next →',
       's-s7':         '👆 Describe work done (or "Just got it"), then Next →',
-      's-s8':         '👆 Name your car (or skip), then tap Next →',
+      's-s8':         '👆 Name your car (optional), then tap Next →',
       's-s9':         '👆 Tell us what excites you (or skip), then Next →',
-      's-s10':        '👆 Ask your AI something (or skip), then Next →',
+      's-s10':        '👆 Ask your AI something (optional), then Next →',
       's-s11':        '👆 Choose Public or Private, then tap Next →',
       's-s12':        '⏳ Your AI is loading — almost there!',
       's-home':       '👆 Tap the orange + button to log a session!',
       's-record':     '👆 Tap the Stop ■ button to finish recording!',
-      's-review':     '👆 Tap "Looks Good →" to confirm your log!',
+      's-review':     '👆 Tap the transcript to edit, or "Looks Good →" to confirm!',
       's-air':        '👆 Respond to your AI or tap "Back to Garage"!',
       's-log-detail': '👆 Scroll to see full details!',
       's-ai':         '👆 Tap the chat input to ask your AI anything!',
       's-pub-trigger':'👆 Tap "Publish! 🚀" to start the publish flow!',
       's-sel-logs':   '👆 Toggle sessions, then tap Generate Caption →',
       's-caption':    '👆 Review your caption, then tap Next →',
+      's-wm-preview': '👆 Review how your post will look, then tap Looks Good →',
       's-platform':   '👆 Choose platforms, then tap Post Now →',
       's-published':  '🎉 You\'re live! Tap Back to Garage to continue.',
       's-discover':   '👆 Tap a build card to see full details!',
       's-build-detail':'👆 Scroll down to see build details + comments!',
       's-profile':    '👆 Tap "Upgrade to Chat Pro" to see the plans!',
-      's-upgrade':    '👆 Tap "Start Chat Pro →" to subscribe!',
+      's-upgrade':    '👆 Choose a plan and tap to subscribe!',
     };
     toast(hints[current] || '👆 Tap a button to continue!');
   }

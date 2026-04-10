@@ -8,11 +8,11 @@
 
 ---
 
-## Phase 1: 12-Screen Onboarding Questionnaire
+## Phase 1: 9-Screen Onboarding Questionnaire
 
 **Goal**: User completes questionnaire, meets their AI buddy, feels "This app gets me."
-**Target**: <10 minutes, 70%+ completion rate.
-**Design Philosophy**: A conversation, not a form. One question per screen. AI feels present throughout.
+**Target**: <6 minutes, 80%+ completion rate.
+**Design Philosophy**: A conversation, not a form. One question per screen (or two combined where natural). AI feels present throughout.
 
 ### Flow Diagram
 
@@ -23,38 +23,35 @@
 [Screen 2: Car Basics]
         │
         ▼
-[Screen 3: Story]
+[Screen 3: Vision + Skill Level (combined)]
         │
         ▼
-[Screen 4: Vision]
+[Screen 4: Budget + Timeline]
         │
         ▼
-[Screen 5: Skill Level]
+[Screen 5: Story (optional)] ──── skip ────▶
+        │                                   │
+        ▼                                   │
+[Screen 6: Excitement Focus] ◀─────────────┘
         │
         ▼
-[Screen 6: Budget + Timeline]
+[Screen 7: Privacy Toggle + Public Builds Explainer]
         │
         ▼
-[Screen 7: Work Completed]
+[Screen 8: Car Name (optional)] ──── skip ────▶
+        │                                       │
+        ▼                                       │
+[Screen 9 (optional): First Question for AI] ◀─┘
         │
         ▼
-[Screen 8: Car Name] ──── skip ────▶
-        │                           │
-        ▼                           │
-[Screen 9: Excitement Focus]  ◀─────┘
-        │
-        ▼
-[Screen 10: First Question for AI] ──── skip ────▶
-        │                                          │
-        ▼                                          │
-[Screen 11: Privacy Toggle]  ◀────────────────────┘
-        │
-        ▼
-[Screen 12: Summary + AI First Response]
+[Screen 10: Summary + AI First Response]
         │
         ▼
 [Home / Garage View]
 ```
+
+**Removed from flow**: Work Completed (screen 7 in old flow) — dropped to reduce onboarding time. Skill Level merged into Vision screen.
+**Made optional**: Car Name, First AI Question — shown with "Skip" affordance.
 
 ---
 
