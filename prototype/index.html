@@ -1666,12 +1666,20 @@ function updateTL(el) {
 const OB = { SKILL: 0, CAR: 1, BUILD: 2, PRIVACY: 3, DONE: 4 };
 let obStep = OB.SKILL;
 
+const OB_INITIAL_DELAY_MS = 350;
+const OB_TYPING_DELAY_MS = 900;
+const OB_DONE_TYPING_DELAY_MS = 1300;
+const OB_SCROLL_DELAY_MS = 60;
+const OB_PICK_DELAY_MS = 420;
+const OB_SELECTED_OPACITY = '1';
+const OB_UNSELECTED_OPACITY = '0.3';
+
 function startOnboarding() {
   obStep = OB.SKILL;
   const chat = document.getElementById('ob-chat');
   chat.innerHTML = '';
   obSetProg(8);
-  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgSkill()); obSetProg(18); }, 1000), 350);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgSkill()); obSetProg(18); }, OB_TYPING_DELAY_MS), OB_INITIAL_DELAY_MS);
 }
 
 function obSetProg(pct) {
@@ -1681,7 +1689,7 @@ function obSetProg(pct) {
 
 function obScrollChat() {
   const c = document.getElementById('ob-chat');
-  if (c) setTimeout(() => { c.scrollTop = c.scrollHeight; }, 60);
+  if (c) setTimeout(() => { c.scrollTop = c.scrollHeight; }, OB_SCROLL_DELAY_MS);
 }
 
 function obAddTyping(chat, cb, delay) {
@@ -1775,20 +1783,20 @@ function obPickSkill(el, label) {
   obStep = OB.CAR;
   obSetProg(38);
   el.classList.add('ob-selected');
-  el.closest('.ob-opts').querySelectorAll('.ob-opt-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? '1' : '0.3'; });
+  el.closest('.ob-opts').querySelectorAll('.ob-opt-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
   const chat = document.getElementById('ob-chat');
   obAddUserMsg(chat, label);
-  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgCar()); obSetProg(45); }, 900), 420);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgCar()); obSetProg(45); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
 }
 
 function obPickCar(btn, label) {
   if (obStep !== OB.CAR) return;
   obStep = OB.BUILD;
   obSetProg(60);
-  btn.closest('.ob-car-card').querySelectorAll('button').forEach(b => { b.disabled = true; b.style.opacity = '0.5'; });
+  btn.closest('.ob-car-card').querySelectorAll('button').forEach(b => { b.disabled = true; b.style.opacity = OB_UNSELECTED_OPACITY; });
   const chat = document.getElementById('ob-chat');
   obAddUserMsg(chat, label + ' ✓');
-  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, 900), 420);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
 }
 
 function obChangeCar() {
@@ -1800,10 +1808,10 @@ function obPickBuild(el, label) {
   obStep = OB.PRIVACY;
   obSetProg(78);
   el.classList.add('ob-selected');
-  el.closest('.ob-opt-grid').querySelectorAll('.ob-opt-card').forEach(c => { c.onclick = null; c.style.opacity = c === el ? '1' : '0.3'; });
+  el.closest('.ob-opt-grid').querySelectorAll('.ob-opt-card').forEach(c => { c.onclick = null; c.style.opacity = c === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
   const chat = document.getElementById('ob-chat');
   obAddUserMsg(chat, label);
-  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgPrivacy()); obSetProg(85); }, 900), 420);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgPrivacy()); obSetProg(85); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
 }
 
 function obPickPrivacy(el, label) {
@@ -1811,10 +1819,10 @@ function obPickPrivacy(el, label) {
   obStep = OB.DONE;
   obSetProg(95);
   el.classList.add('ob-selected');
-  el.closest('.ob-priv-opts').querySelectorAll('.ob-priv-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? '1' : '0.3'; });
+  el.closest('.ob-priv-opts').querySelectorAll('.ob-priv-row').forEach(r => { r.onclick = null; r.style.opacity = r === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
   const chat = document.getElementById('ob-chat');
   obAddUserMsg(chat, label);
-  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgDone()); obSetProg(100); }, 1300), 420);
+  setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgDone()); obSetProg(100); }, OB_DONE_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
 }
 
 /* ── Voice input simulation ──────────────────────────── */
@@ -1840,9 +1848,9 @@ function obVoiceInput() {
         setTimeout(() => {
           if (obStep !== OB.CAR) return;
           obStep = OB.BUILD; obSetProg(60);
-          document.querySelectorAll('.ob-car-card button').forEach(b => { b.disabled = true; b.style.opacity = '0.5'; });
+          document.querySelectorAll('.ob-car-card button').forEach(b => { b.disabled = true; b.style.opacity = OB_UNSELECTED_OPACITY; });
           obAddUserMsg(chat, '2008 Subaru WRX ✓');
-          setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, 900), 420);
+          setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgBuild()); obSetProg(68); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
         }, 200);
         break;
       }
