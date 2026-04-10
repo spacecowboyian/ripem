@@ -147,7 +147,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
 /* ── Top Bar ─────────────────────────────────────────── */
 .top-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 10px;flex-shrink:0;position:relative;z-index:4}
-.logo-btn{background:none;border:none;width:34px;height:34px;border-radius:50%;background:#ff4d00;color:#fff;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .top-icons{display:flex;gap:12px;font-size:19px;color:#666;cursor:pointer}
 
 /* ── Bottom Nav ──────────────────────────────────────── */
@@ -278,6 +277,26 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 #banner{position:absolute;top:0;left:50%;transform:translateX(-50%);background:rgba(255,77,0,.85);backdrop-filter:blur(4px);color:#fff;font-size:9px;font-weight:700;letter-spacing:.5px;padding:3px 12px;border-radius:0 0 7px 7px;z-index:200;pointer-events:none;white-space:nowrap}
 
 /* ══════════════════════════════════════════════════════
+   PROTOTYPE NAV BUTTON (not part of the product)
+══════════════════════════════════════════════════════ */
+#proto-nav{
+  position:absolute;top:10px;left:12px;z-index:500;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+}
+#proto-r-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:#ff4d00;color:#fff;font-size:15px;font-weight:900;
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(255,77,0,.5);
+  transition:transform .15s;
+}
+#proto-r-btn:active{transform:scale(.92)}
+#proto-nav-label{
+  font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+  color:rgba(255,77,0,.6);white-space:nowrap;pointer-events:none;
+}
+
+/* ══════════════════════════════════════════════════════
    HINT TOAST
 ══════════════════════════════════════════════════════ */
 #toast{
@@ -309,7 +328,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <body>
 
 <div id="app">
-  <div id="banner">✦ PROTOTYPE — MVP Happy Path</div>
+  <div id="banner">✦ PROTOTYPE — Wireframe · Not final product</div>
+
+  <!-- Prototype-only nav trigger — does not exist in the real product -->
+  <div id="proto-nav">
+    <button id="proto-r-btn" onclick="openDrawer()" title="Prototype screen index">R</button>
+    <span id="proto-nav-label">Screen Index</span>
+  </div>
 
   <!-- ══════════════════════════════════════════════════
        DRAWER OVERLAY + PANEL
@@ -317,8 +342,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div id="drawer-overlay" onclick="closeDrawer()"></div>
   <div id="drawer">
     <div class="drawer-header">
-      <div class="drawer-logo">RipEm</div>
-      <div class="drawer-tagline">MVP Prototype · All Screens</div>
+      <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#ff4d00;background:rgba(255,77,0,.12);border:1px solid rgba(255,77,0,.25);border-radius:5px;padding:3px 8px;display:inline-block;margin-bottom:10px">⚙ Prototype Tool Only</div>
+      <div class="drawer-logo">Screen Index</div>
+      <div class="drawer-tagline">Navigate wireframe screens · Not part of the product</div>
     </div>
     <div class="drawer-body">
       <div class="drawer-phase">Phase 1 — Onboarding</div>
@@ -378,15 +404,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     </div>
     <div style="height:10px"></div>
     <!-- R logo (drawer trigger) on welcome screen too -->
-    <button class="logo-btn" style="position:absolute;top:44px;left:18px;z-index:5" onclick="openDrawer()">R</button>
   </div>
 
   <!-- SCREEN 2: Car Basics -->
   <div class="screen" id="s-s2">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-welcome')">← Back</button>
+      <button class="nav-back" onclick="go('s-welcome')">← Back</button>
       <span class="nav-right">1 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:8%"></div></div>
@@ -431,8 +455,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s3">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s2')">← Back</button>
+      <button class="nav-back" onclick="go('s-s2')">← Back</button>
       <span class="nav-right">2 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:17%"></div></div>
@@ -450,8 +473,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s4">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s3')">← Back</button>
+      <button class="nav-back" onclick="go('s-s3')">← Back</button>
       <span class="nav-right">3 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:25%"></div></div>
@@ -475,8 +497,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s5">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s4')">← Back</button>
+      <button class="nav-back" onclick="go('s-s4')">← Back</button>
       <span class="nav-right">4 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:33%"></div></div>
@@ -498,8 +519,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s6">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s5')">← Back</button>
+      <button class="nav-back" onclick="go('s-s5')">← Back</button>
       <span class="nav-right">5 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:42%"></div></div>
@@ -527,8 +547,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s7">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s6')">← Back</button>
+      <button class="nav-back" onclick="go('s-s6')">← Back</button>
       <span class="nav-right">6 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:50%"></div></div>
@@ -546,8 +565,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s8">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s7')">← Back</button>
+      <button class="nav-back" onclick="go('s-s7')">← Back</button>
       <span class="nav-right">7 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:58%"></div></div>
@@ -568,8 +586,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s9">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s8')">← Back</button>
+      <button class="nav-back" onclick="go('s-s8')">← Back</button>
       <span class="nav-right">8 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:67%"></div></div>
@@ -587,8 +604,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s10">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s9')">← Back</button>
+      <button class="nav-back" onclick="go('s-s9')">← Back</button>
       <span class="nav-right">9 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:75%"></div></div>
@@ -606,8 +622,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-s11">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-s10')">← Back</button>
+      <button class="nav-back" onclick="go('s-s10')">← Back</button>
       <span class="nav-right">10 of 12</span>
     </div>
     <div class="prog-wrap"><div class="prog-fill" style="width:83%"></div></div>
@@ -643,8 +658,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
     <!-- Response state -->
     <div id="s12-content" class="body" style="display:none">
       <div class="nav" style="padding:6px 0 4px">
-        <button class="logo-btn" onclick="openDrawer()">R</button>
-        <span style="margin-left:10px;font-size:13px;color:#555">11 of 12</span>
+        <span style="font-size:13px;color:#555">11 of 12</span>
       </div>
       <div class="h1">Meet your AI buddy 🤝</div>
       <div class="ai-wrap">
@@ -665,7 +679,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-home">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="top-bar">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
       <div style="font-size:17px;font-weight:800;color:#f0f0f0">RipEm</div>
       <div class="top-icons">
         <span onclick="toast('🔍 Search coming in Phase 2!')">🔍</span>
@@ -727,8 +740,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-record">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-home')">✕ Cancel</button>
+      <button class="nav-back" onclick="go('s-home')">✕ Cancel</button>
     </div>
     <div class="body" style="align-items:center;text-align:center;justify-content:center">
       <div class="wave">
@@ -753,8 +765,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-review">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-record')">← Back</button>
+      <button class="nav-back" onclick="go('s-record')">← Back</button>
     </div>
     <div class="body">
       <div class="h1">"Here's what I heard:"</div>
@@ -786,7 +797,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-air">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
     </div>
     <div class="body" style="padding-top:12px">
       <div style="display:flex;align-items:center;gap:8px">
@@ -810,8 +820,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-log-detail">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-home')">← Back</button>
+      <button class="nav-back" onclick="go('s-home')">← Back</button>
       <span class="nav-right">Mar 22</span>
     </div>
     <div class="body">
@@ -843,7 +852,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-ai">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="top-bar">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
       <div style="font-size:16px;font-weight:700;color:#f0f0f0">AI Chat</div>
       <div class="top-icons"><span onclick="go('s-home')">⌂</span></div>
     </div>
@@ -883,7 +891,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-pub-trigger">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="top-bar">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
       <div style="font-size:17px;font-weight:800;color:#f0f0f0">RipEm</div>
       <div class="top-icons"><span onclick="go('s-profile')">👤</span></div>
     </div>
@@ -917,8 +924,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-sel-logs">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-pub-trigger')">✕ Cancel</button>
+      <button class="nav-back" onclick="go('s-pub-trigger')">✕ Cancel</button>
     </div>
     <div class="body">
       <div class="h1">"Which sessions should I include?"</div>
@@ -958,8 +964,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-caption">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-sel-logs')">← Back</button>
+      <button class="nav-back" onclick="go('s-sel-logs')">← Back</button>
     </div>
     <div class="body">
       <div class="h1">"Here's your build update:"</div>
@@ -988,8 +993,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-platform">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-caption')">← Back</button>
+      <button class="nav-back" onclick="go('s-caption')">← Back</button>
     </div>
     <div class="body">
       <div class="h1">"Where do you want to post?"</div>
@@ -1024,7 +1028,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-published">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
     </div>
     <div class="body" style="align-items:center;text-align:center;justify-content:center;gap:16px">
       <div class="pub-icon">🎉</div>
@@ -1047,7 +1050,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-discover">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="top-bar">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
       <div style="font-size:17px;font-weight:800;color:#f0f0f0">Discover</div>
       <div class="top-icons">
         <span onclick="toast('🔽 Filter: make, mod type, skill level, following')">⚙️</span>
@@ -1129,8 +1131,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-build-detail">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-discover')">← Back</button>
+      <button class="nav-back" onclick="go('s-discover')">← Back</button>
       <span class="nav-right" style="cursor:pointer" onclick="toast('↗️ Share sheet coming in Phase 3!')">↗️ Share</span>
     </div>
     <div class="body">
@@ -1181,7 +1182,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-profile">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="top-bar">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
       <div style="font-size:17px;font-weight:800;color:#f0f0f0">Profile</div>
       <div class="top-icons"><span onclick="toast('⚙️ Settings panel coming in Phase 2!')">⚙️</span></div>
     </div>
@@ -1235,8 +1235,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <div class="screen" id="s-upgrade">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="nav">
-      <button class="logo-btn" onclick="openDrawer()">R</button>
-      <button class="nav-back" style="margin-left:10px" onclick="go('s-profile')">← Back</button>
+      <button class="nav-back" onclick="go('s-profile')">← Back</button>
     </div>
     <div class="body">
       <div style="text-align:center;padding:12px 0 20px">
