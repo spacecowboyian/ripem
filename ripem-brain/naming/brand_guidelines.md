@@ -2,14 +2,14 @@
 
 ## Name
 
-- **App name**: RipEm
-- **Written form**: RipEm (capital R, capital E, no space)
-- **Never write**: RIPEM, ripem, Ripem, Rip-Em
+- **App name**: RiPeM
+- **Written form**: RiPeM (capital R, lowercase i, capital P, lowercase e, capital M — evoking RPM)
+- **Never write**: RIPEM, ripem, Ripem, RipEm, Rip-Em
 
 ## Voice & Tone
 
 ### Personality
-RipEm sounds like a knowledgeable friend who's been building cars for years. Not a corporate tool. Not a generic SaaS product.
+RiPeM sounds like a knowledgeable friend who's been building cars for years. Not a corporate tool. Not a generic SaaS product.
 
 | Trait | Description |
 |-------|-------------|

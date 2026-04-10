@@ -2,7 +2,7 @@
 
 ## Product Constraints
 
-### What RipEm Is NOT
+### What RiPeM Is NOT
 - Not a generic project management tool (it's automotive-specific)
 - Not a social network (community is secondary to the build log)
 - Not a parts marketplace (parts search is a discovery layer, not a store)

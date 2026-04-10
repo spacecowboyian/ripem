@@ -1,7 +1,7 @@
-# RipEm User Journey Maps
+# RiPeM User Journey Maps
 
 **Status**: v1.0 — April 2026
-**Author**: UX Researcher (RipEm)
+**Author**: UX Researcher (RiPeM)
 **Purpose**: Map each persona's end-to-end journey through the MVP phases. These journeys feed directly into Product Manager user stories and engineering acceptance criteria.
 
 ---
@@ -14,7 +14,7 @@ Each journey map follows the same structure:
 - **Thoughts/Emotions**: What the user is thinking and feeling
 - **Pain Points**: Where friction occurs
 - **Opportunities**: Design moments to delight or retain
-- **RipEm Response**: What the app does
+- **RiPeM Response**: What the app does
 
 ---
 
@@ -32,11 +32,11 @@ Pain Points   : Generic maintenance apps aren't for builders; they're for oil
                 change reminders
 Opportunity   : App Store screenshot should show a voice log in progress,
                 not a form
-RipEm Response: N/A (App Store listing)
+RiPeM Response: N/A (App Store listing)
 
 STAGE 2 — Download + Onboarding (Phase 1)
 ───────────────────────────────────────────────────────────────────────────────
-User Action   : Downloads RipEm, answers 12 onboarding questions
+User Action   : Downloads RiPeM, answers 12 onboarding questions
 Thoughts      : "Why do they need to know the story of my car? Whatever, fine."
                 (Screen 3)
               : "Oh — it knows my WRX. It knows the EJ25 has a head gasket issue.
@@ -47,7 +47,7 @@ Pain Points   : Screen 3 (story) feels personal; Marcus isn't sentimental
 Opportunity   : Screen 3 copy: "Even just 'bought it off a guy' works."
               : Screen 12 first response references EJ205 head gasket — shows
                 the AI knows WRX culture, not just Marcus's inputs
-RipEm Response: AI first response: "2008 WRX with 80k miles — nice. That EJ205
+RiPeM Response: AI first response: "2008 WRX with 80k miles — nice. That EJ205
                 is solid if it's been taken care of. You mentioned brake work
                 already done — I'll keep that logged. What's next?"
 
@@ -63,7 +63,7 @@ Opportunity   : Log button should be a prominent floating action button (FAB)
                 the rest"
 User Says     : "Just swapped the rear brake pads — used EBC Greenstuff, took
                 about an hour, pads were like 45 bucks from RockAuto"
-RipEm Response: Extracts → Part: EBC Greenstuff brake pads (rear), Time: 1hr,
+RiPeM Response: Extracts → Part: EBC Greenstuff brake pads (rear), Time: 1hr,
                 Cost: $45, Source: RockAuto
               : Shows confirmation card: "Got it. Want me to add a maintenance
                 reminder for next pad inspection in 25,000 miles?"
@@ -75,7 +75,7 @@ User Action   : Returns 2 weeks later, asks "When did I do my brakes?"
 Thoughts      : "Let me see if this thing actually knows"
 Emotion       : Testing the AI
 Pain Points   : If answer is slow or generic, Marcus churns
-RipEm Response: "March 22nd — rear brake pads, EBC Greenstuff, $45 from
+RiPeM Response: "March 22nd — rear brake pads, EBC Greenstuff, $45 from
                 RockAuto. About 1 hour of work. You're due for front pads
                 based on your mileage."
 Emotion       : Converted. "This is better than a spreadsheet."
@@ -100,13 +100,13 @@ Monetization  : Ad impressions during parts search
 ```
 STAGE 1 — Discovery
 ───────────────────────────────────────────────────────────────────────────────
-User Action   : Jordan sees a RipEm watermark on an Instagram Reel — the
+User Action   : Jordan sees a RiPeM watermark on an Instagram Reel — the
                 post has good engagement and the build is sick
-Thoughts      : "What's RipEm? This post looks clean."
+Thoughts      : "What's RiPeM? This post looks clean."
 Emotion       : Curious, slightly competitive
 Pain Points   : N/A — viral loop working as intended
 Opportunity   : Watermark must be visually clean; small, tasteful, corner
-RipEm Response: N/A (watermark in Instagram)
+RiPeM Response: N/A (watermark in Instagram)
 
 STAGE 2 — Download + Onboarding (Phase 1)
 ───────────────────────────────────────────────────────────────────────────────
@@ -120,7 +120,7 @@ Opportunity   : Screen 11 should explain the watermark as a growth mechanic:
                 posts drive followers back to your build. Think of it as a
                 free co-sign."
               : Show a preview of what a post looks like with the watermark
-RipEm Response: AI first response: "EG Civic — solid choice. Coilover install
+RiPeM Response: AI first response: "EG Civic — solid choice. Coilover install
                 is a great first milestone. What are you going for —
                 flush stance, track setup, or daily-able drop?"
 Emotion       : "It knows what an EG is. It knows stance culture. I'm in."
@@ -133,7 +133,7 @@ Emotion       : Deliberate, invested
 User Says     : "Just finished the coilover install — BC Racing BR series,
                 dropped it about 2 inches, looks aggressive. Took most of the
                 day, maybe 6 hours. Car sits way better."
-RipEm Response: Extracts → Part: BC Racing BR coilovers, Time: 6hr, Drop: ~2"
+RiPeM Response: Extracts → Part: BC Racing BR coilovers, Time: 6hr, Drop: ~2"
               : "Nice. Ready to publish a build update? I can write a caption
                 from your logs."
 
@@ -142,11 +142,11 @@ STAGE 4 — Publishing (Phase 3)
 User Action   : Taps "Publish Build Update"
 Thoughts      : "I hope the caption doesn't sound like a robot wrote it"
 Emotion       : Excited but anxious
-RipEm Response: AI generates caption draft:
+RiPeM Response: AI generates caption draft:
                 "Finally got the coils in. BC Racing BR series on the EG —
                 sitting about 2 inches lower and it looks mean. 6 hours in
                 the garage today. Next up: camber plates and a wheel fitment
-                check. Drop game is underway. #RipEm #EGCivic #StanceNation
+                check. Drop game is underway. #RiPeM #EGCivic #StanceNation
                 #BCRacing"
               : Watermark preview shown before posting
               : "Edit caption or post as-is?"
@@ -154,15 +154,15 @@ Emotion       : "The hashtags are right. The tone is right. This actually
                 sounds like me."
 Pain Points   : Jordan will edit the caption — she should always be able to
               : Watermark must look like a badge, not a spam tag
-RipEm Response: One-tap Instagram publish
-              : Posts go live with RipEm watermark in bottom-right corner
+RiPeM Response: One-tap Instagram publish
+              : Posts go live with RiPeM watermark in bottom-right corner
 
 STAGE 5 — Discovery + Community (Phase 3)
 ───────────────────────────────────────────────────────────────────────────────
-User Action   : Jordan checks the Discovery feed in RipEm
+User Action   : Jordan checks the Discovery feed in RiPeM
 Thoughts      : "Are there other EG builds here I can follow?"
 Emotion       : Community-seeking
-RipEm Response: Discovery feed surfaces EG Civic builds
+RiPeM Response: Discovery feed surfaces EG Civic builds
               : Jordan subscribes to 3 other builders
 Key Insight   : Jordan's retention loop is social — community engagement
                 keeps her active between build sessions
@@ -177,13 +177,13 @@ Emotion       : "I might upgrade just to remove ads from my AI convos"
 
 ## Journey 3: Devon (Learner) — "From Research Spiral to AI Clarity"
 
-**Scenario**: Devon just bought his RX-8. He's been on forums for three weeks and is overwhelmed. He downloads RipEm hoping the AI is better than search.
+**Scenario**: Devon just bought his RX-8. He's been on forums for three weeks and is overwhelmed. He downloads RiPeM hoping the AI is better than search.
 
 ```
 STAGE 1 — Discovery
 ───────────────────────────────────────────────────────────────────────────────
-User Action   : Devon hears about RipEm in an RX-8 Facebook group
-              : Someone posts: "I've been using RipEm to plan my build —
+User Action   : Devon hears about RiPeM in an RX-8 Facebook group
+              : Someone posts: "I've been using RiPeM to plan my build —
                 the AI actually knows the Renesis"
 Thoughts      : "If it actually knows the rotary, I'm interested"
 Emotion       : Skeptical optimism — has been burned by generic AI before
@@ -201,7 +201,7 @@ Pain Points   : Screen 7 needs a "just got it / planning phase" option
 Opportunity   : Screen 7: Include "Just bought it — planning phase" as option
               : Screen 6: Allow "TBD / figuring it out" response
               : Screen 12 (AI first response) must prove value IMMEDIATELY
-RipEm Response: AI first response: "2004 RX-8 — you're getting into rotary
+RiPeM Response: AI first response: "2004 RX-8 — you're getting into rotary
                 territory. I'm going to be real with you: the Renesis has a
                 reputation, but it's manageable if you know what to watch.
                 First thing: compression test ASAP if you haven't done one.
@@ -232,7 +232,7 @@ STAGE 4 — Discovery Feed (Phase 3)
 User Action   : Devon opens Discovery feed, searches for RX-8 builds
 Thoughts      : "I want to see what people are actually doing with these cars"
 Emotion       : Inspired, taking notes mentally
-RipEm Response: Feed shows RX-8 builds, filterable by mod type
+RiPeM Response: Feed shows RX-8 builds, filterable by mod type
               : Devon can see: parts used, costs, timelines, photos
               : Can subscribe to builders to follow their progress
 Key Insight   : Devon doesn't have a build to share yet — the feed is a
@@ -243,7 +243,7 @@ STAGE 5 — Transition to Documenter
 User Action   : Devon starts his first job (compression test on cold start)
 Thoughts      : "I should log this"
 Emotion       : Proud — this is day one of his build
-RipEm Response: AI sends a proactive nudge: "You mentioned you were going to
+RiPeM Response: AI sends a proactive nudge: "You mentioned you were going to
                 do a compression test. How did it go?"
 Key Insight   : Devon's transition from Learner to Documenter is triggered
                 by starting work — proactive AI nudges accelerate this

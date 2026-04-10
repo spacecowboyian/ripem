@@ -1,4 +1,4 @@
-# RipEm MVP User Stories
+# RiPeM MVP User Stories
 
 **Author**: ProductManager (RIP-3)
 **Status**: Draft v1.0
@@ -415,7 +415,7 @@
 ### Story P3-1: Connect Instagram Account
 
 **As a** Content Creator,
-**I want to** connect my Instagram account to RipEm,
+**I want to** connect my Instagram account to RiPeM,
 **so that** I can publish my build content directly without switching apps.
 
 **Priority**: Critical — gate to publishing feature
@@ -451,14 +451,14 @@
 ### Story P3-3: Watermark Application
 
 **As a** Content Creator on the free tier,
-**I want** a RipEm watermark automatically applied to all my published media,
+**I want** a RiPeM watermark automatically applied to all my published media,
 **so that** viewers can find the app and my build gains organic visibility.
 
 **Priority**: Critical — core to growth loop
 
 **Acceptance Criteria**:
 - [ ] Watermark is applied to all media before publishing (server-side)
-- [ ] Watermark includes the RipEm logo and a clickable URL
+- [ ] Watermark includes the RiPeM logo and a clickable URL
 - [ ] Watermark position and size are consistent and non-obtrusive
 - [ ] Free tier users cannot remove the watermark
 - [ ] Watermark is applied before the caption preview is shown to user
@@ -538,7 +538,7 @@
 
 ### Story P3-8: Subscription Tier — Free Experience
 
-**As a** Weekend Warrior using RipEm for free,
+**As a** Weekend Warrior using RiPeM for free,
 **I want to** track one project, use voice logging, and browse the discovery feed with ads,
 **so that** I get real value without paying anything.
 
@@ -591,8 +591,8 @@
 
 ### Story P3-11: Watermark Drives New User Acquisition (Growth Loop)
 
-**As a** new user who saw a RipEm watermark on an Instagram post,
-**I want to** tap the watermark and land on a page that shows me what RipEm is,
+**As a** new user who saw a RiPeM watermark on an Instagram post,
+**I want to** tap the watermark and land on a page that shows me what RiPeM is,
 **so that** I can understand the product and download the app in one motion.
 
 **Priority**: Critical — core business growth mechanism
@@ -600,7 +600,7 @@
 **Acceptance Criteria**:
 - [ ] Watermark URL resolves to a landing page (web or App Store)
 - [ ] New installs from watermark clicks are trackable via UTM or deep link attribution
-- [ ] Landing page clearly communicates RipEm's value proposition
+- [ ] Landing page clearly communicates RiPeM's value proposition
 - [ ] App Store link is correct and the app is available for download
 - [ ] Attribution data is stored so marketing can measure watermark-driven installs
 
@@ -610,7 +610,7 @@
 
 ### Story CX-1: Error Handling and Graceful Degradation
 
-**As any** RipEm user,
+**As any** RiPeM user,
 **I want to** see clear, helpful error messages whenever something goes wrong,
 **so that** I'm never confused by a blank screen or a cryptic technical error.
 
@@ -627,7 +627,7 @@
 
 ### Story CX-2: iOS Performance Baseline
 
-**As any** RipEm user,
+**As any** RiPeM user,
 **I want to** use the app without lag or slowness,
 **so that** the experience feels native and polished.
 

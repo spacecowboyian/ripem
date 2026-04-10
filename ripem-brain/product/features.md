@@ -2,7 +2,7 @@
 
 ## Subscription Tiers
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 | Tier | Price | Key Features |
 |------|-------|--------------|

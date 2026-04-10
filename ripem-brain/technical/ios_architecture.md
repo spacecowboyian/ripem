@@ -10,7 +10,7 @@
 | Architecture | MVVM + Redux-style AppStore |
 | Offline strategy | SQLite local DB + SyncService |
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 ---
 
@@ -25,7 +25,7 @@ AppStore (Redux-style shared state)
     ↓
 Services Layer (API, Audio, Database, Sync)
     ↓
-External APIs (RipEm Backend, Whisper, Instagram, Apple OAuth, S3)
+External APIs (RiPeM Backend, Whisper, Instagram, Apple OAuth, S3)
 ```
 
 ---

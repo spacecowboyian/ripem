@@ -1,12 +1,12 @@
 # Automotive Terms
 
-This glossary covers automotive and car culture terminology used in RipEm documentation and AI prompts.
+This glossary covers automotive and car culture terminology used in RiPeM documentation and AI prompts.
 
 ---
 
 ## A
 
-**Aftermarket** — Parts or accessories not made by the original vehicle manufacturer (OEM). Aftermarket parts are a core part of the RipEm use case.
+**Aftermarket** — Parts or accessories not made by the original vehicle manufacturer (OEM). Aftermarket parts are a core part of the RiPeM use case.
 
 **Alignment** — The adjustment of wheel angles to manufacturer or desired specifications. Often needed after suspension changes.
 
@@ -68,7 +68,7 @@ This glossary covers automotive and car culture terminology used in RipEm docume
 
 ## R
 
-**RPM** — Revolutions Per Minute. A measure of engine speed. Also the inspiration for the name "RipEm."
+**RPM** — Revolutions Per Minute. A measure of engine speed. Also the inspiration for the name "RiPeM."
 
 **Resto-mod** — A vehicle that is restored to original appearance but modified with modern mechanical components.
 

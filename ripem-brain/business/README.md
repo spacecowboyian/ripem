@@ -1,12 +1,12 @@
 # Business
 
-**Purpose**: Defines how RipEm makes money, the market opportunity, and go-to-market strategy.
+**Purpose**: Defines how RiPeM makes money, the market opportunity, and go-to-market strategy.
 
 **For Whom**: Agents supporting fundraising, pricing decisions, or market analysis.
 
 ## Overview
 
-RipEm operates on a freemium + ad-supported business model. The free tier is genuinely useful. Revenue comes from ads in parts search and a premium subscription that removes ads and unlocks advanced features.
+RiPeM operates on a freemium + ad-supported business model. The free tier is genuinely useful. Revenue comes from ads in parts search and a premium subscription that removes ads and unlocks advanced features.
 
 ## Key Sections
 

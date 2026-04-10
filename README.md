@@ -1,6 +1,6 @@
-# RipEm
+# RiPeM
 
-RipEm is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects.
+RiPeM is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects.
 
 ## Knowledge base (the brain)
 

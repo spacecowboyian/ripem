@@ -1,8 +1,8 @@
 # Product Definition
 
-## What is RipEm?
+## What is RiPeM?
 
-RipEm is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think: "helpful mechanic in your pocket" that knows your car, your budget, your project history, and what thousands of others with the same car have done.
+RiPeM is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think: "helpful mechanic in your pocket" that knows your car, your budget, your project history, and what thousands of others with the same car have done.
 
 ## Problem Statement
 
@@ -10,7 +10,7 @@ Car enthusiasts lack a dedicated, intelligent tool to document their builds. The
 
 ## Solution
 
-RipEm combines three powerful capabilities:
+RiPeM combines three powerful capabilities:
 1. **Voice-to-Log**: Speak naturally after a work session; AI transcribes and extracts parts, costs, and time automatically.
 2. **Intelligent AI Assistant**: Ask questions about YOUR specific car and project. Get answers informed by your history and community consensus.
 3. **Build Publishing + Discovery**: Publish your build with one tap. AI auto-formats content. Watermark drives viral growth back to the app.
@@ -24,7 +24,7 @@ RipEm combines three powerful capabilities:
 
 ## Information Architecture
 
-Every vehicle project in RipEm stores five categories of information:
+Every vehicle project in RiPeM stores five categories of information:
 
 ### Project Details
 - Vehicle make, model, year, VIN

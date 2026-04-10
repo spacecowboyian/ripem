@@ -11,9 +11,9 @@ User publishes (auto-watermarked content)
        ↓
 Content shared on TikTok / Instagram / YouTube Shorts
        ↓
-Viewers see RipEm watermark
+Viewers see RiPeM watermark
        ↓
-Viewers download RipEm
+Viewers download RiPeM
        ↓
 New users log their builds
        ↓ (loop repeats)

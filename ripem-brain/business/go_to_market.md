@@ -8,7 +8,7 @@
 2. Focus on early adopter feedback and product refinement
 3. Identify 20–50 "power builder" accounts in niche Facebook Groups (e.g., Honda Civic mods, Subaru WRX builds, Miata owners)
 4. Offer exclusive beta access and white-glove onboarding; offer free Premium for first 6 months
-5. Capture their builds on RipEm; use their content as social proof
+5. Capture their builds on RiPeM; use their content as social proof
 6. Seed content on TikTok and Instagram using their real builds
 7. Founder's landing page and referral program
 

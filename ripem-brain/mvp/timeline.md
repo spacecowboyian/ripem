@@ -1,6 +1,6 @@
 # MVP Timeline
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 ## 8-Week Build Plan
 

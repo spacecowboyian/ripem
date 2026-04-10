@@ -2,9 +2,9 @@
 
 ## Overview
 
-Complete information architecture for RipEm MVP. Covers entity relationships, full SQL schema, data flow diagrams, AI context retrieval, and query patterns.
+Complete information architecture for RiPeM MVP. Covers entity relationships, full SQL schema, data flow diagrams, AI context retrieval, and query patterns.
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 ---
 

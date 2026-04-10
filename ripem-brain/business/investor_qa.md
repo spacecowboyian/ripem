@@ -4,17 +4,17 @@ This document anticipates and answers questions from potential investors.
 
 ---
 
-## Q: What is RipEm?
-**A**: RipEm is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think "Strava for car builds" — a voice-first logging app with an intelligent automotive AI assistant and a community sharing engine.
+## Q: What is RiPeM?
+**A**: RiPeM is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think "Strava for car builds" — a voice-first logging app with an intelligent automotive AI assistant and a community sharing engine.
 
 ---
 
-## Q: What problem does RipEm solve?
-**A**: Car enthusiasts — millions of them — spend thousands of dollars and hundreds of hours on project vehicles, but have no dedicated tool to manage it. They use spreadsheets, camera rolls, and scattered Facebook posts. RipEm gives them one place to log, remember, and share everything.
+## Q: What problem does RiPeM solve?
+**A**: Car enthusiasts — millions of them — spend thousands of dollars and hundreds of hours on project vehicles, but have no dedicated tool to manage it. They use spreadsheets, camera rolls, and scattered Facebook posts. RiPeM gives them one place to log, remember, and share everything.
 
 ---
 
-## Q: How does RipEm make money?
+## Q: How does RiPeM make money?
 **A**: Freemium + ads. The free tier is genuinely useful. Ads appear only in the parts/tools search section. A premium subscription ($4.99–9.99/month) removes ads and unlocks social posting and analytics. Additional revenue from affiliate links in parts search and an Enterprise tier ($19.99+/month) for collaborative projects.
 
 ---
@@ -25,7 +25,7 @@ This document anticipates and answers questions from potential investors.
 ---
 
 ## Q: What's the moat?
-**A**: Three things: (1) **Data flywheel** — every logged build makes the AI smarter for the next user; (2) **Community lock-in** — your build history lives in RipEm; (3) **Viral growth** — the watermark creates organic acquisition at near-zero CAC.
+**A**: Three things: (1) **Data flywheel** — every logged build makes the AI smarter for the next user; (2) **Community lock-in** — your build history lives in RiPeM; (3) **Viral growth** — the watermark creates organic acquisition at near-zero CAC.
 
 ---
 
@@ -44,9 +44,9 @@ This document anticipates and answers questions from potential investors.
 
 ---
 
-## Q1: Why would someone pay for RipEm when they can use ChatGPT for free?
+## Q1: Why would someone pay for RiPeM when they can use ChatGPT for free?
 
-**A**: Specialization and context. Generic ChatGPT requires you to provide all context every conversation. RipEm:
+**A**: Specialization and context. Generic ChatGPT requires you to provide all context every conversation. RiPeM:
 - **Understands automotive context**: Built with automotive restoration workflows, terminology, and best practices baked in
 - **Knows your car**: Remembers your vehicle specs, past maintenance, budget, goals
 - **Leverages community knowledge**: Bases recommendations on what 10,000+ builders with the same car have done, not just internet forums
@@ -77,7 +77,7 @@ Philosophy: "We're here to help you go from dream to reality you can actually dr
 - **We remove the work**: App notices good work being done, nudges user: "This is cool — snap a picture. We'll make a post about it"
 - **Automatic publishing**: App creates the Instagram post for you with AI narration, photos, descriptions — no effort required
 - **Niche clustering**: Community self-organizes by car type and modification path
-- **Watermark virality**: Every post has RipEm watermark — drives discovery back to app
+- **Watermark virality**: Every post has RiPeM watermark — drives discovery back to app
 - **Network effects**: Early adopters create content → attracts more builders → content quality improves → more adoption
 
 ---
@@ -85,7 +85,7 @@ Philosophy: "We're here to help you go from dream to reality you can actually dr
 ## Q4: Who's liable if an AI recommendation causes damage or injury?
 
 **A**: Multi-layered legal + UX protection.
-1. **Terms & Conditions**: Users sign upfront that RipEm is advisory only, not guaranteed
+1. **Terms & Conditions**: Users sign upfront that RiPeM is advisory only, not guaranteed
 2. **AI guardrails**: App actively prevents dangerous recommendations with warnings
 3. **Confidence scoring**: All advice is transparent about community consensus
    - "Only 1 person thought this was good, 72 thought it was bad — I don't recommend it"
@@ -107,7 +107,7 @@ Approach: Transparency and honesty build trust better than hiding behind legal d
 2. User documents work with voice logging + photos
 3. AI publishes automatically — creates Instagram/TikTok post with watermark and narrative
 4. Post goes viral/shared — watermark visible to millions of viewers
-5. "Hey, where's that from?" — viewers click watermark or search RipEm
+5. "Hey, where's that from?" — viewers click watermark or search RiPeM
 6. New user discovery — joins app, sees active build community, finds their car type/niche
 7. Network effects — more builds = more valuable feed = more engagement
 

@@ -1,12 +1,12 @@
 # Design Decisions
 
-This document records key decisions made during RipEm's design and development. For each decision: what was decided, why, and what was considered but rejected.
+This document records key decisions made during RiPeM's design and development. For each decision: what was decided, why, and what was considered but rejected.
 
 ---
 
 ## DD-001: iOS First
 
-**Decision**: RipEm is iOS-first. The web experience is secondary.
+**Decision**: RiPeM is iOS-first. The web experience is secondary.
 
 **Rationale**:
 - Target users (car enthusiasts) are predominantly on mobile
@@ -53,7 +53,7 @@ This document records key decisions made during RipEm's design and development. 
 
 ## DD-004: Watermark on Free Tier
 
-**Decision**: All published content from free-tier users carries a RipEm watermark that cannot be removed.
+**Decision**: All published content from free-tier users carries a RiPeM watermark that cannot be removed.
 
 **Rationale**:
 - The watermark is the primary viral growth mechanism
@@ -84,7 +84,7 @@ This document records key decisions made during RipEm's design and development. 
 
 ## DD-006: Backend Language and Framework — Node.js + TypeScript + Express
 
-**Decision**: The RipEm backend is built with Node.js, TypeScript, and Express.
+**Decision**: The RiPeM backend is built with Node.js, TypeScript, and Express.
 
 **Rationale**:
 - TypeScript provides type safety across API contracts, reducing integration bugs between iOS and backend
@@ -104,7 +104,7 @@ This document records key decisions made during RipEm's design and development. 
 
 ## DD-007: Hosting Provider — Railway
 
-**Decision**: RipEm infrastructure is hosted on Railway for the MVP (API + PostgreSQL + Redis).
+**Decision**: RiPeM infrastructure is hosted on Railway for the MVP (API + PostgreSQL + Redis).
 
 **Rationale**:
 - Railway natively manages PostgreSQL and Redis alongside the API service — single platform reduces ops context switching for a small team
@@ -138,7 +138,7 @@ This document records key decisions made during RipEm's design and development. 
 - Future: Paperclip scheduler can enforce this natively using run token telemetry from `ai_token_usage` table
 
 **Alternatives considered**:
-- Per-user token caps (RipEm product level) — separate concern; addressed in free-tier monthly limits
+- Per-user token caps (RiPeM product level) — separate concern; addressed in free-tier monthly limits
 - Reducing agent concurrent runs to 1 (already set via `maxConcurrentRuns: 1`) — helps but doesn't prevent sequential large tasks from stacking
 - Hard token limits per run — too restrictive; would interrupt valid long-running tasks mid-execution
 

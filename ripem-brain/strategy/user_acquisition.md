@@ -2,7 +2,7 @@
 
 ## Acquisition Strategy Overview
 
-RipEm's acquisition strategy is **organic-first** with targeted seeding. The watermark loop handles scale; human seeding handles the cold start.
+RiPeM's acquisition strategy is **organic-first** with targeted seeding. The watermark loop handles scale; human seeding handles the cold start.
 
 ## Phase 1: Seeding (Pre-Launch)
 

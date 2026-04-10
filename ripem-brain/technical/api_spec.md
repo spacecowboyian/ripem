@@ -9,7 +9,7 @@
 - All dates are ISO 8601 strings in UTC
 - Pagination: `page` + `limit` params; responses include `pagination.has_next`
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 ---
 
@@ -172,7 +172,7 @@ Generate caption + watermark for log entry.
 ```json
 // Response 200
 {
-  "caption": "Just upgraded Dale's exhaust...\n\nTracking on RipEm. [link]",
+  "caption": "Just upgraded Dale's exhaust...\n\nTracking on RiPeM. [link]",
   "watermark_url": "https://ripem.app/dale?src=instagram&utm_campaign=...",
   "preview_image_url": "https://s3.amazonaws.com/preview.jpg"
 }

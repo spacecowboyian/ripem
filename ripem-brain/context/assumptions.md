@@ -1,6 +1,6 @@
 # Assumptions
 
-These are the core assumptions and hypotheses that underpin RipEm's product, business, and strategy decisions. Each assumption should be validated through user research, data, or market evidence.
+These are the core assumptions and hypotheses that underpin RiPeM's product, business, and strategy decisions. Each assumption should be validated through user research, data, or market evidence.
 
 ---
 
@@ -31,7 +31,7 @@ These are the core assumptions and hypotheses that underpin RipEm's product, bus
 **Status**: Unvalidated
 
 ### A-B2: The watermark drives measurable installs
-**Assumption**: The RipEm watermark on shared content will generate a viral coefficient (K-factor) of ≥ 0.3.
+**Assumption**: The RiPeM watermark on shared content will generate a viral coefficient (K-factor) of ≥ 0.3.
 **Validation method**: Track attribution from deep links in watermark
 **Status**: Unvalidated
 

@@ -1,14 +1,14 @@
-# RipEm — Name Rationale
+# RiPeM — Name Rationale
 
-## Why "RipEm"?
+## Why "RiPeM"?
 
-The name "RipEm" was chosen because it captures multiple layers of meaning that resonate authentically with the car enthusiast audience.
+The name "RiPeM" was chosen because it captures multiple layers of meaning that resonate authentically with the car enthusiast audience.
 
 ### 1. RPM Energy
 "Rip" echoes RPM — the fundamental unit of engine performance. It signals speed, progress, and power without spelling it out.
 
 ### 2. TikTok-Native Rhythm
-Two syllables. Short. Punchy. It fits the social media ecosystem where car content thrives. Easy to say in a sentence: "Did you see that build on RipEm?"
+Two syllables. Short. Punchy. It fits the social media ecosystem where car content thrives. Easy to say in a sentence: "Did you see that build on RiPeM?"
 
 ### 3. Car Culture Vernacular
 "Ripping" something is car-culture speak — you rip a corner, you rip a run, you rip a mod. "Em" adds the conversational shorthand of a community ("rip 'ems").
@@ -23,9 +23,9 @@ It's not a generic compound noun (BuildLog, CarTrack, etc.). It stands out in Ap
 
 A good app name passes the "pub test": someone can say it in a sentence at a bar and it sounds natural.
 
-✅ "Have you seen my build on RipEm?"
-✅ "I logged it all in RipEm"
-✅ "Check out this Civic build on RipEm"
+✅ "Have you seen my build on RiPeM?"
+✅ "I logged it all in RiPeM"
+✅ "Check out this Civic build on RiPeM"
 
 ## See Also
 

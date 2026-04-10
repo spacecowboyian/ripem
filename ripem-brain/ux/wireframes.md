@@ -1,7 +1,7 @@
-# RipEm Wireframe Flows
+# RiPeM Wireframe Flows
 
 **Status**: v1.0 — April 2026
-**Author**: UX Researcher (RipEm)
+**Author**: UX Researcher (RiPeM)
 **Purpose**: Structured screen-by-screen wireframe flows for all three MVP phases. These flows are the primary input for Product Manager user stories and iOS engineering specs.
 
 **Format**: Each screen is described with layout, components, copy, and interaction notes. Flows use ASCII-style flow diagrams to show navigation paths.
@@ -63,7 +63,7 @@
 ```
 ┌─────────────────────────────────────┐
 │                                     │
-│         [RipEm wordmark logo]       │
+│         [RiPeM wordmark logo]       │
 │                                     │
 │   "Your AI garage buddy is ready."  │
 │                                     │
@@ -324,7 +324,7 @@
 │   └─────────────────────────────┘   │
 │                                     │
 │   "Named cars get into trouble."    │
-│              — RipEm                │
+│              — RiPeM                │
 │                                     │
 │   ┌─────────────────────────────┐   │
 │   │           Next →            │   │
@@ -539,7 +539,7 @@
 
 ```
 ┌─────────────────────────────────────┐
-│  RipEm          [search]  [profile] │
+│  RiPeM          [search]  [profile] │
 │                                     │
 │  [Car name + photo header]          │
 │  "Dale" — 1972 Toyota Celica        │
@@ -720,7 +720,7 @@
                [Platform Select]
                   │         │
                   ▼         ▼
-           [Instagram]  [RipEm Feed]
+           [Instagram]  [RiPeM Feed]
                   │         │
                   └────┬────┘
                        ▼
@@ -752,7 +752,7 @@
 
 ```
 ┌─────────────────────────────────────┐
-│  RipEm          [search]  [profile] │
+│  RiPeM          [search]  [profile] │
 │                                     │
 │  [Car header]                       │
 │  "Dale" — 1972 Toyota Celica        │
@@ -831,7 +831,7 @@
 │   │  fitment check. Drop game   │   │
 │   │  is underway.               │   │
 │   │                             │   │
-│   │  #RipEm #EGCivic #BCRacing  │   │
+│   │  #RiPeM #EGCivic #BCRacing  │   │
 │   │  #StanceNation              │   │
 │   │                    [Edit]   │   │
 │   └─────────────────────────────┘   │
@@ -863,7 +863,7 @@
 │                                     │
 │   "Where do you want to post?"      │
 │                                     │
-│   ☑  RipEm Discovery Feed           │
+│   ☑  RiPeM Discovery Feed           │
 │   ☑  Instagram (connected)          │
 │   ☐  Copy to Clipboard              │
 │                                     │
@@ -873,7 +873,7 @@
 │   │                             │   │
 │   │   [Photo thumbnail]         │   │
 │   │                             │   │
-│   │                   [RipEm ↗] │   │  ← watermark
+│   │                   [RiPeM ↗] │   │  ← watermark
 │   └─────────────────────────────┘   │
 │                                     │
 │   Watermark links viewers to your   │
@@ -888,7 +888,7 @@
 **Components**: Platform checklist, watermark preview on photo thumbnail, Post CTA
 **Interaction**: Toggle platforms; tap watermark to preview; Post Now → Published Confirmation
 **Notes**:
-- RipEm Discovery Feed is always an option (can't be unchecked if Public mode)
+- RiPeM Discovery Feed is always an option (can't be unchecked if Public mode)
 - Instagram requires OAuth — if not connected, tapping it triggers auth flow
 - Watermark shown in context on actual photo (bottom-right, tasteful)
 - "Watermark links viewers to your build" — frames watermark as a feature, not a cost
@@ -905,7 +905,7 @@
 │   "Build update posted!"            │
 │                                     │
 │   Shared to:                        │
-│   ✓ RipEm Discovery Feed            │
+│   ✓ RiPeM Discovery Feed            │
 │   ✓ Instagram                       │
 │                                     │
 │   ┌─────────────────────────────┐   │

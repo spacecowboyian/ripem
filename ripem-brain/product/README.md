@@ -1,12 +1,12 @@
 # Product
 
-**Purpose**: Defines what RipEm is, who it's for, and what it does.
+**Purpose**: Defines what RiPeM is, who it's for, and what it does.
 
-**For Whom**: Agents building product, designing features, or explaining RipEm to users.
+**For Whom**: Agents building product, designing features, or explaining RiPeM to users.
 
 ## Overview
 
-RipEm is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. It combines voice-to-log convenience, an intelligent automotive AI assistant, and a community publishing engine into a single mobile-first app.
+RiPeM is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. It combines voice-to-log convenience, an intelligent automotive AI assistant, and a community publishing engine into a single mobile-first app.
 
 ## Key Sections
 

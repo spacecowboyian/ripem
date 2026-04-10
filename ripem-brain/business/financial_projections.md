@@ -1,6 +1,6 @@
 # Financial Projections
 
-> This document contains the 3-year financial model for RipEm. Projections are estimates and should be updated as real data becomes available.
+> This document contains the 3-year financial model for RiPeM. Projections are estimates and should be updated as real data becomes available.
 
 ## Key Assumptions
 

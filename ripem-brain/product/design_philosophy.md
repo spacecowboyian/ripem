@@ -3,13 +3,13 @@
 ## Core Principles
 
 ### 1. Honest, Never Salesy
-RipEm's AI gives genuine advice — it never upsells, never hypes, and never recommends something that isn't right for the user's specific car and project. When uncertain, it says so with a confidence score.
+RiPeM's AI gives genuine advice — it never upsells, never hypes, and never recommends something that isn't right for the user's specific car and project. When uncertain, it says so with a confidence score.
 
 ### 2. Context-Driven
 Every interaction is informed by context: the user's car, their build history, their budget, and community data. Generic answers are the enemy.
 
 ### 3. Community-First
-RipEm grows by empowering builders to share. The watermark is a growth mechanism, not a punishment. Publishing should feel rewarding, not extractive.
+RiPeM grows by empowering builders to share. The watermark is a growth mechanism, not a punishment. Publishing should feel rewarding, not extractive.
 
 ### 4. Voice-Native
 The primary input method is voice. Tapping and typing are fallbacks. The app is designed to be used in a garage with dirty hands.

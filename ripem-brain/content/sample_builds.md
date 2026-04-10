@@ -63,7 +63,7 @@ These fictional build examples are used for demos, onboarding screens, and marke
 
 ## Sample User Flow (Voice-to-Log)
 
-The following illustrates the core RipEm MVP user journey end-to-end:
+The following illustrates the core RiPeM MVP user journey end-to-end:
 
 ```
 User opens app → Sign up / Log in → Create vehicle
