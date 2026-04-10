@@ -383,7 +383,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .ob-opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
 .ob-opt-card{background:#1c1c1c;border:1.5px solid #2c2c2c;border-radius:11px;padding:11px 9px;cursor:pointer;text-align:center;transition:border-color .15s,background .15s;user-select:none}
 .ob-opt-card:active{opacity:.7}
-.ob-opt-card.ob-selected{border-color:#ff4d00;background:#250e00;pointer-events:none}
+.ob-opt-card.ob-selected{border-color:#ff4d00;background:#250e00}
+.ob-build-confirm{width:100%;background:#ff4d00;color:#fff;font-size:14px;font-weight:700;border:none;border-radius:11px;padding:12px;cursor:pointer;margin-top:9px;font-family:inherit;transition:opacity .15s;display:none}
+.ob-build-confirm:active{opacity:.8}
 .ob-opt-card .ce{font-size:20px;display:block;margin-bottom:3px}
 .ob-opt-card .cl{font-size:12px;font-weight:600;color:#ccc}
 .ob-priv-opts{display:flex;flex-direction:column;gap:7px;margin-top:9px}
@@ -1748,7 +1750,7 @@ function obMsgCar() {
 }
 
 function obMsgBuild() {
-  return 'Nice — the EJ25 is a community favourite.<br><b>What kind of build are we doing?</b>' +
+  return 'Nice — the EJ25 is a community favourite.<br><b>What kind of build are we doing?</b><br><span style="font-size:12px;color:#666">Pick all that apply.</span>' +
     '<div class="ob-opt-grid">' +
       '<div class="ob-opt-card" onclick="obPickBuild(this,\'🏁 Track Car\')"><span class="ce">🏁</span><span class="cl">Track Car</span></div>' +
       '<div class="ob-opt-card" onclick="obPickBuild(this,\'🔧 Restoration\')"><span class="ce">🔧</span><span class="cl">Restoration</span></div>' +
@@ -1756,7 +1758,8 @@ function obMsgBuild() {
       '<div class="ob-opt-card" onclick="obPickBuild(this,\'📸 Content Creator\')"><span class="ce">📸</span><span class="cl">Content Creator</span></div>' +
       '<div class="ob-opt-card" onclick="obPickBuild(this,\'🎨 Show Car\')"><span class="ce">🎨</span><span class="cl">Show Car</span></div>' +
       '<div class="ob-opt-card" onclick="obPickBuild(this,\'✨ Just Vibes\')"><span class="ce">✨</span><span class="cl">Just Vibes</span></div>' +
-    '</div>';
+    '</div>' +
+    '<button class="ob-build-confirm" id="ob-build-confirm-btn" onclick="obConfirmBuild()">Confirm ✓</button>';
 }
 
 function obMsgPrivacy() {
@@ -1805,12 +1808,27 @@ function obChangeCar() {
 
 function obPickBuild(el, label) {
   if (obStep !== OB.BUILD) return;
+  el.classList.toggle('ob-selected');
+  const grid = el.closest('.ob-opt-grid');
+  const anySelected = grid.querySelectorAll('.ob-opt-card.ob-selected').length > 0;
+  const confirmBtn = document.getElementById('ob-build-confirm-btn');
+  if (confirmBtn) confirmBtn.style.display = anySelected ? 'block' : 'none';
+}
+
+function obConfirmBuild() {
+  if (obStep !== OB.BUILD) return;
+  const grid = document.querySelector('#ob-chat .ob-opt-grid');
+  if (!grid) return;
+  const selected = grid.querySelectorAll('.ob-opt-card.ob-selected');
+  if (selected.length === 0) return;
+  const labels = Array.from(selected).map(c => c.querySelector('.ce').textContent + ' ' + c.querySelector('.cl').textContent);
   obStep = OB.PRIVACY;
   obSetProg(78);
-  el.classList.add('ob-selected');
-  el.closest('.ob-opt-grid').querySelectorAll('.ob-opt-card').forEach(c => { c.onclick = null; c.style.opacity = c === el ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
+  grid.querySelectorAll('.ob-opt-card').forEach(c => { c.onclick = null; c.style.opacity = c.classList.contains('ob-selected') ? OB_SELECTED_OPACITY : OB_UNSELECTED_OPACITY; });
+  const confirmBtn = document.getElementById('ob-build-confirm-btn');
+  if (confirmBtn) confirmBtn.style.display = 'none';
   const chat = document.getElementById('ob-chat');
-  obAddUserMsg(chat, label);
+  obAddUserMsg(chat, labels.join(', '));
   setTimeout(() => obAddTyping(chat, () => { obAddAiMsg(chat, obMsgPrivacy()); obSetProg(85); }, OB_TYPING_DELAY_MS), OB_PICK_DELAY_MS);
 }
 
@@ -1856,7 +1874,7 @@ function obVoiceInput() {
       }
       case OB.BUILD: {
         const el = document.querySelector('#ob-chat .ob-opt-card:nth-child(3)');
-        if (el && !el.classList.contains('ob-selected')) { toast('🎤 "Daily Driver"'); obPickBuild(el, '🚗 Daily Driver'); }
+        if (el && !el.classList.contains('ob-selected')) { toast('🎤 "Daily Driver"'); obPickBuild(el, '🚗 Daily Driver'); setTimeout(obConfirmBuild, 600); }
         break;
       }
       case OB.PRIVACY: {
