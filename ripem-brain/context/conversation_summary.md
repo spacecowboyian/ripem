@@ -1,8 +1,8 @@
 # Conversation Summary
 
-## Origin of RipEm
+## Origin of RiPeM
 
-RipEm was conceived as a solution to a real problem in the car enthusiast space: there is no dedicated, intelligent tool for documenting and sharing vehicle build projects.
+RiPeM was conceived as a solution to a real problem in the car enthusiast space: there is no dedicated, intelligent tool for documenting and sharing vehicle build projects.
 
 ## The Core Insight
 
@@ -12,7 +12,7 @@ The insight: build a purpose-built app that combines voice-first logging, an aut
 
 ## The Three Pillars
 
-The original brainstorm identified three core user needs that became RipEm's three pillars:
+The original brainstorm identified three core user needs that became RiPeM's three pillars:
 
 1. **Document**: "I need to remember what I did and what I spent."
 2. **Advise**: "I need specific advice about my car, not generic internet answers."
@@ -20,7 +20,7 @@ The original brainstorm identified three core user needs that became RipEm's thr
 
 ## The Naming Process
 
-The name "RipEm" emerged from a brainstorm focused on:
+The name "RiPeM" emerged from a brainstorm focused on:
 - TikTok-native energy (short, two syllables)
 - Car culture authenticity (RPM resonance)
 - Social vernacular ("rip 'ems")
@@ -37,6 +37,6 @@ The core business model was defined early:
 ## The Growth Insight
 
 The watermark loop was identified as the primary differentiator for organic growth:
-> "Every published build is marketing for RipEm. The watermark turns every user into a growth engine."
+> "Every published build is marketing for RiPeM. The watermark turns every user into a growth engine."
 
 This insight shaped the product: publishing had to be easy and the output had to be compelling enough to share.

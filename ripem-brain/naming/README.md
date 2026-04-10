@@ -6,17 +6,17 @@
 
 ## Overview
 
-The app is named **RipEm**. The name was chosen for its TikTok-style two-syllable rhythm, its RPM automotive energy, and its natural fit in car culture conversations.
+The app is named **RiPeM**. The name was chosen for its TikTok-style two-syllable rhythm, its RPM automotive energy, and its natural fit in car culture conversations.
 
 ## Key Sections
 
-- [ripem_rationale.md](./ripem_rationale.md): Why RipEm — the app name justification
+- [ripem_rationale.md](./ripem_rationale.md): Why RiPeM — the app name justification
 - [naming_exploration.md](./naming_exploration.md): Naming brainstorm and alternatives considered
 - [brand_guidelines.md](./brand_guidelines.md): Naming, tone, and visual guidelines
 
 ## Quick Reference
 
-- **App name**: RipEm
+- **App name**: RiPeM
 - **Pronunciation**: "Rip-em" (two syllables)
 - **Energy**: TikTok-native, car-culture-native, forward momentum
 - **Tagline**: TBD

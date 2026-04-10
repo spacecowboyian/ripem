@@ -1,11 +1,11 @@
-# RipEm Core Knowledge Index
+# RiPeM Core Knowledge Index
 
-This is the semantic hub for all RipEm knowledge. Agents should read this to understand the full landscape, then drill into specific directories.
+This is the semantic hub for all RiPeM knowledge. Agents should read this to understand the full landscape, then drill into specific directories.
 
 ## Essential Context
 
-**What is RipEm?**
-RipEm is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think: "helpful mechanic in your pocket" that knows your car, your budget, your project history, and what thousands of others with the same car have done.
+**What is RiPeM?**
+RiPeM is an AI-powered platform for car enthusiasts to track, document, and share vehicle build projects. Think: "helpful mechanic in your pocket" that knows your car, your budget, your project history, and what thousands of others with the same car have done.
 
 **Three User Entry Points**:
 1. **Documenters** - Just want easy voice-based maintenance logging
@@ -22,13 +22,13 @@ RipEm is an AI-powered platform for car enthusiasts to track, document, and shar
 ## Knowledge Map
 
 ### Product Knowledge (`/product/`)
-- What RipEm does and why it matters
+- What RiPeM does and why it matters
 - Feature specs and user journeys
 - Design philosophy: honest, context-driven, community-first
 - *Use case*: Agents building product, designing features, or explaining to users
 
 ### Business Knowledge (`/business/`)
-- How RipEm makes money (freemium + ads)
+- How RiPeM makes money (freemium + ads)
 - Market opportunity (15M+ car enthusiasts, $X TAM)
 - Go-to-market strategy (seed power users in Facebook groups, viral watermark loop)
 - Financial projections and investor Q&A
@@ -49,7 +49,7 @@ RipEm is an AI-powered platform for car enthusiasts to track, document, and shar
 - *Use case*: Agents managing development, tracking progress, prioritizing features
 
 ### Naming Knowledge (`/naming/`)
-- Why "RipEm" (TikTok energy, RPM metaphor, "rip 'ems" social vibes)
+- Why "RiPeM" (TikTok energy, RPM metaphor, "rip 'ems" social vibes)
 - Naming brainstorm history and alternatives explored
 - Brand guidelines (voice, tone, visual identity)
 - *Use case*: Agents writing marketing copy, defining brand voice, or reviewing naming decisions
@@ -70,7 +70,7 @@ RipEm is an AI-powered platform for car enthusiasts to track, document, and shar
 
 ### Glossary (`/glossary/`)
 - Automotive terms (RPM, displacement, turbo, etc.)
-- RipEm product terms (Build Blog, Watermark, etc.)
+- RiPeM product terms (Build Blog, Watermark, etc.)
 - Business terms (TAM, CAC, LTV, etc.)
 - Technical terms (API, backend, transcription, etc.)
 - *Use case*: Agents ensuring consistent terminology and understanding context
@@ -107,7 +107,7 @@ Free app with ad-supported monetization. Ads appear ONLY when searching for part
 5. Watermark + app virality loop creates network effect
 
 ### The AI Differentiation
-RipEm's AI isn't generic ChatGPT. It's specialized:
+RiPeM's AI isn't generic ChatGPT. It's specialized:
 - Understands automotive context (RPM, displacement, tuning)
 - Knows user's specific car and project history
 - References community consensus data ("10,000 other Civic owners did X")
@@ -115,10 +115,10 @@ RipEm's AI isn't generic ChatGPT. It's specialized:
 - Never sells (honest advice only)
 
 ### The Naming
-"RipEm" captures:
+"RiPeM" captures:
 - TikTok-style two-syllable rhythm ("rip 'ems")
 - RPM energy (revolutions = progress momentum)
-- Conversational vibes ("Did you see that build on RipEm?")
+- Conversational vibes ("Did you see that build on RiPeM?")
 - Car culture native (no forced terminology)
 
 ---

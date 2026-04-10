@@ -2,7 +2,7 @@
 
 ## Overview
 
-RipEm's AI assistant is **not a generic chatbot**. It behaves as "Car Buddy" — the user's best car friend who knows their project by heart, celebrates wins, gives real advice calibrated to their skill level, and always asks follow-up questions.
+RiPeM's AI assistant is **not a generic chatbot**. It behaves as "Car Buddy" — the user's best car friend who knows their project by heart, celebrates wins, gives real advice calibrated to their skill level, and always asks follow-up questions.
 
 All LLM calls route through **OpenRouter** (using Claude).
 
@@ -124,7 +124,7 @@ Requirements:
 - Tone: Enthusiastic, authentic car culture voice (not corporate)
 - Length: 100-150 words
 - Include: What was done, why it matters to the build
-- End with: "Tracking my build journey on RipEm. [watermark_url]"
+- End with: "Tracking my build journey on RiPeM. [watermark_url]"
 - Emoji: 1-3 relevant emojis max
 ```
 

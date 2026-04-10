@@ -1,12 +1,12 @@
 # Context
 
-**Purpose**: Captures the evolution of RipEm — original brainstorm summaries, key design decisions, core assumptions, and open questions.
+**Purpose**: Captures the evolution of RiPeM — original brainstorm summaries, key design decisions, core assumptions, and open questions.
 
 **For Whom**: Agents understanding "why" decisions were made and what still needs validation.
 
 ## Overview
 
-This section is the institutional memory of RipEm. Before making a significant decision, check here to understand what has already been decided, what was considered and rejected, and what questions remain open.
+This section is the institutional memory of RiPeM. Before making a significant decision, check here to understand what has already been decided, what was considered and rejected, and what questions remain open.
 
 ## Key Sections
 

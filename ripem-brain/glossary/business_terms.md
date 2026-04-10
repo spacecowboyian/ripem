@@ -1,6 +1,6 @@
 # Business Terms
 
-This glossary covers business and finance terms used in RipEm documentation.
+This glossary covers business and finance terms used in RiPeM documentation.
 
 ---
 
@@ -12,7 +12,7 @@ This glossary covers business and finance terms used in RipEm documentation.
 
 ## C
 
-**CAC** — Customer Acquisition Cost. The average cost to acquire one new user. RipEm targets low CAC via organic (watermark) acquisition.
+**CAC** — Customer Acquisition Cost. The average cost to acquire one new user. RiPeM targets low CAC via organic (watermark) acquisition.
 
 **Churn** — The rate at which users stop using the app. Monthly churn = users lost / total users in that month.
 
@@ -20,7 +20,7 @@ This glossary covers business and finance terms used in RipEm documentation.
 
 ## F
 
-**Freemium** — A business model where a product is available for free with optional paid upgrades. RipEm's model.
+**Freemium** — A business model where a product is available for free with optional paid upgrades. RiPeM's model.
 
 ## G
 
@@ -52,7 +52,7 @@ This glossary covers business and finance terms used in RipEm documentation.
 
 **PMF** — Product-Market Fit. The stage where a product satisfies a strong market demand. Indicated by high retention and organic word-of-mouth.
 
-**Premium** — In RipEm: the paid subscription tier. Generally: a higher-value tier of a freemium product.
+**Premium** — In RiPeM: the paid subscription tier. Generally: a higher-value tier of a freemium product.
 
 ## R
 

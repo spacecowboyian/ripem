@@ -2,13 +2,13 @@
 
 ## Brainstorm History
 
-The naming process explored several directions before landing on RipEm.
+The naming process explored several directions before landing on RiPeM.
 
 ### Direction 1: RPM-Inspired
 Names that riff on RPM as a metaphor for progress and car culture:
 - RPM.log
 - RevLog
-- RipEm ✅ (chosen)
+- RiPeM ✅ (chosen)
 - RevTrack
 - Redline
 
@@ -52,11 +52,11 @@ Each name was evaluated against:
 
 | Name | Memorable | Car-Native | Social | Notes |
 |------|-----------|-----------|--------|-------|
-| RipEm | ✅ | ✅ | ✅ | Chosen |
+| RiPeM | ✅ | ✅ | ✅ | Chosen |
 | Redline | ✅ | ✅ | ⚠️ | Already used widely |
 | RevLog | ⚠️ | ✅ | ⚠️ | Too descriptive |
 | BuildLog | ❌ | ⚠️ | ❌ | Generic |
 
 ## Final Decision
 
-**RipEm** — See [ripem_rationale.md](./ripem_rationale.md) for full justification.
+**RiPeM** — See [ripem_rationale.md](./ripem_rationale.md) for full justification.

@@ -85,7 +85,7 @@
 3. User taps "Publish"
 4. AI auto-formats: title, description, highlight reel from logged sessions
 5. Watermark is applied automatically
-6. Post goes live on RipEm; user shares to Instagram/TikTok
+6. Post goes live on RiPeM; user shares to Instagram/TikTok
 7. Viewers see watermark → download app → discover community
 
 ### Journey 4: Parts Discovery
@@ -101,7 +101,7 @@
 
 **Design Philosophy**: A conversation, not a form. Questions appear one-by-one. AI reacts to previous answers. User feels heard and understood.
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 | Screen | Question | Input Type | Why |
 |--------|----------|-----------|-----|

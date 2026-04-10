@@ -1,12 +1,12 @@
 # Technical
 
-**Purpose**: Defines the system architecture, tech stack, APIs, data models, and AI prompting for RipEm.
+**Purpose**: Defines the system architecture, tech stack, APIs, data models, and AI prompting for RiPeM.
 
 **For Whom**: Agents engineering the platform, designing APIs, or training models.
 
 ## Overview
 
-RipEm is an iOS-first application with a cloud backend and an AI assistant layer. The architecture is client-server with a mobile app as the primary interface, a RESTful backend API, and integrated AI services for transcription, extraction, and Q&A.
+RiPeM is an iOS-first application with a cloud backend and an AI assistant layer. The architecture is client-server with a mobile app as the primary interface, a RESTful backend API, and integrated AI services for transcription, extraction, and Q&A.
 
 ## Key Sections
 

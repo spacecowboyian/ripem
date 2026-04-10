@@ -1,12 +1,12 @@
 # Technical Terms
 
-This glossary covers technical and AI terminology used in RipEm documentation.
+This glossary covers technical and AI terminology used in RiPeM documentation.
 
 ---
 
 ## A
 
-**API** — Application Programming Interface. A set of rules that allows different software components to communicate. RipEm's backend exposes a REST API consumed by the iOS and web apps.
+**API** — Application Programming Interface. A set of rules that allows different software components to communicate. RiPeM's backend exposes a REST API consumed by the iOS and web apps.
 
 **async/await** — A programming pattern for handling asynchronous operations. Used in Swift for network and AI calls.
 
@@ -36,7 +36,7 @@ This glossary covers technical and AI terminology used in RipEm documentation.
 
 ## I
 
-**iOS** — Apple's mobile operating system. The primary platform for RipEm.
+**iOS** — Apple's mobile operating system. The primary platform for RiPeM.
 
 ## J
 
@@ -46,7 +46,7 @@ This glossary covers technical and AI terminology used in RipEm documentation.
 
 ## L
 
-**LLM** — Large Language Model. The type of AI model that powers RipEm's assistant (e.g., GPT-4, Claude).
+**LLM** — Large Language Model. The type of AI model that powers RiPeM's assistant (e.g., GPT-4, Claude).
 
 ## O
 
@@ -58,20 +58,20 @@ This glossary covers technical and AI terminology used in RipEm documentation.
 
 ## S
 
-**SwiftUI** — Apple's declarative UI framework for building iOS interfaces. Used for RipEm's iOS app.
+**SwiftUI** — Apple's declarative UI framework for building iOS interfaces. Used for RiPeM's iOS app.
 
-**System prompt** — The instructions given to an AI model that define its persona, behavior, and context. RipEm injects vehicle and build context into the system prompt.
+**System prompt** — The instructions given to an AI model that define its persona, behavior, and context. RiPeM injects vehicle and build context into the system prompt.
 
 ## T
 
-**Transcription** — The process of converting audio recordings to text. RipEm uses AI transcription (Whisper or Apple Speech) to convert voice logs.
+**Transcription** — The process of converting audio recordings to text. RiPeM uses AI transcription (Whisper or Apple Speech) to convert voice logs.
 
 **TLS** — Transport Layer Security. The protocol that encrypts data in transit (HTTPS uses TLS).
 
 ## U
 
-**UUID** — Universally Unique Identifier. A 128-bit identifier used as primary keys in RipEm's data model.
+**UUID** — Universally Unique Identifier. A 128-bit identifier used as primary keys in RiPeM's data model.
 
 ## W
 
-**Whisper** — OpenAI's speech-to-text model. A candidate for RipEm's transcription engine due to its accuracy on domain-specific vocabulary.
+**Whisper** — OpenAI's speech-to-text model. A candidate for RiPeM's transcription engine due to its accuracy on domain-specific vocabulary.

@@ -1,14 +1,14 @@
-# RipEm User Personas
+# RiPeM User Personas
 
 **Status**: v1.0 — April 2026
-**Author**: UX Researcher (RipEm)
+**Author**: UX Researcher (RiPeM)
 **Purpose**: Ground the Product Manager's user stories and the engineering team's feature decisions in real-world user archetypes.
 
 ---
 
 ## How to Use This Document
 
-Each persona represents a primary entry point into RipEm. The three archetypes map directly to the product's three core entry points: **Documenter**, **Sharer**, and **Learner**. Real users may blend traits, but every feature decision should be anchored to at least one of these three.
+Each persona represents a primary entry point into RiPeM. The three archetypes map directly to the product's three core entry points: **Documenter**, **Sharer**, and **Learner**. Real users may blend traits, but every feature decision should be anchored to at least one of these three.
 
 ---
 
@@ -49,14 +49,14 @@ Marcus bought his WRX three years ago with 80,000 miles on it. He does most of h
 - Does not want a chatbot — wants quick, direct answers
 - The "Dale Moment" equivalent for Marcus: AI says "Based on your last oil change 4,200 miles ago, you're about due — and you used Mobil 1 Full Synthetic 5W-30 last time."
 
-### RipEm Entry Point
+### RiPeM Entry Point
 **Documenter** — logs are the primary value, not social sharing.
 
 ### Subscription Tier Fit
 Free tier. Casual maintenance tracker. Revenue: ad impressions (~$1.50/month).
 
 ### Primary Journey
-Phase 2 (Voice Logging) is where Marcus lives. He taps record after a session, speaks for 30 seconds, and expects RipEm to do the rest. The 12-screen onboarding is worth it only because Screen 12 makes him feel understood.
+Phase 2 (Voice Logging) is where Marcus lives. He taps record after a session, speaks for 30 seconds, and expects RiPeM to do the rest. The 12-screen onboarding is worth it only because Screen 12 makes him feel understood.
 
 ### Success Criteria for Marcus
 - Logs at least 3 sessions in the first month
@@ -103,7 +103,7 @@ Jordan has been building her Civic for two years. She's documented everything in
 - Appreciates that AI captions match her voice when she provides the logs
 - Will test the AI to see if it knows car culture; dismisses it if it doesn't
 
-### RipEm Entry Point
+### RiPeM Entry Point
 **Sharer** — publishing is the primary value. Voice logging feeds content creation.
 
 ### Subscription Tier Fit
@@ -114,16 +114,16 @@ Phase 3 (Build Publishing + Discovery Feed) is Jordan's core loop. She logs sess
 
 ### The Watermark Contract (Jordan's Lens)
 Jordan will accept the watermark if it feels like:
-- A badge of authenticity ("Built on RipEm")
+- A badge of authenticity ("Built on RiPeM")
 - Visually clean and small
-- Something her followers might ask about ("What's RipEm?")
+- Something her followers might ask about ("What's RiPeM?")
 
 She will resist it if it feels:
 - Corporate or spammy
 - Like it steals attention from her build
 
 ### Success Criteria for Jordan
-- Publishes at least 1 post via RipEm in the first two weeks
+- Publishes at least 1 post via RiPeM in the first two weeks
 - At least one follower clicks through the watermark and downloads the app
 - She upgrades to Chat Pro within 60 days
 
@@ -168,7 +168,7 @@ Devon just bought an RX-8 from Craigslist for $3,500. He knows the Renesis rotar
 - Wants the AI to reference real community data, not generic advice
 - Will churn immediately if AI gives a generic answer that ignores his specific car
 
-### RipEm Entry Point
+### RiPeM Entry Point
 **Learner** — discovery feed and AI assistant are the primary value hooks. Will convert to Documenter once he starts his build.
 
 ### Subscription Tier Fit

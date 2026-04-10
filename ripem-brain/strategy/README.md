@@ -6,7 +6,7 @@
 
 ## Overview
 
-RipEm's growth strategy is built on organic virality. The watermark loop is the primary acquisition engine. Community seeding in niche Facebook Groups and influencer partnerships accelerate early growth.
+RiPeM's growth strategy is built on organic virality. The watermark loop is the primary acquisition engine. Community seeding in niche Facebook Groups and influencer partnerships accelerate early growth.
 
 ## Key Sections
 

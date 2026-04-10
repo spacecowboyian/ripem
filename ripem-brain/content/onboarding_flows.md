@@ -4,7 +4,7 @@
 
 Onboarding has one job: get the user to log their first session. Everything else is secondary.
 
-The user should feel, within 5 minutes of opening RipEm for the first time:
+The user should feel, within 5 minutes of opening RiPeM for the first time:
 1. "This was built for people like me"
 2. "I know exactly what this does"
 3. "I just logged my first session"
@@ -14,7 +14,7 @@ The user should feel, within 5 minutes of opening RipEm for the first time:
 ## Onboarding Screens
 
 ### Screen 1: Welcome
-**Headline**: "Welcome to RipEm"
+**Headline**: "Welcome to RiPeM"
 **Body**: "The app built for builders. Document your project. Ask your AI. Share the journey."
 **CTA**: "Let's go →"
 

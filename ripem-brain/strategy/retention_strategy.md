@@ -2,7 +2,7 @@
 
 ## Why Retention Matters
 
-Retention is the single most important metric. A car build is a long-term project (months to years). RipEm's value compounds as a user logs more — more history means better AI, a richer timeline, and a more compelling build to publish.
+Retention is the single most important metric. A car build is a long-term project (months to years). RiPeM's value compounds as a user logs more — more history means better AI, a richer timeline, and a more compelling build to publish.
 
 ## Retention Drivers
 

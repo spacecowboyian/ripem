@@ -2,7 +2,7 @@
 
 ## MVP Launch Targets (8-Week Build)
 
-**Source**: RipEm MVP Technical Specification v1.0 (April 2025)
+**Source**: RiPeM MVP Technical Specification v1.0 (April 2025)
 
 ### Phase 1 — Onboarding (Weeks 1-2)
 

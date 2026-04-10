@@ -1,14 +1,14 @@
 # Product Terms
 
-This glossary covers RipEm product-specific terminology. These terms have specific meanings within the RipEm product.
+This glossary covers RiPeM product-specific terminology. These terms have specific meanings within the RiPeM product.
 
 ---
 
 ## B
 
-**Brain** — The knowledge base for RipEm (this directory). The single source of truth for all product, technical, and business information. Located at `/ripem-brain/`.
+**Brain** — The knowledge base for RiPeM (this directory). The single source of truth for all product, technical, and business information. Located at `/ripem-brain/`.
 
-**Build** — A user's documented vehicle project within RipEm. A build consists of a vehicle + all logged sessions + any published content. Builds can be private or published publicly.
+**Build** — A user's documented vehicle project within RiPeM. A build consists of a vehicle + all logged sessions + any published content. Builds can be private or published publicly.
 
 **Build Blog** — The user-facing name for the published version of a build. A Build Blog is a curated, shareable representation of a user's build log.
 
@@ -20,7 +20,7 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 ## C
 
-**Community Data** — Aggregated, anonymized data from all RipEm users' builds for a specific vehicle. Used to power AI responses like "2,400 other Civic owners installed this."
+**Community Data** — Aggregated, anonymized data from all RiPeM users' builds for a specific vehicle. Used to power AI responses like "2,400 other Civic owners installed this."
 
 **Confidence Score** — The AI assistant's self-reported certainty level on a recommendation. Values: High / Medium / Low. Always displayed with AI recommendations.
 
@@ -30,7 +30,7 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 ## G
 
-**Garage** — The user's collection of vehicles in RipEm. "My Garage" is the primary vehicle management screen.
+**Garage** — The user's collection of vehicles in RiPeM. "My Garage" is the primary vehicle management screen.
 
 ## L
 
@@ -40,13 +40,13 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 ## M
 
-**MVP** — Minimum Viable Product. The simplest version of RipEm with core features sufficient to validate the product hypothesis with real users. RipEm's MVP is phased across three releases (Phase 1: logging, Phase 2: AI, Phase 3: publishing).
+**MVP** — Minimum Viable Product. The simplest version of RiPeM with core features sufficient to validate the product hypothesis with real users. RiPeM's MVP is phased across three releases (Phase 1: logging, Phase 2: AI, Phase 3: publishing).
 
 ## P
 
 **Parts extraction** — The AI process of identifying parts, brands, part numbers, and costs from a voice transcript.
 
-**Premium** — RipEm's paid subscription tier ($4.99–9.99/month). Unlocks: ad-free, direct social posting, advanced analytics, watermark removal, build export.
+**Premium** — RiPeM's paid subscription tier ($4.99–9.99/month). Unlocks: ad-free, direct social posting, advanced analytics, watermark removal, build export.
 
 ## S
 
@@ -58,10 +58,10 @@ This glossary covers RipEm product-specific terminology. These terms have specif
 
 **Vehicle** — A car, truck, SUV, or motorcycle added to a user's garage. Defined by: year, make, model, trim, and optional nickname.
 
-**Voice-to-Log** — The core RipEm workflow: record voice → transcribe → extract parts/cost/time → save to build timeline.
+**Voice-to-Log** — The core RiPeM workflow: record voice → transcribe → extract parts/cost/time → save to build timeline.
 
 ## W
 
-**Watermark** — The RipEm branding automatically applied to published build photos and videos. The watermark is the primary viral growth mechanism. Cannot be removed on free tier.
+**Watermark** — The RiPeM branding automatically applied to published build photos and videos. The watermark is the primary viral growth mechanism. Cannot be removed on free tier.
 
 **Weekend Warrior** — A user persona representing casual maintenance trackers who primarily want to remember what service they've done and when.

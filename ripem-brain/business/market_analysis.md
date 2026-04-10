@@ -63,4 +63,4 @@ These adjacent markets each represent millions of potential users with similar d
 
 ## Key Insight
 
-The car enthusiast market is **underserved by dedicated tooling**. Enthusiasts use spreadsheets, camera rolls, and disconnected social posts to manage multi-year, multi-thousand-dollar projects. RipEm is the first app designed specifically for this workflow.
+The car enthusiast market is **underserved by dedicated tooling**. Enthusiasts use spreadsheets, camera rolls, and disconnected social posts to manage multi-year, multi-thousand-dollar projects. RiPeM is the first app designed specifically for this workflow.

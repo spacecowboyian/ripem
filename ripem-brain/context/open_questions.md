@@ -14,7 +14,7 @@ These are unresolved questions that require research, user validation, or decisi
 **Priority**: High (needed before Phase 3)
 
 ### OQ-P2: Should we support motorcycles and trucks from launch?
-**Question**: Should RipEm support non-car vehicles (motorcycles, trucks, SUVs) in the MVP?
+**Question**: Should RiPeM support non-car vehicles (motorcycles, trucks, SUVs) in the MVP?
 **Why it matters**: Expands TAM but adds complexity to AI training data and UI
 **Research needed**: Survey potential users to understand vehicle distribution
 **Owner**: TBD
@@ -53,7 +53,7 @@ These are unresolved questions that require research, user validation, or decisi
 ## Business Questions
 
 ### OQ-B1: What is the actual conversion rate from watermark to install?
-**Question**: When someone sees a RipEm watermark on social media, how often do they click through and install?
+**Question**: When someone sees a RiPeM watermark on social media, how often do they click through and install?
 **Why it matters**: The entire growth model depends on this working
 **Research needed**: A/B test different watermark designs and CTAs; track attribution
 **Owner**: TBD

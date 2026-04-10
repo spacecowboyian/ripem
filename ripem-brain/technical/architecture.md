@@ -2,7 +2,7 @@
 
 ## Architecture Style
 
-RipEm uses a client-server architecture with a mobile-first client (iOS) and a cloud-hosted backend API. An AI assistant layer sits between the client and backend, providing context-aware responses built on the user's "Garage Brain" (their full project history).
+RiPeM uses a client-server architecture with a mobile-first client (iOS) and a cloud-hosted backend API. An AI assistant layer sits between the client and backend, providing context-aware responses built on the user's "Garage Brain" (their full project history).
 
 ## High-Level Diagram
 
@@ -115,7 +115,7 @@ User taps "Share" → AI generates caption → User approves
   → Track watermark_clicks in instagram_posts table
 ```
 
-Watermark drives new user acquisition: others see post → click watermark → discover RipEm.
+Watermark drives new user acquisition: others see post → click watermark → discover RiPeM.
 
 ## Subscription Model
 
